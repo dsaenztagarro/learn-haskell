@@ -1,0 +1,44 @@
+cabal-version:      3.0
+name:               chapter12
+version:            0.1.0.0
+-- synopsis:
+-- description:
+license:            BSD-2-Clause
+license-file:       LICENSE
+author:             David Sáenz
+maintainer:         dsaenz@bebanjo.com
+-- copyright:
+category:           Data
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+-- extra-source-files:
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:  ParsingFunction1
+                    , ParsingFunction2
+                    , ApplicativeParser
+                    , MonadicParser
+    -- other-modules:
+    -- other-extensions:
+    build-depends:    base ^>=4.17.2.1
+                    , bytestring
+                    , base64-bytestring
+                    , text
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+executable chapter12
+    import:           warnings
+    main-is:          Main.hs
+    -- other-modules:
+    -- other-extensions:
+    build-depends:
+        base ^>=4.17.2.1,
+        chapter12
+
+    hs-source-dirs:   app
+    default-language: Haskell2010

@@ -1,10 +1,11 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE ExistentialQuantification #-}
-module FilePack3 where
+{-# LANGUAGE TypeApplications #-}
+module ParsingFunction1 where
 
+import Control.Monad (when)
 import Data.Bits ((.&.), (.|.), shift)
 import Data.ByteString (ByteString)
 import qualified Data.ByteString as BS
@@ -13,7 +14,6 @@ import Data.Text (Text)
 import Data.Text.Encoding (encodeUtf8, decodeUtf8)
 import Data.Word
 import System.Posix.Types (FileMode, CMode(..))
-import Text.Printf
 
 data FileData a = FileData
   { fileName :: FilePath
@@ -36,13 +36,6 @@ class Encode a where
 class Decode a where
   decode :: ByteString -> Either String a
 
-instance (Encode a, Encode b) => Encode (a,b) where
-  encode (a,b) =
-    encode $ encodeWithSize a <> encodeWithSize b
-
-instance {-# OVERLAPPABLE #-} Encode a => Encode [a] where
-  encode = encode . foldMap encodeWithSize
-
 instance Encode ByteString where
   encode = id
 
@@ -60,40 +53,6 @@ instance Encode String where
 
 instance Decode String where
   decode = Right . BC.unpack
-
-instance Encode Word32 where
-  encode = word32ToByteString
-  encodeWithSize w =
-    let (a, b, c, d) = word32ToBytes w
-    in BS.pack [ 4, 0, 0, 0
-               , a, b, c, d]
-
-instance Decode Word32 where
-  decode = bytestringToWord32
-
-instance Encode Word16 where
-  encode = word16ToByteString
-
-instance Decode Word16 where
-  decode = bytestringToWord16
-
-instance Encode FileMode where
-  encode (CMode fMode) = encode fMode
-
-instance Decode FileMode where
-  decode = fmap CMode . decode
-
--- showBinary = printf "%b\n"
---
--- printBytes $ word32ToBytes 255
--- "ff 00 00 00\n"
--- Little endian x86-64 system -- least significant bytes first --
-
-printBytes :: (Word8, Word8, Word8, Word8) -> String
-printBytes (a, b, c, d) = printf "%02x %02x %02x %02x\n" a b c d
-
-
--- Word32 helper functions
 
 word32ToBytes :: Word32 -> (Word8, Word8, Word8, Word8)
 word32ToBytes word =
@@ -153,28 +112,41 @@ bytestringToWord16 bytestring =
       let l = show $ BS.length bytestring
       in Left ("Expecting 2 bytes but got " <> l)
 
-consWord32 :: Word32 -> ByteString -> ByteString
-consWord32 word bytestring =
-  let packedWord = word32ToByteString word
-  in packedWord <> bytestring
+instance Encode Word32 where
+  encode = word32ToByteString
+  encodeWithSize w =
+    let (a, b, c, d) = word32ToBytes w
+    in BS.pack [ 4, 0, 0, 0
+               , a, b, c, d]
+
+instance Decode Word32 where
+  decode = bytestringToWord32
+
+instance Encode Word16 where
+  encode = word16ToByteString
+
+instance Decode Word16 where
+  decode = bytestringToWord16
+
+instance Encode FileMode where
+  encode (CMode fMode) = encode fMode
+
+instance Decode FileMode where
+  decode = fmap CMode . decode
 
 instance Encode a => Encode (FileData a) where
-  encode FileData{..} =
-    let
-      encodedFileName = encodeWithSize fileName
-      encodedFileSize = encodeWithSize fileSize
-      encodedFilePermmissions = encodeWithSize filePermissions
-      encodedFileData = encodeWithSize fileData
-      encodedData =
-        encodedFileName
-        <> encodedFileSize
-        <> encodedFilePermmissions
-        <> encodedFileData
-    in encode encodedData
+  encode FileData{..} = encode $
+    encodeWithSize fileName
+    <> encodeWithSize fileSize
+    <> encodeWithSize filePermissions
+    <> encodeWithSize fileData
 
--- instance Encode a => (FilePack a) where
---   encode (FilePack a) = FilePack2.encode a
+instance (Encode a, Encode b) => Encode (a,b) where
+  encode (a,b) =
+    encode $ encodeWithSize a <> encodeWithSize b
 
+instance {-# OVERLAPPABLE #-} Encode a => Encode [a] where
+  encode = encode . foldMap encodeWithSize
 
 data Packable = forall a. Encode a => Packable { getPackable :: FileData a }
 
@@ -185,6 +157,49 @@ newtype FilePack = FilePack [Packable]
 
 instance Encode FilePack where
   encode (FilePack p) = encode p
+
+naiveDecodeWord32 :: ByteString -> Either String (Word32, ByteString)
+naiveDecodeWord32 inputString = do
+  when (BS.length inputString < 4) $
+    Left "Error, not enough data to get the size of the next field"
+  let (encodedSizePrefix, rest) = BS.splitAt 4 inputString
+  sizePrefix <- fromIntegral <$> bytestringToWord32 encodedSizePrefix
+  when (sizePrefix /=4) $
+    Left "the field size of a word should be 4"
+  when (BS.length rest < sizePrefix) $
+    Left "Not enought data for the next field size"
+  let (encodedWord, rest') = BS.splitAt sizePrefix rest
+  decodedWord <- decode encodedWord
+  pure (decodedWord, rest')
+
+naiveDecodedString :: ByteString -> Either String (String, ByteString)
+naiveDecodedString inputString = do
+  when (BS.length inputString < 4) $
+    Left "Error, not enough data to get the size of the next field"
+  let (encodedSizePrefix, rest) = BS.splitAt 4 inputString
+  sizePrefix <- fromIntegral <$> bytestringToWord32 encodedSizePrefix
+  when (BS.length rest < sizePrefix) $
+    Left "Not enough data for the next field size"
+  let (encodedString, rest') = BS.splitAt sizePrefix rest
+  decodedString <- decode encodedString
+  pure (decodedString, rest')
+
+extractBytes :: Int -> ByteString -> Either String (ByteString, ByteString)
+extractBytes n byteString = do
+  when (BS.length byteString < n) $
+    Left $ "Error, extract bytes needs at least " <> show n <> " bytes"
+  pure $ BS.splitAt n byteString
+
+nextSegmentSize :: ByteString -> Either String (Word32, ByteString)
+nextSegmentSize byteString = do
+  (nextSegmentStr, rest) <- extractBytes 4 byteString
+  parsedSegmentSize <- bytestringToWord32 nextSegmentStr
+  pure (parsedSegmentSize, rest)
+
+nextSegment :: ByteString -> Either String (ByteString, ByteString)
+nextSegment byteString = do
+  (segmentSize, rest) <- nextSegmentSize byteString
+  extractBytes (fromIntegral segmentSize) rest
 
 -- Test data
 
