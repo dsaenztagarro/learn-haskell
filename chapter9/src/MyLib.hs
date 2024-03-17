@@ -7,6 +7,11 @@ import Prelude (const, Int, even, succ)
 import qualified Text.Read as Text
 
 class Functor f where
+  -- Laws:
+  --  1. Identity
+  --    fmap id f = id f
+  --  2. Composition
+  --    fmap (f . g) = fmap f . fmap g
   fmap :: (a -> b) -> f a -> f b
   (<$) :: a -> f b -> f a
   (<$) a fb = fmap (const a) fb
@@ -15,42 +20,34 @@ infixl 4 <$>
 (<$>) :: Functor f => (a -> b) -> f a -> f b
 (<$>) = fmap
 
--- Functor Laws
--- Identity
--- fmap id f = id f
--- Composition
--- fmap (f . g) = fmap f . fmap g
-
 class Functor f => Applicative f where
+  -- Laws:
+  --  1. Identity
+  --    pure id <*> v = v
+  --  2. Composition
+  --    pure (.) <*> u <*> v <*> w = u <*> (v <*> w)
+  --  3. Homomorphism
+  --    pure f <*> pure x = pure (f x)
+  --  4. Interchange
+  --    u <*> pure y = pure ($ y) <*> u
   pure :: a -> f a
   infixl 4 <*>
   (<*>) :: f (a -> b) -> f a -> f b
 
--- Applicative Laws
--- Identity
--- pure id <*> v = v
--- Composition
--- pure (.) <*> u <*> v <*> w = u <*> (v <*> w)
--- Homomorphism
--- pure f <*> pure x = pure (f x)
--- Interchange
--- u <*> pure y = pure ($ y) <*> u
-
 class Applicative m => Monad m where
+  -- Laws:
+  --  1. Left identity
+  --    return a >>= m = m a
+  --  2. Right identity
+  --    m >>= return = m
+  --  3. Associativity
+  --    (a >>= b) >>= c = a >>= (\x -> b x >>= c)
   infixl 1 >>=
   (>>=) :: m a -> (a -> m b) -> m b
   infixl 1 >>
   (>>) :: m a -> m b -> m b
   a >> b = a >>= \_ -> b
   return :: a -> m a
-
--- Monad Laws
--- Left identity
--- return a >>= m = m a
--- Right identity
--- m >>= return = m
--- Associativity
--- (a >>= b) >>= c = a >>= (\x -> b x >>= c)
 
 -- Effective Haskell (page 457)
 -- Control.Applicative in base
