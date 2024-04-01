@@ -58,6 +58,12 @@ class Applicative f => Alternative f where
   many :: f a -> f [a]
   {-# MINIMAL (<|>) #-}
 
+-- Effective Haskell (page 464)
+class Monad m => MonadFail where
+  -- Law:
+  -- fail a >>= b == fail a
+  fail :: String -> m a
+
 -- empty @Maybe
 -- Nothing
 
