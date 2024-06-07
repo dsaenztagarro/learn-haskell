@@ -1,15 +1,15 @@
-module Extensions.FunctionalDependenciesSpec (spec) where
+module Extensions.AssociatedTypeFamiliesSpec (spec) where
 
 import Test.Hspec
-import Extensions.FunctionalDependencies
+import Extensions.AssociatedTypeFamilies
 import System.Directory (getTemporaryDirectory, makeAbsolute)
 
 -- TODO: extract hook to create temp dir and files with content
 
 spec :: Spec
 spec = do
-  -- describe "FunctionalDependencies" $ around_ withTempDir do
-  describe "FunctionalDependencies" $ do
+  -- describe "AssociatedTypeFamilies" $ around_ withTempDir do
+  describe "AssociatedTypeFamilies" $ do
     it "works ListDirectory shell command" $ do
       let dir = "/Users/dsaenz/Code/effective-haskell/test/dummy/src/"
       result <- runShellCommand (ListDirectory dir)
