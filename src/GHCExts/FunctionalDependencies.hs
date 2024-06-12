@@ -12,7 +12,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE StrictData #-} -- avoid lazy fields in records
 
-module Extensions.FunctionalDependencies where
+module GHCExts.FunctionalDependencies where
 import System.Process (readProcess)
 
 -- cmd: Type of the command executed (i.e. ListDirectory, Grep)

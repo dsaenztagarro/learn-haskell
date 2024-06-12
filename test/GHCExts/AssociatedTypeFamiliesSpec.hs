@@ -1,10 +1,10 @@
-module Extensions.AssociatedTypeFamiliesSpec (spec) where
+module GHCExts.AssociatedTypeFamiliesSpec (spec) where
 
 import Test.Hspec
-import Extensions.AssociatedTypeFamilies
-import System.Directory (getTemporaryDirectory, makeAbsolute)
+import GHCExts.AssociatedTypeFamilies
 
 -- TODO: extract hook to create temp dir and files with content
+-- import System.Directory (getTemporaryDirectory, makeAbsolute)
 
 spec :: Spec
 spec = do

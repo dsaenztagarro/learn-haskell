@@ -60,11 +60,12 @@ library
 
     -- Modules exported by the library.
     exposed-modules:  MyLib
-                    , Extensions.FunctionalDependencies
-                    , Extensions.AssociatedTypeFamilies
+                    , GHCExts.FunctionalDependencies
+                    , GHCExts.AssociatedTypeFamilies
+                    , GHCExts.AssociatedDataFamilies
 
     -- Modules included in this library but not exported.
-    -- other-modules: Extensions.FunctionalDependencies
+    -- other-modules: GHCExts.FunctionalDependencies
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
@@ -87,8 +88,9 @@ test-suite effective-haskell-test
     default-language: Haskell2010
 
     -- Modules included in this executable, other than Main.
-    other-modules: Extensions.FunctionalDependenciesSpec,
-                   Extensions.AssociatedTypeFamiliesSpec
+    other-modules: GHCExts.FunctionalDependenciesSpec,
+                   GHCExts.AssociatedTypeFamiliesSpec,
+                   GHCExts.AssociatedDataFamiliesSpec
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:

@@ -1,8 +1,17 @@
 {-# LANGUAGE TypeFamilies #-}
-{-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE StrictData #-} -- avoid lazy fields in records
+{-# LANGUAGE RecordWildCards #-}
 
-module Extensions.AssociatedTypeFamilies where
+{- Type families work similary to type aliases. Any time we use
+   `ShellOutput ListDirectory` it's essentially a synonym for `[FilePath]`.
+
+   Like with type aliases, this can have the down side that it may allow us to
+   accidentally write code that depends on what should have been an
+   implementation detail.
+
+   One way to avoid this problem is to use "associated data families".
+-}
+module GHCExts.AssociatedTypeFamilies where
 import Data.Kind -- <== needed by associated type family to reference "Type"
 import System.Process (readProcess)
 
@@ -64,12 +73,15 @@ parseGrepResponse = map parseLine
       in GrepMatch fileName (read matchNumber) contents
 
 instance ShellCommand Grep where
+  {- This tells the compiler that the ShellOutput type family, when called with
+     the type Grep, returns a type of the value [GrepMatch]
+  -}
   type ShellOutput Grep = [GrepMatch]
 
-  runCmd (Grep match grepFiles) run =
+  runCmd Grep{..} run =
     parseGrepResponse . fixResponses . lines <$> run "grep" grepArgs
     where
-      grepArgs = "-n" : match : grepFiles
+      grepArgs = "-n" : grepMatch : grepFiles
       {- grep command returns different output depending on number of files passed:
 
          grep -n pattern file1
@@ -91,6 +103,13 @@ instance ShellCommand Grep where
    v
 -}
 data Pipe a b = Pipe a (ShellOutput a -> b)
+{- We might have known  that `r` was supposed to be the output type of `a` and
+   that `r'` was supposed to be the output type of `b`, but there was nothing
+   that required that to be the case.
+
+   Using type families, we can be more explicit that the output type of the
+   command `a` must be used to generate the command `b`
+-}
 
 instance (ShellCommand a, ShellCommand b) =>
   ShellCommand (Pipe a b) where
