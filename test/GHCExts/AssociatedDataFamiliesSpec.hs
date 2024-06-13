@@ -2,14 +2,44 @@ module GHCExts.AssociatedDataFamiliesSpec (spec) where
 
 import Test.Hspec
 import GHCExts.AssociatedDataFamilies
+import Control.Exception (bracket)
+import Data.Time.Clock.POSIX (getPOSIXTime)
+import System.Directory (getTemporaryDirectory, makeAbsolute, createDirectory,
+                         removeDirectoryRecursive)
+import System.FilePath ((</>))
 
--- TODO: extract hook to create temp dir and files with content
--- import System.Directory (getTemporaryDirectory, makeAbsolute)
+{-
+type Spec = SpecWith ()
+
+around_ :: (IO () -> IO ()) -> SpecWith a -> SpecWith a
+
+bracket :: IO a         computation to run first ("adquire resource")
+        -> (a -> IO b)  computation to run last ("release resource")
+        -> (a -> IO c)  computation to run in-between
+        IO c
+-}
+
+-- TODO: refactor to withTestDir withFiles using `nest`
+-- https://wiki.haskell.org/Bracket_pattern
+
+withTestDir :: IO () -> IO ()
+withTestDir action =
+  bracket createTestDir deleteTestDir (const action)
+
+createTestDir :: IO FilePath
+createTestDir = do
+  tmpDir <- makeAbsolute =<< getTemporaryDirectory
+  milliseconds <- show <$> getPOSIXTime
+  let testDir = tmpDir </> milliseconds
+  createDirectory testDir
+  return testDir
+
+deleteTestDir :: FilePath -> IO ()
+deleteTestDir = removeDirectoryRecursive
 
 spec :: Spec
 spec = do
-  -- describe "AssociatedDataFamilies" $ around_ withTempDir do
-  describe "AssociatedDataFamilies" $ do
+  describe "AssociatedDataFamilies" $ around_ withTestDir $ do
     it "works ListDirectory shell command" $ do
       let dir = "/Users/dsaenz/Code/effective-haskell/test/dummy/src/"
       directoryListing <- runShellCommand (ListDirectory dir)

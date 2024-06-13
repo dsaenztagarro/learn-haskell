@@ -109,4 +109,6 @@ test-suite effective-haskell-test
         base ^>=4.17.2.1,
         effective-haskell,
         hspec,
-        directory
+        directory,
+        filepath,
+        time
