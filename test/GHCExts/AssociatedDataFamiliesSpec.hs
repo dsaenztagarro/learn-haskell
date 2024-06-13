@@ -21,8 +21,8 @@ spec = do
             "/Users/dsaenz/Code/effective-haskell/test/dummy/src/FileA.hs",
             "/Users/dsaenz/Code/effective-haskell/test/dummy/src/FileB.hs",
             "/Users/dsaenz/Code/effective-haskell/test/dummy/src/FileC.hs"]
-      result <- runShellCommand (Grep match files)
-      result `shouldBe` [
+      ListOfGrepMatches matches <- runShellCommand (Grep match files)
+      matches `shouldBe` [
           GrepMatch {
             grepMatchingFileName = "/Users/dsaenz/Code/effective-haskell/test/dummy/src/FileA.hs",
             grepMatchingLineNumber = 1,
@@ -37,8 +37,8 @@ spec = do
 
     it "works grepFilesInDirectory shell command" $ do
       let dir = "/Users/dsaenz/Code/effective-haskell/test/dummy/src"
-      result <- runShellCommand (grepFilesInDirectory "module" dir)
-      result `shouldBe` [
+      PipeOutput (ListOfGrepMatches matches) <- runShellCommand (grepFilesInDirectory "module" dir)
+      matches `shouldBe` [
           GrepMatch {
             grepMatchingFileName = "/Users/dsaenz/Code/effective-haskell/test/dummy/src/FileA.hs",
             grepMatchingLineNumber = 1,
