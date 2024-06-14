@@ -90,7 +90,8 @@ test-suite effective-haskell-test
     -- Modules included in this executable, other than Main.
     other-modules: GHCExts.FunctionalDependenciesSpec,
                    GHCExts.AssociatedTypeFamiliesSpec,
-                   GHCExts.AssociatedDataFamiliesSpec
+                   GHCExts.AssociatedDataFamiliesSpec,
+                   GHCExts.Helper
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
