@@ -3,9 +3,10 @@
 -}
 {-# LANGUAGE FunctionalDependencies #-}
 {- It is needed FlexibleInstances extension to remove some restrictions on how
-   we can create instances of type classes. For our use-case, it will allow us
-   to define an instance of a type class for one specific instance of a
-   parameterized type.
+   we can create instances of type classes.
+
+   In the context of this file, it will allow us to define an instance of a
+   type class for one specific instance of a parameterized type.
 
    > instance ShellCommand ListDirectory [FilePath] where
 -}

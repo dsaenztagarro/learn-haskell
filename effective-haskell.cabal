@@ -63,6 +63,7 @@ library
                     , GHCExts.FunctionalDependencies
                     , GHCExts.AssociatedTypeFamilies
                     , GHCExts.AssociatedDataFamilies
+                    , GHCExts.OpenTypeFamilies
 
     -- Modules included in this library but not exported.
     -- other-modules: GHCExts.FunctionalDependencies
@@ -91,6 +92,7 @@ test-suite effective-haskell-test
     other-modules: GHCExts.FunctionalDependenciesSpec,
                    GHCExts.AssociatedTypeFamiliesSpec,
                    GHCExts.AssociatedDataFamiliesSpec,
+                   GHCExts.OpenTypeFamiliesSpec,
                    GHCExts.Helper
 
     -- LANGUAGE extensions used by modules in this package.
