@@ -64,6 +64,7 @@ library
                     , GHCExts.AssociatedTypeFamily
                     , GHCExts.AssociatedDataFamily
                     , GHCExts.OpenTypeFamily
+                    , GHCExts.ClosedTypeFamily
                     , GHCExts.InferredTypes
 
     -- Modules included in this library but not exported.
@@ -94,6 +95,7 @@ test-suite effective-haskell-test
                    GHCExts.AssociatedTypeFamilySpec,
                    GHCExts.AssociatedDataFamilySpec,
                    GHCExts.OpenTypeFamilySpec,
+                   GHCExts.ClosedTypeFamilySpec,
                    GHCExts.InferredTypesSpec,
                    GHCExts.Helper
 

@@ -37,7 +37,8 @@
 -}
 {-# LANGUAGE UndecidableInstances #-}
 
-{-# LANGUAGE TypeOperators #-} -- allows using `AppendSymbol`
+-- Allow us using our own own operators to use at the type level
+{-# LANGUAGE TypeOperators #-}
 
 {- The following 2 extensions work together: -}
 
@@ -88,6 +89,8 @@ module GHCExts.OpenTypeFamily where
 {- This module defines the kinds we'll be working with, and a number of utility
    functions to help us integrate our type level code with term level code.
 
+   type family AppendSymbol (a :: Symbol) (b :: Symbol) :: Symbol where ...
+
    symbolVal :: KnownSymbol n => proxy n -> String
 
    The KnownSymbol constraint is a type class constraint that's defined for all
@@ -95,6 +98,8 @@ module GHCExts.OpenTypeFamily where
    string.
 -}
 import GHC.TypeLits
+
+-- Allow us to write `Type` instead of `*` when using kind signatures
 import Data.Kind
 import Data.Proxy
 
