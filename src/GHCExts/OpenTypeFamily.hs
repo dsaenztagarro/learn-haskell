@@ -84,7 +84,7 @@ src/GHCExts/OpenTypeFamilies.hs:107:17: error:
 -}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
-module GHCExts.OpenTypeFamilies where
+module GHCExts.OpenTypeFamily where
 {- This module defines the kinds we'll be working with, and a number of utility
    functions to help us integrate our type level code with term level code.
 
