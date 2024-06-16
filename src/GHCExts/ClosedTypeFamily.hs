@@ -14,9 +14,25 @@ src/GHCExts/ClosedTypeFamily.hs:15:3: error:
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE ScopedTypeVariables #-}
+{-
+src/GHCExts/ClosedTypeFamily.hs:55:18: error:
+    • Non type-variable argument
+        in the constraint: KnownSymbol (NamedPeano t)
+    • In the type signature:
+        showPeanoName :: forall t. (KnownSymbol (NamedPeano t)) => String
+    Suggested fix: Perhaps you intended to use FlexibleContexts
+   |
+55 | showPeanoName :: forall t. (KnownSymbol (NamedPeano t)) => String
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-}
+{-# LANGUAGE FlexibleContexts #-}
+
+{-# LANGUAGE AllowAmbiguousTypes #-}
 
 module GHCExts.ClosedTypeFamily where
+
 import GHC.TypeLits
+import Data.Proxy
 
 data Peano = Zero | Succ Peano
 
@@ -28,6 +44,34 @@ data Peano = Zero | Succ Peano
 type family ToPeano (n :: Natural) :: Peano where
   ToPeano 0 = Zero
   ToPeano a = Succ (ToPeano (a - 1))
+
+type family FromPeano (a :: Peano) :: Natural where
+  FromPeano Zero = 0
+  FromPeano (Succ a) = 1 + FromPeano a
+
+type family Add (a :: Peano) (b :: Peano) :: Peano where
+  Add a Zero = a
+  Add a (Succ b) = Add (Succ a) b
+
+type family Multiply (a :: Peano) (b :: Peano) :: Peano where
+  Multiply a Zero = Zero
+  Multiply a (Succ Zero) = a
+  Multiply a (Succ b) = Add a (Multiply a b)
+
+type family Substract (a :: Peano) (b :: Peano) :: Peano where
+  Substract a Zero = a
+  Substract (Succ a) (Succ b) = Substract a b
+
+type (:++:) a b = a `AppendSymbol` b
+
+type family NamedPeano (a :: Peano) :: Symbol where
+  NamedPeano Zero = "Zero"
+  NamedPeano (Succ a) = "(Succ " :++: (NamedPeano a) :++: ")"
+
+showPeanoName :: forall t. (KnownSymbol (NamedPeano t)) => String
+showPeanoName = symbolVal $ Proxy @(NamedPeano t)
+
+-- Test Helpers
 
 -- Type-level equality check for testing purpose
 type family Equals (a :: Peano) (b :: Peano) :: Bool where
