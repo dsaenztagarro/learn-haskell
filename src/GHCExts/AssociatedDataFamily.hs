@@ -42,8 +42,7 @@ instance ShellCommand ListDirectory where
                      } deriving (Show, Eq)
 
   runCmd (ListDirectory dir) run =
-    {- `DirectoryListing dir .` means to be a partially applied data constructor
-    -}
+    -- `DirectoryListing dir .` means to be a partially applied data constructor
     DirectoryListing dir . lines <$> run "ls" ["-1", dir] -- "-1" option list only file names
 
 data Grep =
