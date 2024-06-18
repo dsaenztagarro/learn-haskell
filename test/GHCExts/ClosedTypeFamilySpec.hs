@@ -1,6 +1,5 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE DataKinds #-}
-{-# LANGUAGE TypeOperators #-}
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE ScopedTypeVariables #-}
@@ -20,6 +19,9 @@ spec = do
         let testToPeano3 :: AssertEqual (ToPeano 3) (Succ (Succ (Succ Zero)))
             testToPeano3 = assertEqual
         testToPeano3 `seq` True `shouldBe` True
+
+      it "converts 3 to Succ (Succ (Succ Zero))" $ do
+        Proxy @(ToPeano 3) `shouldBe` Proxy @(Succ (Succ (Succ Zero)))
 
     describe "ShowPeano" $ do
       it "shows Peano" $ do
