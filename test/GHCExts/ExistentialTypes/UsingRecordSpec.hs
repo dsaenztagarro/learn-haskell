@@ -1,7 +1,7 @@
 module GHCExts.ExistentialTypes.UsingRecordSpec where
 
 import Test.Hspec
-import GHCExts.ExistentialTypes.UsingExistentialRecord
+import GHCExts.ExistentialTypes.UsingRecord
 
 spec :: Spec
 spec = do
