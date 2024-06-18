@@ -33,7 +33,8 @@
 -}
 {-# LANGUAGE UndecidableInstances #-}
 
-module GHCExts.TypeLevelListOperations where
+-- Type Level List Operations with Type Families
+module GHCExts.TypeLevelListOperations.WithClosedTypeFamilies where
 
 import GHC.TypeLits
 import Data.Kind

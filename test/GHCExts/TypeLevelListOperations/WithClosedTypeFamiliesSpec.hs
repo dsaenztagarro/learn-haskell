@@ -1,10 +1,10 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE TypeApplications #-}
 
-module GHCExts.TypeLevelListOperationsSpec where
+module GHCExts.TypeLevelListOperations.WithClosedTypeFamiliesSpec where
 
 import Test.Hspec
-import GHCExts.TypeLevelListOperations
+import GHCExts.TypeLevelListOperations.WithClosedTypeFamilies
 import Data.Proxy
 
 -- -----------------------------------------------------------
@@ -36,6 +36,12 @@ spec = do
         Proxy @(EQ Foo Foo) `shouldBe` Proxy @True
       it "returns False when applied different types" $ do
         Proxy @(EQ Foo Bar) `shouldBe` Proxy @False
+
+    describe "EvalEven" $ do
+      it "returns True when applied same type" $ do
+        Proxy @(EvalEven (Even 3)) `shouldBe` Proxy @False
+      it "returns False when applied different types" $ do
+        Proxy @(EvalEven (Even 4)) `shouldBe` Proxy @True
 
     describe "FindElems" $ do
       it "finds even elements" $ do
