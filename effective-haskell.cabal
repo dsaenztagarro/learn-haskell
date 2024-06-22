@@ -61,8 +61,7 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  MyLib
-                    , GHCExts.ExistentialTypes.UsingRecord
+    exposed-modules:  GHCExts.ExistentialTypes.UsingRecord
                     , GHCExts.ExistentialTypes.UsingTypeClass
                     , GHCExts.ExistentialTypes.UsingTypeClassWithConstraint
                     , GHCExts.InferredTypes
@@ -74,7 +73,7 @@ library
                     , GHCExts.ClosedTypeFamily
                     , GHCExts.TypeLevelListOperations.WithClosedTypeFamilies
                     , GHCExts.TypeLevelListOperations.WithOpenTypeFamilies
-                    , GHCExts.GADTs
+                    , GHCExts.GADTs.HeterogeneusList
 
     -- Modules included in this library but not exported.
     -- other-modules: GHCExts.FunctionalDependencies
@@ -112,7 +111,7 @@ test-suite effective-haskell-test
                    GHCExts.ClosedTypeFamilySpec,
                    GHCExts.TypeLevelListOperations.WithClosedTypeFamiliesSpec,
                    GHCExts.TypeLevelListOperations.WithOpenTypeFamiliesSpec,
-                   GHCExts.GADTsSpec,
+                   GHCExts.GADTs.HeterogeneusListSpec,
                    GHCExts.Helper
 
     -- LANGUAGE extensions used by modules in this package.

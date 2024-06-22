@@ -1,2 +1,0 @@
-module GHCExts.GADTs where
-
