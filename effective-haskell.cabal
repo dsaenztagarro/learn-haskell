@@ -75,8 +75,6 @@ library
                     , GHCExts.TypeLevelListOperations.WithClosedTypeFamilies
                     , GHCExts.TypeLevelListOperations.WithOpenTypeFamilies
                     , GHCExts.GADTs
-                    -- HLS
-                    , HLS.Declarations
 
     -- Modules included in this library but not exported.
     -- other-modules: GHCExts.FunctionalDependencies
@@ -86,14 +84,7 @@ library
 
     -- Other library packages from which modules are imported.
     build-depends:    base ^>=4.17.2.1,
-                      process,
-                      -- -----------------
-                      -- HLS dependencies
-                      -- -----------------
-                      ghc,
-                      -- Knowledge of GHC's installation directories
-                      ghc-paths,
-                      ghc-exactprint
+                      process
 
     -- Directories containing source files.
     hs-source-dirs:   src
@@ -122,9 +113,7 @@ test-suite effective-haskell-test
                    GHCExts.TypeLevelListOperations.WithClosedTypeFamiliesSpec,
                    GHCExts.TypeLevelListOperations.WithOpenTypeFamiliesSpec,
                    GHCExts.GADTsSpec,
-                   GHCExts.Helper,
-                   -- HLS
-                   HLS.DeclarationsSpec
+                   GHCExts.Helper
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
@@ -146,8 +135,4 @@ test-suite effective-haskell-test
         directory,
         filepath,
         time,
-        text,
-        -- -----------------
-        -- HLS dependencies
-        -- -----------------
-        lsp-test
+        text
