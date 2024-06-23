@@ -61,23 +61,23 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  GHCExts.ExistentialTypes.UsingRecord
-                    , GHCExts.ExistentialTypes.UsingTypeClass
-                    , GHCExts.ExistentialTypes.UsingTypeClassWithConstraint
-                    , GHCExts.InferredTypes
+    exposed-modules:  GHCExt.ExistentialTypes.UsingRecord
+                    , GHCExt.ExistentialTypes.UsingTypeClass
+                    , GHCExt.ExistentialTypes.UsingTypeClassWithConstraint
+                    , GHCExt.InferredTypes
                     -- Types and Kinds
-                    , GHCExts.FunctionalDependencies
-                    , GHCExts.Kinds.AssociatedTypeFamily
-                    , GHCExts.Kinds.AssociatedDataFamily
-                    , GHCExts.Kinds.OpenTypeFamily
-                    , GHCExts.Kinds.ClosedTypeFamily
-                    , GHCExts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies
-                    , GHCExts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies
-                    , GHCExts.GADTs.HeterogeneusList
-                    , GHCExts.GADTs.Composability
+                    , GHCExt.FunctionalDependencies
+                    , GHCExt.Kinds.AssociatedTypeFamily
+                    , GHCExt.Kinds.AssociatedDataFamily
+                    , GHCExt.Kinds.OpenTypeFamily
+                    , GHCExt.Kinds.ClosedTypeFamily
+                    , GHCExt.Kinds.TypeLevelListOperations.WithClosedTypeFamilies
+                    , GHCExt.Kinds.TypeLevelListOperations.WithOpenTypeFamilies
+                    , GHCExt.GADT.HeterogeneusList
+                    , GHCExt.GADT.ShellCmd
 
     -- Modules included in this library but not exported.
-    -- other-modules: GHCExts.FunctionalDependencies
+    -- other-modules: GHCExt.FunctionalDependencies
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
@@ -102,21 +102,21 @@ test-suite effective-haskell-test
     default-language: Haskell2010
 
     -- Modules included in this executable, other than Main.
-    other-modules: GHCExts.ExistentialTypes.UsingRecordSpec,
-                   GHCExts.ExistentialTypes.UsingTypeClassSpec,
-                   GHCExts.ExistentialTypes.UsingTypeClassWithConstraintSpec,
-                   GHCExts.InferredTypesSpec,
+    other-modules: GHCExt.ExistentialTypes.UsingRecordSpec,
+                   GHCExt.ExistentialTypes.UsingTypeClassSpec,
+                   GHCExt.ExistentialTypes.UsingTypeClassWithConstraintSpec,
+                   GHCExt.InferredTypesSpec,
                    -- Types and Kinds
-                   GHCExts.FunctionalDependenciesSpec,
-                   GHCExts.Kinds.AssociatedTypeFamilySpec,
-                   GHCExts.Kinds.AssociatedDataFamilySpec,
-                   GHCExts.Kinds.OpenTypeFamilySpec,
-                   GHCExts.Kinds.ClosedTypeFamilySpec,
-                   GHCExts.Kinds.TypeLevelListOperations.WithClosedTypeFamiliesSpec,
-                   GHCExts.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec,
-                   GHCExts.GADTs.HeterogeneusListSpec,
-                   GHCExts.GADTs.ComposabilitySpec,
-                   GHCExts.Helper
+                   GHCExt.FunctionalDependenciesSpec,
+                   GHCExt.Kinds.AssociatedTypeFamilySpec,
+                   GHCExt.Kinds.AssociatedDataFamilySpec,
+                   GHCExt.Kinds.OpenTypeFamilySpec,
+                   GHCExt.Kinds.ClosedTypeFamilySpec,
+                   GHCExt.Kinds.TypeLevelListOperations.WithClosedTypeFamiliesSpec,
+                   GHCExt.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec,
+                   GHCExt.GADT.HeterogeneusListSpec,
+                   GHCExt.GADT.ShellCmdSpec,
+                   GHCExt.Helper
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
