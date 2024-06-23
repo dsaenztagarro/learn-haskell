@@ -75,6 +75,7 @@ library
                     , GHCExt.Kinds.TypeLevelListOperations.WithOpenTypeFamilies
                     , GHCExt.GADT.HeterogeneusList
                     , GHCExt.GADT.ShellCmd
+                    , GHCExt.GADT.CommandRunner
 
     -- Modules included in this library but not exported.
     -- other-modules: GHCExt.FunctionalDependencies
@@ -116,6 +117,7 @@ test-suite effective-haskell-test
                    GHCExt.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec,
                    GHCExt.GADT.HeterogeneusListSpec,
                    GHCExt.GADT.ShellCmdSpec,
+                   GHCExt.GADT.CommandRunnerSpec,
                    GHCExt.Helper
 
     -- LANGUAGE extensions used by modules in this package.
