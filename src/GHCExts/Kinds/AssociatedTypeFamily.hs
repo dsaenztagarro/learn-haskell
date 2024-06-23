@@ -11,7 +11,7 @@
 
    One way to avoid this problem is to use "associated data families".
 -}
-module GHCExts.AssociatedTypeFamily where
+module GHCExts.Kinds.AssociatedTypeFamily where
 import Data.Kind -- <== needed by associated type family to reference "Type"
 import System.Process (readProcess)
 

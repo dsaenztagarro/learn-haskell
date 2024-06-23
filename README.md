@@ -12,14 +12,15 @@ This project contains examples from [Effective Haskell][1] book.
 - `GHCExts.ExistentialTypes.UsingRecord`
 - `GHCExts.ExistentialTypes.UsingTypeClass`
 - `GHCExts.ExistentialTypes.UsingTypeClassWithExistentialConstraint`
-- `GHCExts.FunctionalDependencies`
-- `GHCExts.AssociatedTypeFamily`
-- `GHCExts.AssociatedDataFamily`
-- `GHCExts.OpenTypeFamily`
-- `GHCExts.ClosedTypeFamily`
-- `GHCExts.TypeLevelListOperations.WithClosedTypeFamilies`
-- `GHCExts.TypeLevelListOperations.WithOpenTypeFamilies`
-- `GHCExts.GADTs`
+- `GHCExts.FunctionalDependencies` (ShellCommand)
+- `GHCExts.Kinds.AssociatedTypeFamily` (ShellCommand)
+- `GHCExts.Kinds.AssociatedDataFamily` (ShellCommand)
+- `GHCExts.Kinds.OpenTypeFamily`
+- `GHCExts.Kinds.ClosedTypeFamily`
+- `GHCExts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies`
+- `GHCExts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies`
+- `GHCExts.GADTs.HeterogeneusList` (ExistentialTypes related)
+- `GHCExts.GADTs.TypeClassRefactor` (ShellCommand)
 
 
 #### YouTube Videos to add to GHCExts

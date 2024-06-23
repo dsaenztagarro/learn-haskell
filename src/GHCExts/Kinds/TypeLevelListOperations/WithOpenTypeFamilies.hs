@@ -4,7 +4,7 @@
 {-# LANGUAGE PolyKinds #-}
 {-# LANGUAGE UndecidableInstances #-}
 
-module GHCExts.TypeLevelListOperations.WithOpenTypeFamilies where
+module GHCExts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies where
 
 import GHC.TypeLits
 import Data.Kind

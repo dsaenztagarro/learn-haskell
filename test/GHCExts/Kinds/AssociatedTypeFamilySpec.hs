@@ -1,7 +1,7 @@
-module GHCExts.AssociatedTypeFamilySpec (spec) where
+module GHCExts.Kinds.AssociatedTypeFamilySpec (spec) where
 
 import Test.Hspec
-import GHCExts.AssociatedTypeFamily
+import GHCExts.Kinds.AssociatedTypeFamily
 import System.FilePath ((</>))
 import GHCExts.Helper (withTestDir)
 

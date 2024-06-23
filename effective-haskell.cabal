@@ -67,13 +67,14 @@ library
                     , GHCExts.InferredTypes
                     -- Types and Kinds
                     , GHCExts.FunctionalDependencies
-                    , GHCExts.AssociatedTypeFamily
-                    , GHCExts.AssociatedDataFamily
-                    , GHCExts.OpenTypeFamily
-                    , GHCExts.ClosedTypeFamily
-                    , GHCExts.TypeLevelListOperations.WithClosedTypeFamilies
-                    , GHCExts.TypeLevelListOperations.WithOpenTypeFamilies
+                    , GHCExts.Kinds.AssociatedTypeFamily
+                    , GHCExts.Kinds.AssociatedDataFamily
+                    , GHCExts.Kinds.OpenTypeFamily
+                    , GHCExts.Kinds.ClosedTypeFamily
+                    , GHCExts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies
+                    , GHCExts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies
                     , GHCExts.GADTs.HeterogeneusList
+                    , GHCExts.GADTs.Composability
 
     -- Modules included in this library but not exported.
     -- other-modules: GHCExts.FunctionalDependencies
@@ -83,7 +84,9 @@ library
 
     -- Other library packages from which modules are imported.
     build-depends:    base ^>=4.17.2.1,
-                      process
+                      process,
+                      filepath,
+                      exceptions
 
     -- Directories containing source files.
     hs-source-dirs:   src
@@ -105,13 +108,14 @@ test-suite effective-haskell-test
                    GHCExts.InferredTypesSpec,
                    -- Types and Kinds
                    GHCExts.FunctionalDependenciesSpec,
-                   GHCExts.AssociatedTypeFamilySpec,
-                   GHCExts.AssociatedDataFamilySpec,
-                   GHCExts.OpenTypeFamilySpec,
-                   GHCExts.ClosedTypeFamilySpec,
-                   GHCExts.TypeLevelListOperations.WithClosedTypeFamiliesSpec,
-                   GHCExts.TypeLevelListOperations.WithOpenTypeFamiliesSpec,
+                   GHCExts.Kinds.AssociatedTypeFamilySpec,
+                   GHCExts.Kinds.AssociatedDataFamilySpec,
+                   GHCExts.Kinds.OpenTypeFamilySpec,
+                   GHCExts.Kinds.ClosedTypeFamilySpec,
+                   GHCExts.Kinds.TypeLevelListOperations.WithClosedTypeFamiliesSpec,
+                   GHCExts.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec,
                    GHCExts.GADTs.HeterogeneusListSpec,
+                   GHCExts.GADTs.ComposabilitySpec,
                    GHCExts.Helper
 
     -- LANGUAGE extensions used by modules in this package.

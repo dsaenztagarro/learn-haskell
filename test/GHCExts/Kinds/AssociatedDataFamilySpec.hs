@@ -1,9 +1,9 @@
-module GHCExts.AssociatedDataFamilySpec (spec) where
+module GHCExts.Kinds.AssociatedDataFamilySpec (spec) where
 
 import Test.Hspec
-import GHCExts.AssociatedDataFamily
-import System.FilePath ((</>))
+import GHCExts.Kinds.AssociatedDataFamily
 import GHCExts.Helper (withTestDir)
+import System.FilePath ((</>))
 
 spec :: Spec
 spec = do

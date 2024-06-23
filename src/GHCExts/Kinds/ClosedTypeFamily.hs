@@ -45,7 +45,7 @@ src/GHCExts/ClosedTypeFamily.hs:55:18: error:
 -}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
-module GHCExts.ClosedTypeFamily where
+module GHCExts.Kinds.ClosedTypeFamily where
 
 import GHC.TypeLits
 import Data.Proxy

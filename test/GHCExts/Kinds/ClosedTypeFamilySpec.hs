@@ -4,10 +4,10 @@
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module GHCExts.ClosedTypeFamilySpec where
+module GHCExts.Kinds.ClosedTypeFamilySpec where
 
 import Test.Hspec
-import GHCExts.ClosedTypeFamily
+import GHCExts.Kinds.ClosedTypeFamily
 import GHC.TypeLits (natVal)
 import Data.Proxy
 

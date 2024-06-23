@@ -2,7 +2,7 @@
 {-# LANGUAGE StrictData #-} -- avoid lazy fields in records
 {-# LANGUAGE RecordWildCards #-}
 
-module GHCExts.AssociatedDataFamily where
+module GHCExts.Kinds.AssociatedDataFamily where
 import Data.Kind -- needed by associated type family to reference "Type"
 import System.Process (readProcess)
 

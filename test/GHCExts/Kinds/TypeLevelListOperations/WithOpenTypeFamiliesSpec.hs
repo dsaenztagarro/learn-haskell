@@ -1,10 +1,10 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE TypeApplications #-}
 
-module GHCExts.TypeLevelListOperations.WithOpenTypeFamiliesSpec where
+module GHCExts.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec where
 
 import Test.Hspec
-import GHCExts.TypeLevelListOperations.WithOpenTypeFamilies
+import GHCExts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies
 import Data.Proxy
 
 -- -----------------------------------------------------------

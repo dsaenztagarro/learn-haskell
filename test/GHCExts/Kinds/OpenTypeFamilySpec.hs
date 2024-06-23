@@ -1,9 +1,9 @@
 {-# LANGUAGE TypeApplications #-}
 
-module GHCExts.OpenTypeFamilySpec (spec) where
+module GHCExts.Kinds.OpenTypeFamilySpec (spec) where
 
 import Test.Hspec
-import GHCExts.OpenTypeFamily
+import GHCExts.Kinds.OpenTypeFamily
 
 spec :: Spec
 spec = do

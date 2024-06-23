@@ -3,7 +3,7 @@
 {-# LANGUAGE TypeOperators #-}
 
 {-
-    src/GHCExts/TypeLevelListOperations.hs:10:31: error:
+    src/GHCExts.Kinds.TypeLevelListOperations.hs:10:31: error:
         Unexpected kind variable ‘a’
         Perhaps you intended to use PolyKinds
         In the declaration for type family ‘Member’
@@ -11,7 +11,7 @@
     10 | type family Member (needle :: a) (haysstack :: [a]) :: Bool where
        |                               ^
 
-    src/GHCExts/TypeLevelListOperations.hs:10:49: error:
+    src/GHCExts.Kinds.TypeLevelListOperations.hs:10:49: error:
         Unexpected kind variable ‘a’
         Perhaps you intended to use PolyKinds
         In the declaration for type family ‘Member’
@@ -34,7 +34,7 @@
 {-# LANGUAGE UndecidableInstances #-}
 
 -- Type Level List Operations with Type Families
-module GHCExts.TypeLevelListOperations.WithClosedTypeFamilies where
+module GHCExts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies where
 
 import GHC.TypeLits
 import Data.Kind
