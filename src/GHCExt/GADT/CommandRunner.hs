@@ -89,5 +89,22 @@ data CommandSet :: [Symbol] -> [Type] -> Type where
     CommandSet names commands ->
     CommandSet (name:names) (ShellCmd a b : commands)
 
--- :m +GHCExt.GADT.CommandRunner
--- :t AddCommand @"ls" listDirectory EmptyCommandSet
+mkCommandSet =
+  AddCommand @"ls" listDirectory $ 
+  addLiteral @"free" "free -h" $
+  addLiteral @"uptime" "uptime" $
+  addLiteral @"uname" "uname -a" $ EmptyCommandSet
+  where
+    addLiteral :: 
+      forall name {names} {commands}. KnownSymbol name =>
+      String ->
+      CommandSet names commands ->
+      CommandSet (name : names) (ShellCmd () String : commands)
+    addLiteral command = AddCommand (literal command)
+
+    literal :: String -> ShellCmd () String
+    literal shellCommand =
+      RunCommand (ProgName "bash") args outputFunc
+      where
+        args = const $ ProgArgs ["-c", shellCommand]
+        outputFunc = const id
