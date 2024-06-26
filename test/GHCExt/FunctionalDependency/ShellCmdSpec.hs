@@ -1,13 +1,13 @@
-module GHCExt.FunctionalDependenciesSpec (spec) where
+module GHCExt.FunctionalDependency.ShellCmdSpec (spec) where
 
 import Test.Hspec
-import GHCExt.FunctionalDependencies
+import GHCExt.FunctionalDependency.ShellCmd
 import System.FilePath ((</>))
 import GHCExt.Helper (withTestDir)
 
 spec :: Spec
 spec = do
-  describe "FunctionalDependencies" $
+  describe "FunctionalDependency" $
     around withTestDir $ do
       it "works ListDirectory shell command" $ \testDir -> do
         result <- runShellCommand (ListDirectory testDir)
