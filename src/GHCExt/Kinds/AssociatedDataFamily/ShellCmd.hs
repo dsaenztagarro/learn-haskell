@@ -2,17 +2,17 @@
 {-# LANGUAGE StrictData #-} -- avoid lazy fields in records
 {-# LANGUAGE RecordWildCards #-}
 
-module GHCExt.Kinds.AssociatedDataFamily where
+module GHCExt.Kinds.AssociatedDataFamily.ShellCmd where
 import Data.Kind -- needed by associated type family to reference "Type"
 import System.Process (readProcess)
 
 {- See how it changes from using FunctionalDependencies
    |
-   | class ShellCommand cmd cmdOutput | cmd -> cmdOutput where
+   | class ShellCmd cmd cmdOutput | cmd -> cmdOutput where
    |
    v
 -}
-class ShellCommand cmd where
+class ShellCmd cmd where
   {- A data family works like a type family, except that every data family
      instance defines a brand new type, rather than creating an alias for some
      existing type.
@@ -32,7 +32,7 @@ class ShellCommand cmd where
 newtype ListDirectory =
   ListDirectory { listDirectoryName :: FilePath }
 
-instance ShellCommand ListDirectory where
+instance ShellCmd ListDirectory where
   {- DATA FAMILY defines BRAND NEW TYPE `DirectoryListing`, by defining a new
      record
   -}
@@ -71,7 +71,7 @@ parseGrepResponse = map parseLine
         contents = tail rest' -- using tail we remove ':' from the head
       in GrepMatch fileName (read matchNumber) contents
 
-instance ShellCommand Grep where
+instance ShellCmd Grep where
   {- We can use `newtype` with data families to get the extra type safety
      benefits of a data family without any performance overhead.
   -}
@@ -98,8 +98,8 @@ instance ShellCommand Grep where
 
 data Pipe a b = Pipe a (ShellOutput a -> b)
 
-instance (ShellCommand a, ShellCommand b) =>
-  ShellCommand (Pipe a b) where
+instance (ShellCmd a, ShellCmd b) =>
+  ShellCmd (Pipe a b) where
   data ShellOutput (Pipe a b) = PipeOutput (ShellOutput b)
 
   runCmd (Pipe a mkB) run = do
@@ -115,6 +115,6 @@ grepFilesInDirectory match dir =
     \result ->
       Grep match (map (\fname -> dir <> "/" <> fname) (filenamesInListing result))
 
-runShellCommand :: ShellCommand cmd => cmd -> IO (ShellOutput cmd)
+runShellCommand :: ShellCmd cmd => cmd -> IO (ShellOutput cmd)
 runShellCommand cmd =
   runCmd cmd (\cmdName args -> readProcess cmdName args "")

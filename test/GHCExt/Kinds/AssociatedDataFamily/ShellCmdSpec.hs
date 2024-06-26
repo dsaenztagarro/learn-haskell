@@ -1,7 +1,7 @@
-module GHCExt.Kinds.AssociatedDataFamilySpec (spec) where
+module GHCExt.Kinds.AssociatedDataFamily.ShellCmdSpec (spec) where
 
 import Test.Hspec
-import GHCExt.Kinds.AssociatedDataFamily
+import GHCExt.Kinds.AssociatedDataFamily.ShellCmd
 import GHCExt.Helper (withTestDir)
 import System.FilePath ((</>))
 
