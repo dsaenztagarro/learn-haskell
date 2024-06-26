@@ -12,11 +12,12 @@
 {-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE FunctionalDependencies #-}
 module GHCExt.GADT.CommandRunner where
 
 import Data.Kind
 import GHC.TypeLits
-import Data.Proxy
 import GHCExt.GADT.ShellCmd
 
 {- https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/type_applications.html
@@ -89,7 +90,7 @@ data CommandSet :: [Symbol] -> [Type] -> Type where
     CommandSet names commands ->
     CommandSet (name:names) (ShellCmd a b : commands)
 
-mkCommandSet =
+commands =
   AddCommand @"ls" listDirectory $ 
   addLiteral @"free" "free -h" $
   addLiteral @"uptime" "uptime" $
@@ -108,3 +109,23 @@ mkCommandSet =
       where
         args = const $ ProgArgs ["-c", shellCommand]
         outputFunc = const id
+
+class CommandByName
+  (name :: Symbol) commands shellIn shellOut |
+    commands name -> shellIn shellOut
+  where
+  lookupProcessByName ::
+    proxy name ->
+    commands ->
+    ShellCmd shellIn shellOut
+
+instance 
+  CommandByName name (CommandSet (name:names) (ShellCmd a b : types)) a b 
+  where
+  lookupProcessByName _ (AddCommand cmd _) = cmd
+
+type family HeadMatches (name :: Symbol) (names :: [Symbol]) :: Bool where
+  HeadMatches name (name : _) = True
+  HeadMatches name _ = False
+
+

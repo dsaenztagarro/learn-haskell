@@ -1,13 +1,13 @@
-module GHCExt.Kinds.AssociatedTypeFamilySpec (spec) where
+module GHCExt.Kinds.AssociatedTypeFamily.ShellCmdSpec (spec) where
 
 import Test.Hspec
-import GHCExt.Kinds.AssociatedTypeFamily
+import GHCExt.Kinds.AssociatedTypeFamily.ShellCmd
 import System.FilePath ((</>))
 import GHCExt.Helper (withTestDir)
 
 spec :: Spec
 spec = do
-  describe "AssociatedTypeFamilies" $
+  describe "AssociatedTypeFamily" $
     around withTestDir $ do
       it "works ListDirectory shell command" $ \testDir -> do
         result <- runShellCommand (ListDirectory testDir)

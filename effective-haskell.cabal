@@ -67,7 +67,7 @@ library
                     , GHCExt.InferredTypes
                     -- Types and Kinds
                     , GHCExt.FunctionalDependencies
-                    , GHCExt.Kinds.AssociatedTypeFamily
+                    , GHCExt.Kinds.AssociatedTypeFamily.ShellCmd
                     , GHCExt.Kinds.AssociatedDataFamily
                     , GHCExt.Kinds.OpenTypeFamily
                     , GHCExt.Kinds.ClosedTypeFamily
@@ -109,7 +109,7 @@ test-suite effective-haskell-test
                    GHCExt.InferredTypesSpec,
                    -- Types and Kinds
                    GHCExt.FunctionalDependenciesSpec,
-                   GHCExt.Kinds.AssociatedTypeFamilySpec,
+                   GHCExt.Kinds.AssociatedTypeFamily.ShellCmdSpec,
                    GHCExt.Kinds.AssociatedDataFamilySpec,
                    GHCExt.Kinds.OpenTypeFamilySpec,
                    GHCExt.Kinds.ClosedTypeFamilySpec,
