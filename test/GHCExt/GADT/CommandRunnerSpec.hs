@@ -9,6 +9,7 @@ import GHCExt.GADT.CommandRunner
 import GHCExt.GADT.ShellCmd
 import GHCExt.Helper
 import Data.Proxy
+import GHCExt.Helper (withTestDir)
 import System.FilePath ((</>))
 
 verifyCommands :: 
@@ -43,4 +44,20 @@ spec = do
 
     it "returns False type when head does not matches" $ do
       Proxy @(HeadMatches "bar" '["foo", "bar"]) `shouldBe` Proxy @False
+
+  describe "CommandByName'" $ do
+    describe "lookupProcessByName'" $ 
+      around withTestDir $ do
+        it "runs command at head of the list" $ \testDir -> do
+          let proxyTrue = Proxy @True
+              proxyLs = Proxy @"ls"
+              cmd = lookupProcessByName' proxyTrue proxyLs commands
+          fileNames <- runShellCmd cmd testDir
+          fileNames `shouldBe`
+            [ testDir </> "FileA.hs"
+            , testDir </> "FileB.hs"
+            , testDir </> "FileC.hs"
+            ]
+            
+            
 

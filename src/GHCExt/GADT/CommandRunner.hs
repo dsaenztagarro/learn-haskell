@@ -11,12 +11,14 @@
 -- Provide more flexibility on defining type classes and instances
 {-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE UndecidableInstances #-}
+{-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE FunctionalDependencies #-}
 module GHCExt.GADT.CommandRunner where
 
 import Data.Kind
+import Data.Proxy
 import GHC.TypeLits
 import GHCExt.GADT.ShellCmd
 
@@ -128,4 +130,27 @@ type family HeadMatches (name :: Symbol) (names :: [Symbol]) :: Bool where
   HeadMatches name (name : _) = True
   HeadMatches name _ = False
 
+class CommandByName'
+  (matches :: Bool) (name :: Symbol) commands shellIn shellOut |
+  commands name -> shellIn shellOut
+  where
+  lookupProcessByName' :: 
+    Proxy matches ->
+    Proxy name ->
+    commands ->
+    ShellCmd shellIn shellOut
 
+instance 
+  CommandByName' True name (CommandSet (name:names) (ShellCmd a b : types)) a b
+  where
+  lookupProcessByName' _ _ (AddCommand cmd _) = cmd
+
+instance
+  (nextMatches ~ HeadMatches name names
+  , CommandByName' 
+    nextMatches name (CommandSet names types) shellIn shellOut
+  ) => CommandByName' False name
+        (CommandSet (badName : names) (t : types)) shellIn shellOut
+  where
+  lookupProcessByName' _ nameProxy (AddCommand _ rest) = 
+    lookupProcessByName' (Proxy @nextMatches) nameProxy rest
