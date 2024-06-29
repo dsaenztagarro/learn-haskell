@@ -9,15 +9,15 @@ import GHCExt.GADT.CommandRunner
 import GHCExt.GADT.ShellCmd
 import GHCExt.Helper
 import Data.Proxy
-import GHCExt.Helper (withTestDir)
 import System.FilePath ((</>))
 
 verifyCommands :: 
   CommandSet 
-    '["ls","free","uptime","uname"] 
+    '["ls","free","uptime","cat","uname"] 
     '[ ShellCmd FilePath [FilePath]
      , ShellCmd () String
      , ShellCmd () String
+     , ShellCmd FilePath String
      , ShellCmd () String
      ] -> String
 verifyCommands _ = "verified"
@@ -58,6 +58,10 @@ spec = do
             , testDir </> "FileB.hs"
             , testDir </> "FileC.hs"
             ]
-            
-            
 
+        it "runs command at tail of the list" $ \testDir -> do
+          let proxyFalse = Proxy @False
+              proxyCat = Proxy @"cat"
+              cmd = lookupProcessByName' proxyFalse proxyCat commands
+          output <- runShellCmd cmd (testDir </> "FileA.hs")
+          output `shouldBe` "module FileA where"

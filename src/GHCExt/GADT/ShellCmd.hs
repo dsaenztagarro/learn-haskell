@@ -41,6 +41,13 @@ listDirectory =
     parseResponse filePath =
       map (filePath </>) . lines
 
+printFile :: ShellCmd FilePath String
+printFile = 
+  RunCommand (ProgName "cat") makeArgs parseResponse
+  where
+    makeArgs filePath = ProgArgs [filePath]
+    parseResponse filePath output = output
+
 runShellCmd :: ShellCmd a b -> a -> IO b
 runShellCmd cmd input =
   case cmd of

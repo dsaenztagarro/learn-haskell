@@ -96,6 +96,7 @@ commands =
   AddCommand @"ls" listDirectory $ 
   addLiteral @"free" "free -h" $
   addLiteral @"uptime" "uptime" $
+  AddCommand @"cat" printFile $
   addLiteral @"uname" "uname -a" $ EmptyCommandSet
   where
     addLiteral :: 
