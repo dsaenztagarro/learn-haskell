@@ -123,14 +123,19 @@ class CommandByName
     ShellCmd shellIn shellOut
 
 instance 
-  CommandByName name (CommandSet (name:names) (ShellCmd a b : types)) a b 
-  where
-  lookupProcessByName _ (AddCommand cmd _) = cmd
+  (matches ~ HeadMatches name names
+  , CommandByName' matches name (CommandSet names types) shellIn shellOut
+  ) => CommandByName name (CommandSet names types) shellIn shellOut
+  where 
+  lookupProcessByName _ = 
+    lookupProcessByName' (Proxy @matches) (Proxy @name)
 
 type family HeadMatches (name :: Symbol) (names :: [Symbol]) :: Bool where
   HeadMatches name (name : _) = True
   HeadMatches name _ = False
 
+-- Allows to call any command in our command list, but requires the user to know
+-- whether a particular command is at the front of the list of commands or not.
 class CommandByName'
   (matches :: Bool) (name :: Symbol) commands shellIn shellOut |
   commands name -> shellIn shellOut

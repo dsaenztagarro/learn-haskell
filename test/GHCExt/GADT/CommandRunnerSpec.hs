@@ -1,6 +1,5 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE TypeApplications #-}
-{-# LANGUAGE TypeOperators #-}
 
 module GHCExt.GADT.CommandRunnerSpec (spec) where
 
@@ -63,5 +62,22 @@ spec = do
           let proxyFalse = Proxy @False
               proxyCat = Proxy @"cat"
               cmd = lookupProcessByName' proxyFalse proxyCat commands
+          output <- runShellCmd cmd (testDir </> "FileA.hs")
+          output `shouldBe` "module FileA where"
+
+  describe "CommandByName" $ do
+    describe "lookupProcessByName" $ 
+      around withTestDir $ do
+        it "runs command at head of the list" $ \testDir -> do
+          let cmd = lookupProcessByName (Proxy @"ls") commands
+          fileNames <- runShellCmd cmd testDir
+          fileNames `shouldBe`
+            [ testDir </> "FileA.hs"
+            , testDir </> "FileB.hs"
+            , testDir </> "FileC.hs"
+            ]
+
+        it "runs command at tail of the list" $ \testDir -> do
+          let cmd = lookupProcessByName (Proxy @"cat") commands
           output <- runShellCmd cmd (testDir </> "FileA.hs")
           output `shouldBe` "module FileA where"
