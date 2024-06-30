@@ -81,3 +81,17 @@ spec = do
           let cmd = lookupProcessByName (Proxy @"cat") commands
           output <- runShellCmd cmd (testDir </> "FileA.hs")
           output `shouldBe` "module FileA where"
+
+  describe "runNamedCommand" $ do
+    around withTestDir $ do
+      it "runs command at head of the list" $ \testDir -> do
+        fileNames <- runNamedCommand @"ls" commands testDir
+        fileNames `shouldBe`
+          [ testDir </> "FileA.hs"
+          , testDir </> "FileB.hs"
+          , testDir </> "FileC.hs"
+          ]
+
+      it "runs command at tail of the list" $ \testDir -> do
+        output <- runNamedCommand @"cat" commands (testDir </> "FileA.hs")
+        output `shouldBe` "module FileA where"

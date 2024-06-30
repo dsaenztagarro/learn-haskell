@@ -15,6 +15,8 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE FunctionalDependencies #-}
+{-# LANGUAGE AllowAmbiguousTypes #-}
+
 module GHCExt.GADT.CommandRunner where
 
 import Data.Kind
@@ -113,6 +115,8 @@ commands =
         args = const $ ProgArgs ["-c", shellCommand]
         outputFunc = const id
 
+-- Helper type class that works as wrapper for CommandByName', calling 
+-- `HeadMatches` and passing the information along
 class CommandByName
   (name :: Symbol) commands shellIn shellOut |
     commands name -> shellIn shellOut
@@ -152,7 +156,8 @@ instance
   lookupProcessByName' _ _ (AddCommand cmd _) = cmd
 
 instance
-  (nextMatches ~ HeadMatches name names
+  ( nextMatches ~ HeadMatches name names
+  , HasMatch name names
   , CommandByName' 
     nextMatches name (CommandSet names types) shellIn shellOut
   ) => CommandByName' False name
@@ -160,3 +165,27 @@ instance
   where
   lookupProcessByName' _ nameProxy (AddCommand _ rest) = 
     lookupProcessByName' (Proxy @nextMatches) nameProxy rest
+
+-- Generate an error only if the name we're looking for isn't in the list of 
+-- available commands
+type family HasMatch'
+  (needle :: Symbol) (haystack :: [Symbol]) (ctx :: [Symbol]) :: Constraint
+  where
+  HasMatch' a '[] ctx = TypeError
+    (Text "Missing required command: '" :<>:
+     Text a :<>:
+     Text "' in command list: " :<>:
+     ShowType ctx)
+  HasMatch' a (a:as) ctx = ()
+  HasMatch' a (b:as) ctx = HasMatch' a as ctx
+
+type HasMatch a as = HasMatch' a as as
+
+runNamedCommand ::
+  forall name {commands} {shellIn} {shellOut}.
+  ( KnownSymbol name
+  , CommandByName name commands shellIn shellOut
+  ) => commands -> shellIn -> IO shellOut
+runNamedCommand allowedCommands input =
+  let process = lookupProcessByName (Proxy @name) allowedCommands
+  in runShellCmd process input
