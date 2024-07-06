@@ -23,6 +23,7 @@ addAndMultiplyInt n = SomeExistential
   , consumeValue = fromIntegral
   }
 
+reverseAndUnwordsString :: String -> SomeExistential String
 reverseAndUnwordsString s = SomeExistential
   { someValue = s
   , modifyValue = reverse
