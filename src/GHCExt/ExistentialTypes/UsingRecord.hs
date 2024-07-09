@@ -1,6 +1,10 @@
+-- This extension implies the `ExplicitForAll` feature
 {-# LANGUAGE ExistentialQuantification #-}
 {-# LANGUAGE RecordWildCards #-}
 
+{- Existential types give a way to "weaken" a type into a representation that
+   is more general, but about which you have less information.
+-}
 module GHCExt.ExistentialTypes.UsingRecord where
 
 data SomeExistential b = forall a. SomeExistential

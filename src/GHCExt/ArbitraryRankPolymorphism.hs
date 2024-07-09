@@ -1,3 +1,4 @@
+-- https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/rank_polymorphism.html#extension-RankNTypes
 {-# LANGUAGE RankNTypes #-}
 
 module GHCExt.ArbitraryRankPolymorphism where
