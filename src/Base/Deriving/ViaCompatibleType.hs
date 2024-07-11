@@ -17,6 +17,20 @@ newtype Unicode = U Int
 
 -- With Higher Kinded Types
 
+{-
+In GHC, two types that have the same underlying runtime representation are
+considered representationally equal. When two types are representationally
+equal, the compiler can figure out how to safely coerce values from one type to
+the other.
+
+Both `Sel Maybe a` and `MyMaybe a` are representationally equal to `Maybe a`,
+which means that the compiler knows how to convert back and forth between
+`Sel Maybe a` and `MyMaybe a`.
+
+`deriving via` alloww us to derive a type class instance for one type using the
+instance defined for another type that is representationally equal.
+-}
+
 class Select (f :: Type -> Type) where
   empty :: f a
   pick :: f a -> f a -> f a

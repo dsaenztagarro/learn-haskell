@@ -61,7 +61,8 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  Base.Deriving.GeneralizedNewtypeDeriving
+    exposed-modules:  Base.Roles
+                    , Base.Deriving.GeneralizedNewtypeDeriving
                     , Base.Deriving.StandaloneDeriving
                     , Base.Deriving.ViaCompatibleType
                     , Base.HigherKindedType
