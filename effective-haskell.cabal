@@ -65,7 +65,11 @@ library
                     , Base.Deriving.GeneralizedNewtypeDeriving
                     , Base.Deriving.StandaloneDeriving
                     , Base.Deriving.ViaCompatibleType
+                    , Base.Deriving.AnyclassDeriving
+                    , Base.Deriving.Strategies
                     , Base.HigherKindedType
+                    , GHCExt.AllowAmbiguousTypes
+                    , GHCExt.FlexibleContexts
                     , GHCExt.ArbitraryRankPolymorphism
                     , GHCExt.ExistentitallyQuantifiedDataConstructors
                     , GHCExt.ExistentialTypes.UsingRecord
@@ -112,6 +116,7 @@ test-suite effective-haskell-test
     -- Modules included in this executable, other than Main.
     other-modules: Base.Deriving.GeneralizedNewtypeDerivingSpec,
                    Base.Deriving.ViaCompatibleTypeSpec,
+                   Base.Deriving.AnyclassDerivingSpec,
                    Base.HigherKindedTypeSpec,
                    GHCExt.ExistentitallyQuantifiedDataConstructorsSpec,
                    GHCExt.ExistentialTypes.UsingRecordSpec,

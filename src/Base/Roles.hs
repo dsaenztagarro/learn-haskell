@@ -5,7 +5,6 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 {-# LANGUAGE TypeFamilies #-}
-
 -- https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/roles.html#roles
 module Base.Roles where
 

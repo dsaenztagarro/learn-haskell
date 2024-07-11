@@ -14,37 +14,8 @@ src/GHCExt/ClosedTypeFamily.hs:15:3: error:
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-{-
-src/GHCExt/ClosedTypeFamily.hs:55:18: error:
-    • Non type-variable argument
-        in the constraint: KnownSymbol (NamedPeano t)
-    • In the type signature:
-        showPeanoName :: forall t. (KnownSymbol (NamedPeano t)) => String
-    Suggested fix: Perhaps you intended to use FlexibleContexts
-   |
-55 | showPeanoName :: forall t. (KnownSymbol (NamedPeano t)) => String
-   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
--}
 {-# LANGUAGE FlexibleContexts #-}
-{-
-    • Could not deduce (KnownSymbol (NamedPeano t0))
-      from the context: KnownSymbol (NamedPeano t)
-        bound by the type signature for:
-                   showPeanoName :: forall (t :: Peano).
-                                    KnownSymbol (NamedPeano t) =>
-                                    String
-        at src/GHCExt/ClosedTypeFamily.hs:69:18-65
-      The type variable ‘t0’ is ambiguous
-    • In the ambiguity check for ‘showPeanoName’
-      To defer the ambiguity check to use sites, enable AllowAmbiguousTypes
-      In the type signature:
-        showPeanoName :: forall t. (KnownSymbol (NamedPeano t)) => String
-   |
-69 | showPeanoName :: forall t. (KnownSymbol (NamedPeano t)) => String
-   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
--}
 {-# LANGUAGE AllowAmbiguousTypes #-}
-
 module GHCExt.Kinds.ClosedTypeFamily where
 
 import GHC.TypeLits
