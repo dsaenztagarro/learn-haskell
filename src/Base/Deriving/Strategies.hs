@@ -9,10 +9,10 @@ class Redacted a where
   default redacted :: Show a => a -> String
   redacted = show
 
-class Cool a where
-  cool :: String
-  default cool :: String
-  cool = "Cool!"
+class Show a => Cool a where
+  cool :: a -> String
+  default cool :: a -> String
+  cool a = "Cool! " <> show a
 
 newtype UserName = UserName String deriving Show
 instance Redacted UserName where
@@ -21,6 +21,7 @@ instance Redacted UserName where
 newtype AdminUser = AdminUser UserName
   deriving stock Show
   deriving newtype Redacted
+  deriving anyclass Cool
 
 {-
 With the `DerivingStrategies` extension we can add several deriving clauses when

@@ -53,7 +53,7 @@ type (:++:) a b = a `AppendSymbol` b
 
 type family NamedPeano (a :: Peano) :: Symbol where
   NamedPeano Zero = "Zero"
-  NamedPeano (Succ a) = "(Succ " :++: (NamedPeano a) :++: ")"
+  NamedPeano (Succ a) = "(Succ " :++: NamedPeano a :++: ")"
 
 showPeanoName :: forall t. (KnownSymbol (NamedPeano t)) => String
 showPeanoName = symbolVal $ Proxy @(NamedPeano t)
