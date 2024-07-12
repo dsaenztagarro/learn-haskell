@@ -2,18 +2,11 @@
   in a multiparameter type class have a direct dependency on some other types.
 -}
 {-# LANGUAGE FunctionalDependencies #-}
-{- It is needed FlexibleInstances extension to remove some restrictions on how
-   we can create instances of type classes.
-
-   In the context of this file, it will allow us to define an instance of a
-   type class for one specific instance of a parameterized type.
-
-   > instance ShellCommand ListDirectory [FilePath] where
--}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE StrictData #-} -- avoid lazy fields in records
 
 module GHCExt.FunctionalDependency.ShellCmd where
+
 import System.Process (readProcess)
 
 -- cmd: Type of the command executed (i.e. ListDirectory, Grep)

@@ -30,4 +30,8 @@ https://www.youtube.com/watch?v=ohp2uRM9n0o
 
 ## Specs
 
-Display specs output with `cabal test --test-show-details=direct`
+```
+cabal test --test-show-details=direct
+
+cabal test --test-options="--color --match=FilePackParser"
+```

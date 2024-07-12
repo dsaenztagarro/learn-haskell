@@ -67,6 +67,9 @@ library
                     , Base.Deriving.ViaCompatibleType
                     , Base.Deriving.AnyclassDeriving
                     , Base.Deriving.Strategies
+                    , Base.Parser.FilePackParser.Encoding
+                    , Base.Parser.Applicative.FilePackParser
+                    , Base.Parser.Monadic.FilePackParser
                     , Base.HigherKindedType
                     , GHCExt.AllowAmbiguousTypes
                     , GHCExt.FlexibleContexts
@@ -98,7 +101,9 @@ library
     build-depends:    base ^>=4.17.2.1,
                       process,
                       filepath,
-                      exceptions
+                      exceptions,
+                      text,
+                      bytestring
 
     -- Directories containing source files.
     hs-source-dirs:   src
@@ -117,6 +122,8 @@ test-suite effective-haskell-test
     other-modules: Base.Deriving.GeneralizedNewtypeDerivingSpec,
                    Base.Deriving.ViaCompatibleTypeSpec,
                    Base.Deriving.AnyclassDerivingSpec,
+                   Base.Parser.Applicative.FilePackParserSpec,
+                   Base.Parser.Monadic.FilePackParserSpec,
                    Base.HigherKindedTypeSpec,
                    GHCExt.ExistentitallyQuantifiedDataConstructorsSpec,
                    GHCExt.ExistentialTypes.UsingRecordSpec,
@@ -156,4 +163,5 @@ test-suite effective-haskell-test
         directory,
         filepath,
         time,
-        text
+        text,
+        bytestring
