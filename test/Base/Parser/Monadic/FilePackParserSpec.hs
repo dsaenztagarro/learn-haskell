@@ -26,7 +26,7 @@ spec = do
     it "encode value" $ do
       testDataFile <- (</> "FilePackPBM.bin") <$> currentTestDataDir
       -- Uncomment to regenerate testdata
-      BS.writeFile testDataFile (encode pbm)
+      -- BS.writeFile testDataFile (encode pbm)
       expectedPayload <- BS.readFile testDataFile
       encode pbm `shouldBe` expectedPayload
 
@@ -42,14 +42,14 @@ spec = do
     let pgm = FilePackPGM 100 200 300 [25,50,75]
 
     it "encode value" $ do
-      testDataFile <- (</> "FilePackpgm.bin") <$> currentTestDataDir
+      testDataFile <- (</> "FilePackPGM.bin") <$> currentTestDataDir
       -- Uncomment to regenerate testdata
-      BS.writeFile testDataFile (encode pgm)
+      -- BS.writeFile testDataFile (encode pgm)
       expectedPayload <- BS.readFile testDataFile
       encode pgm `shouldBe` expectedPayload
 
     it "decode value" $ do
-      testDataFile <- (</> "FilePackpgm.bin") <$> currentTestDataDir
+      testDataFile <- (</> "FilePackPGM.bin") <$> currentTestDataDir
       payload <- BS.readFile testDataFile
       decode payload `shouldBe` Right pgm
 

@@ -36,7 +36,9 @@ cabal test --test-show-details=direct
 cabal test --test-options="--color --match=FilePackParser"
 ```
 
-#### Debugging
+### Debugging
+
+#### Adding traces with TypeApplications
 
 ```haskell
 {-# LANGUAGE ScopedTypeVariables #-}
@@ -45,5 +47,7 @@ cabal test --test-options="--color --match=FilePackParser"
 import Debug.Trace
 import Data.Typeable
 
+-- requires the constraint `Typeable a`
+-- method :: forall a. (Typeable a, ...) =>
 let mytrace = trace ("extractValue: " <> show (typeRep (Proxy @a)))
 ```
