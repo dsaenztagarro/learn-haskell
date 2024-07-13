@@ -35,3 +35,15 @@ cabal test --test-show-details=direct
 
 cabal test --test-options="--color --match=FilePackParser"
 ```
+
+#### Debugging
+
+```haskell
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE TypeApplications #-}
+
+import Debug.Trace
+import Data.Typeable
+
+let mytrace = trace ("extractValue: " <> show (typeRep (Proxy @a)))
+```

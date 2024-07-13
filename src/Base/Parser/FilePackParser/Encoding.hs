@@ -143,5 +143,10 @@ instance (Encode a, Encode b) => Encode (a,b) where
   encode (a,b) =
     encode $ encodeWithSize a <> encodeWithSize b
 
+{-
+The following instance overlaps with the one defined for String.
+By using the OVERLAPPABLE pragma we can tell GHC to always prefer a different
+instance if there happens to be a conflict.
+-}
 instance {-# OVERLAPPABLE #-} Encode a => Encode [a] where
   encode = encode . foldMap encodeWithSize

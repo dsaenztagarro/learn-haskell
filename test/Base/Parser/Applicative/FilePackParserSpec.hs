@@ -6,34 +6,11 @@ module Base.Parser.Applicative.FilePackParserSpec where
 import Test.Hspec
 import Base.Parser.FilePackParser.Encoding
 import Base.Parser.Applicative.FilePackParser
-import Data.ByteString (ByteString)
 import qualified Data.ByteString as BS
 import Data.Text (Text)
 import Data.Word (Word32)
 import System.Directory (makeAbsolute)
 import System.FilePath (dropFileName, (</>))
-
-addFileDataToPack :: Encode a => FileData a -> FilePack -> FilePack
-addFileDataToPack a (FilePack as) = FilePack $ Packable a : as
-
-infixr 6 .:
-(.:) :: (Encode a) => FileData a -> FilePack -> FilePack
-(.:) = addFileDataToPack
-
-emptyFilePack :: FilePack
-emptyFilePack = FilePack []
-
-testDecodeValue
-  :: ByteString
-  -> Either String
-  ( FileData String
-  , FileData [Text]
-  , FileData (Word32,String)
-  )
-testDecodeValue = execParser $ (,,)
-  <$> extractValue
-  <*> extractValue
-  <*> extractValue
 
 currentTestDataDir :: IO String
 currentTestDataDir =
@@ -58,16 +35,22 @@ spec = do
         -- Uncomment to regenerate testdata
         -- BS.writeFile testDataFile (encode $ Packable fileDataSample)
         expectedPayload <- BS.readFile testDataFile
-        encode (Packable fileDataSample) `shouldBe` expectedPayload
         encode fileDataSample `shouldBe` expectedPayload
+        encode (Packable fileDataSample) `shouldBe` expectedPayload
 
       it "decode value" $ do
         testDataFile <- (</> "FileData_String.bin") <$> currentTestDataDir
         payload <- BS.readFile testDataFile
-        decode @(FileData String) payload `shouldBe` (Right fileDataSample)
+        decode @(FileData String) payload `shouldBe` Right fileDataSample
+        {-
+        `decode @Packable payload` won't work, because `Packable` type
+        constructor is using flag `ExistentialQuantification` to hide the `a`
+        type for `FileData a` in the data constructor.
+        -}
 
       it "runs round trip" $ do
         decode (encode @(FileData String) fileDataSample) `shouldBe` Right fileDataSample
+        decode (encode fileDataSample) `shouldBe` Right fileDataSample
 
     describe "FileData (Word32,String)" $ do
       let
@@ -89,7 +72,12 @@ spec = do
       it "decode value" $ do
         testDataFile <- (</> "FileData_Word32_String.bin") <$> currentTestDataDir
         payload <- BS.readFile testDataFile
-        decode @(FileData (Word32,String)) payload `shouldBe` (Right fileDataSample)
+        decode @(FileData (Word32,String)) payload `shouldBe` Right fileDataSample
+        {-
+        `decode @Packable payload` won't work, because `Packable` type
+        constructor is using flag `ExistentialQuantification` to hide the `a`
+        type for `FileData a` in the data constructor.
+        -}
 
       it "runs round trip" $ do
         decode (encode @(FileData (Word32,String)) fileDataSample) `shouldBe` Right fileDataSample
@@ -117,43 +105,70 @@ spec = do
         }
       filePackSample = encode $ a .: b .: c .: emptyFilePack
 
-    -- it "encode values" $ do
-    --   testDataFile <- (</> "FilePack.bin") <$> currentTestDataDir
-    --   -- Uncomment line to regenerate content
-    --   -- BS.writeFile testDataFile (encode $ )
-    --   expectedPayload <- BS.readFile testDataFile
-    --   payload `shouldBe` expectedPayload
-
-    it "decode values" $ do
+    it "encode values" $ do
       testDataFile <- (</> "FilePack.bin") <$> currentTestDataDir
-      payload <- BS.readFile testDataFile
+      -- Uncomment line to regenerate content
+      -- BS.writeFile testDataFile (encode filePackSample)
+      expectedPayload <- BS.readFile testDataFile
+      encode filePackSample `shouldBe` expectedPayload
 
-      -- putStrLn $ "payload: " <> (BS.unpack payload)
+    describe "decodeThree" $ do
+      it "decode values" $ do
+        testDataFile <- (</> "FilePack.bin") <$> currentTestDataDir
+        payload <- BS.readFile testDataFile
+        decodeThree payload `shouldBe` Right (a,b,c)
 
-      "" `shouldBe` ""
+    describe "parseThree" $ do
+      let
+        parseThree = (,,)
+          <$> (extractValue @(FileData String))
+          <*> (extractValue @(FileData [Text]))
+          <*> (extractValue @(FileData (Word32,String)))
 
--- testRoundTrip :: (Encode a, Decode a, Show a, Eq a) => a -> IO ()
--- testRoundTrip val =
---   case decode (encode val) of
---     Left err ->
---       putStrLn $ "Fail to round-trip value: " <> err
---     Right roundTripVal
---       | roundTripVal == val ->
---           putStrLn "it works!"
---       | otherwise -> do
---         putStrLn "Round-trip failed!"
---         putStrLn $ "expected: " <> show val
---         putStrLn $ "got: " <> show roundTripVal
+      it "decode values" $ do
+        testDataFile <- (</> "FilePack.bin") <$> currentTestDataDir
+        payload <- BS.readFile testDataFile
+        execParser parseThree payload `shouldBe` Right (a,b,c)
 
--- runRoundTripTest :: IO ()
--- runRoundTripTest =
---   testRoundTrip $ FileData
---   { fileName = "c"
---   , fileSize = 8
---   , filePermissions = 0644
---   , fileData = (0, "zero") :: (Word32,String)
---   }
+    describe "parseMany" $ do
+      describe "same type" $ do
+        let
+          d = FileData
+            { fileName = "a"
+            , fileSize = 3
+            , filePermissions = 0755
+            , fileData = "foo" :: String
+            }
+          e = FileData
+            { fileName = "b"
+            , fileSize = 10
+            , filePermissions = 0644
+            , fileData = "hello" :: String
+            }
+          filePackSample = encode $ a .: d .: e .: emptyFilePack
 
--- Test data
--- cabal repl
--- testDecodeValue FilePackParser3.testEncodeValue
+        it "decode values" $ do
+          execParser (parseMany (extractValue @(FileData String))) filePackSample `shouldBe` Right [a,d,e]
+
+    describe "parseSome" $ do
+      let
+        d = FileData
+          { fileName = "a"
+          , fileSize = 3
+          , filePermissions = 0755
+          , fileData = "foo" :: String
+          }
+        e = FileData
+          { fileName = "c"
+          , fileSize = 8
+          , filePermissions = 0644
+          , fileData = (0,"zero") :: (Word32,String)
+          }
+        filePackSample = encode $ a .: d .: e .: emptyFilePack
+
+      it "decode values" $ do
+        let decodedValue = execParser (parseSome (extractValue @(FileData String))) filePackSample
+
+        length <$> decodedValue `shouldBe` Right 3
+        take 2 <$> decodedValue `shouldBe` Right [a,d]
+        take 2 <$> decodedValue `shouldBe` Right [a,d]

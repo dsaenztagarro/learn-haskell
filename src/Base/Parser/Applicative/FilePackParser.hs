@@ -8,8 +8,8 @@ import Control.Monad (when)
 import Data.ByteString (ByteString)
 import qualified Data.ByteString as BS
 import Base.Parser.FilePackParser.Encoding
-
--- parseFunction :: Decode a => ByteString -> Either String (a, ByteString)
+import Data.Text (Text)
+import Data.Word (Word32)
 
 data Packable = forall a. Encode a => Packable { getPackable :: FileData a }
 
@@ -23,7 +23,10 @@ instance Encode FilePack where
 
 {-
 `FilePackParser` represent the type of _all_ functions defined to parse a
-"fragment" of a bytestring
+"fragment" of a bytestring.
+When defined `Applicative` on `FilePackParser`, allows `a` to be a `FileData`
+constructor, and so let us compose multiple parsers each of them using for
+`decode` an instance of the related data constructor parameter.
 -}
 newtype FilePackParser a = FilePackParser
   { runParser :: ByteString -> Either String (a, ByteString) }
@@ -74,8 +77,9 @@ extractValues = FilePackParser $ \input ->
     pure (val:vals, rest')
 
 extractOptional :: FilePackParser a -> FilePackParser (Maybe a)
-extractOptional parser = Just <$> parser <|> pure Nothing
+extractOptional = optional
 {-
+extractOptional parser = Just <$> parser <|> pure Nothing
 extractOptional = (<|> pure Nothing) . fmap Just
 
 extractOptional parser = FilePackParser $ \input ->
@@ -84,12 +88,34 @@ extractOptional parser = FilePackParser $ \input ->
     Right (val, rest) -> pure (Just val, rest)
 -}
 
+addFileDataToPack :: Encode a => FileData a -> FilePack -> FilePack
+addFileDataToPack a (FilePack as) = FilePack $ Packable a : as
+
+infixr 6 .:
+(.:) :: (Encode a) => FileData a -> FilePack -> FilePack
+(.:) = addFileDataToPack
+
+emptyFilePack :: FilePack
+emptyFilePack = FilePack []
+
+decodeThree
+  :: ByteString
+  -> Either String
+  ( FileData String
+  , FileData [Text]
+  , FileData (Word32,String)
+  )
+decodeThree = execParser $ (,,)
+  <$> extractValue
+  <*> extractValue
+  <*> extractValue
+
 parseSome :: FilePackParser a -> FilePackParser [a]
 parseSome p = (:) <$> p <*> parseMany p
 
 parseMany :: FilePackParser a -> FilePackParser [a]
 parseMany p = parseSome p <|> pure []
-
+{-
 parseMany parser = FilePackParser $ \input ->
   case runParser parser input of
     Left _err ->
@@ -97,6 +123,7 @@ parseMany parser = FilePackParser $ \input ->
     Right (val, rest) -> do
       (tail, rest') <- runParser (parseMany parser) rest
       pure (val:tail, rest')
+-}
 
 execParser :: FilePackParser a -> ByteString -> Either String a
 execParser parser inputString =
@@ -105,9 +132,9 @@ execParser parser inputString =
 instance (Decode a, Decode b) => Decode (a,b) where
   decode = execParser $ (,) <$> extractValue <*> extractValue
 
-instance {-# OVERLAPPABLE #-} Decode a => Decode [a] where
+instance {-# OVERLAPPABLE #-} (Decode a) => Decode [a] where
   decode = execParser (many extractValue)
 
-instance Decode a => Decode (FileData a) where
+instance (Decode a) => Decode (FileData a) where
   decode = execParser $ FileData
     <$> extractValue <*> extractValue <*> extractValue <*> extractValue
