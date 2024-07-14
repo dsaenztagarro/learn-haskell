@@ -1,13 +1,17 @@
 {-# LANGUAGE KindSignatures #-}
-module ExceptT where
+module Base.Monad.ExceptT where
 
 import Control.Applicative
 import Data.Kind (Type)
-import Identity
+import Base.Monad.Identity
 
 newtype ExceptT (e :: Type) (m :: Type -> Type) (a :: Type) = ExceptT
   { runExceptT :: m (Either e a) }
+
 type Except e = ExceptT e Identity
+
+runExcept :: Except e a -> Either e a
+runExcept = runIdentity . runExceptT
 
 instance Functor m => Functor (ExceptT e m) where
   fmap f a = ExceptT $ (fmap . fmap) f (runExceptT a)
@@ -51,6 +55,3 @@ catchError handler action = ExceptT $ do
 
 succeed :: Monad m => m a -> ExceptT e m a
 succeed a = ExceptT (Right <$> a)
-
-runExcept :: Except e a -> Either e a
-runExcept = runIdentity . runExceptT

@@ -1,4 +1,4 @@
-module Identity where
+module Base.Monad.Identity where
 
 newtype Identity a = Identity { runIdentity :: a }
   deriving (Eq, Show)

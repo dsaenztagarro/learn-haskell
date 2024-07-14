@@ -71,6 +71,9 @@ library
                     , Base.Parser.Applicative.FilePackParser
                     , Base.Parser.Monadic.FilePackParser
                     , Base.Monad.State
+                    , Base.Monad.StateT
+                    , Base.Monad.ExceptT
+                    , Base.Monad.Identity
                     , Base.HigherKindedType
                     , GHCExt.AllowAmbiguousTypes
                     , GHCExt.FlexibleContexts
@@ -126,6 +129,8 @@ test-suite effective-haskell-test
                   , Base.Parser.Applicative.FilePackParserSpec
                   , Base.Parser.Monadic.FilePackParserSpec
                   , Base.Monad.StateSpec
+                  , Base.Monad.ExceptTSpec
+                  , Base.Monad.StackSpec
                   , Base.HigherKindedTypeSpec
                   , GHCExt.ExistentitallyQuantifiedDataConstructorsSpec
                   , GHCExt.ExistentialTypes.UsingRecordSpec
