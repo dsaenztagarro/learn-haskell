@@ -70,6 +70,7 @@ library
                     , Base.Parser.FilePackParser.Encoding
                     , Base.Parser.Applicative.FilePackParser
                     , Base.Parser.Monadic.FilePackParser
+                    , Base.Monad.State
                     , Base.HigherKindedType
                     , GHCExt.AllowAmbiguousTypes
                     , GHCExt.FlexibleContexts
@@ -119,29 +120,30 @@ test-suite effective-haskell-test
     default-language: Haskell2010
 
     -- Modules included in this executable, other than Main.
-    other-modules: Base.Deriving.GeneralizedNewtypeDerivingSpec,
-                   Base.Deriving.ViaCompatibleTypeSpec,
-                   Base.Deriving.AnyclassDerivingSpec,
-                   Base.Parser.Applicative.FilePackParserSpec,
-                   Base.Parser.Monadic.FilePackParserSpec,
-                   Base.HigherKindedTypeSpec,
-                   GHCExt.ExistentitallyQuantifiedDataConstructorsSpec,
-                   GHCExt.ExistentialTypes.UsingRecordSpec,
-                   GHCExt.ExistentialTypes.UsingTypeClassSpec,
-                   GHCExt.ExistentialTypes.UsingTypeClassWithConstraintSpec,
-                   GHCExt.InferredTypesSpec,
-                   -- Types and Kinds
-                   GHCExt.FunctionalDependency.ShellCmdSpec,
-                   GHCExt.Kinds.AssociatedTypeFamily.ShellCmdSpec,
-                   GHCExt.Kinds.AssociatedDataFamily.ShellCmdSpec,
-                   GHCExt.Kinds.OpenTypeFamilySpec,
-                   GHCExt.Kinds.ClosedTypeFamilySpec,
-                   GHCExt.Kinds.TypeLevelListOperations.WithClosedTypeFamiliesSpec,
-                   GHCExt.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec,
-                   GHCExt.GADT.HeterogeneusListSpec,
-                   GHCExt.GADT.ShellCmdSpec,
-                   GHCExt.GADT.CommandRunnerSpec,
-                   GHCExt.Helper
+    other-modules:  Base.Deriving.GeneralizedNewtypeDerivingSpec
+                  , Base.Deriving.ViaCompatibleTypeSpec
+                  , Base.Deriving.AnyclassDerivingSpec
+                  , Base.Parser.Applicative.FilePackParserSpec
+                  , Base.Parser.Monadic.FilePackParserSpec
+                  , Base.Monad.StateSpec
+                  , Base.HigherKindedTypeSpec
+                  , GHCExt.ExistentitallyQuantifiedDataConstructorsSpec
+                  , GHCExt.ExistentialTypes.UsingRecordSpec
+                  , GHCExt.ExistentialTypes.UsingTypeClassSpec
+                  , GHCExt.ExistentialTypes.UsingTypeClassWithConstraintSpec
+                  , GHCExt.InferredTypesSpec
+                  -- Types and Kind
+                  , GHCExt.FunctionalDependency.ShellCmdSpec
+                  , GHCExt.Kinds.AssociatedTypeFamily.ShellCmdSpec
+                  , GHCExt.Kinds.AssociatedDataFamily.ShellCmdSpec
+                  , GHCExt.Kinds.OpenTypeFamilySpec
+                  , GHCExt.Kinds.ClosedTypeFamilySpec
+                  , GHCExt.Kinds.TypeLevelListOperations.WithClosedTypeFamiliesSpec
+                  , GHCExt.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec
+                  , GHCExt.GADT.HeterogeneusListSpec
+                  , GHCExt.GADT.ShellCmdSpec
+                  , GHCExt.GADT.CommandRunnerSpec
+                  , GHCExt.Helper
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
