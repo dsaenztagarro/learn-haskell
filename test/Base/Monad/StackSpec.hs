@@ -38,6 +38,16 @@ char' expectedChar = do
   when (expectedChar /= actualChar) $
     throwError "Invalid character"
 
+{-
+`parseChar` updates the state with `put rest`, and if `char` then `throwError`,
+the `Alternative` parser will NOT start from the initial state.
+
+LESSON: the choice of how we define our monad transformer stack can have other
+implications too. Another example we can demostrate with `Alternative` is the
+order in which we nest our transformers is impacted by the lazyness of the
+computations we're nesting.
+-}
+
 -------------------------------------
 -- Nesting Except Inside of StateT
 -------------------------------------
@@ -69,8 +79,10 @@ spec = do
     it "parses alternatives" $ do
       runParser' "123" parseChar' `shouldBe` Right '1'
       runParser' "123" (parseChar' >> parseChar') `shouldBe` Right '2'
-      runParser' "abc" ((char' 'a' >> parseChar') <|> parseChar') `shouldBe` Right 'b'
-      -- runParser' "abc" ((char' '1' >> parseChar') <|> parseChar') `shouldBe` Left "Invalid character"
+      runParser' "abc" (char' 'a' >> parseChar') `shouldBe` Right 'b'
+      runParser' "abc" (char' '1' >> parseChar') `shouldBe` Left "Invalid character"
+      runParser' "123" ((char' '1' >> parseChar') <|> parseChar') `shouldBe` Right '2'
+      runParser' "abc" ((char' '1' >> parseChar') <|> parseChar') `shouldBe` Right 'b'
 
   describe "Except inside of StateT" $ do
     it "parses alternatives" $ do
