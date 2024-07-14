@@ -20,6 +20,7 @@ instance MonadFail FilePackParser where
 data FilePackImage
   = FilePackPBM Word32 Word32 [Word32]
   | FilePackPGM Word32 Word32 Word32 [Word32]
+  | FilePackFOO Word32
   deriving (Eq, Show)
 
 instance Encode FilePackImage where
@@ -37,6 +38,10 @@ instance Encode FilePackImage where
     <> encodeWithSize maxValue
     -- The encode instance for list already includes size info
     <> encode values
+
+  encode (FilePackFOO width) = encode $
+    encodeWithSize @String "foo"
+    <> encodeWithSize width
 
 instance Decode FilePackImage where
   decode = execParser $ do
@@ -56,4 +61,4 @@ instance Decode FilePackImage where
       otherTag ->
         fail $ "unknown image type tag: " <> otherTag
         -- Without MonadFail instance:
-        -- FilePackParser $ \_ -> Left "unknown image type tag: " <> otherTag
+        -- FilePackParser $ \_ -> Left ("unknown image type tag: " <> otherTag)

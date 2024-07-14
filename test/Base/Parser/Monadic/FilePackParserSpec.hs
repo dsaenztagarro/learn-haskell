@@ -7,6 +7,7 @@ import Base.Parser.FilePackParser.Encoding
 import Base.Parser.Applicative.FilePackParser
 import Base.Parser.Monadic.FilePackParser
 import qualified Data.ByteString as BS
+import Data.Word (Word32)
 import System.Directory (makeAbsolute)
 import System.FilePath (dropFileName, (</>))
 
@@ -64,11 +65,24 @@ spec = do
     it "runs round trip" $ do
       decode (encode [pgm, pbm]) `shouldBe` Right [pgm, pbm]
 
-  describe "FilePack" $ do
+  describe "parseMany" $ do
     let
       pbm = FilePackPBM 100 200 [25,50,75]
       pgm = FilePackPGM 100 200 300 [25,50,75]
-      payload = encode [pbm, pgm, pgm, pbm]
+      foo = FilePackFOO 125
 
     it "decode values" $ do
+      let payload = encode [pbm, pgm, pgm, pbm]
       execParser (parseMany (extractValue @FilePackImage)) payload `shouldBe` Right [pbm, pgm, pgm, pbm]
+
+    it "fails with []" $ do
+      let payload1 = encode [pbm, pgm, foo, pbm]
+      execParser (parseMany (extractValue @FilePackImage)) payload1 `shouldBe` Right [pbm, pgm]
+
+      let payload2 = encode [foo, pbm, pgm, pbm]
+      execParser (parseMany (extractValue @FilePackImage)) payload2 `shouldBe` Right []
+
+  describe "extractValue" $ do
+    it "fails with invalid code" $ do
+      let payload = encode [FilePackFOO 100]
+      execParser (extractValue @FilePackImage) payload `shouldBe` Left "unknown image type tag: foo"
