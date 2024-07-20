@@ -1,12 +1,13 @@
-{-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE FunctionalDependencies #-}
+{-# LANGUAGE UndecidableInstances #-}
 module Base.Monad.MonadState where
 
 import qualified Base.Monad.StateT as StateT
 import Base.Monad.ExceptT
 import Base.Monad.MonadTrans
 
-class Monad m => MonadState s m where
+class Monad m => MonadState s m | m -> s where
   get :: m s
   put :: s -> m ()
 

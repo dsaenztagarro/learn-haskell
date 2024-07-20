@@ -28,6 +28,11 @@ guessTheState guess = do
   put guess
   pure $ guess == answer
 
+guessTheLength :: Int -> GuessingGame Bool
+guessTheLength guess = do
+  answer <- length <$> get
+  pure $ guess == answer
+
 
 spec :: Spec
 spec = do
@@ -35,4 +40,10 @@ spec = do
     result <- evalGame "Foo" (guessTheState "Bar")
     result `shouldBe` Right False
     result' <- evalGame "Foo" (guessTheState "Foo")
+    result' `shouldBe` Right True
+
+  it "works using MonadState thanks to FunctionalDependencies" $ do
+    result <- evalGame "Foo" (guessTheLength 4)
+    result `shouldBe` Right False
+    result' <- evalGame "Foo" (guessTheLength 3)
     result' `shouldBe` Right True

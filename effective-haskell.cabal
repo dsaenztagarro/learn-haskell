@@ -136,6 +136,7 @@ test-suite effective-haskell-test
                   , Base.Monad.StateSpec
                   , Base.Monad.MonadState1Spec
                   , Base.Monad.MonadState2Spec
+                  , Base.Monad.MonadState3Spec
                   , Base.Monad.MonadTransSpec
                   , Base.Monad.StateTSpec
                   , Base.Monad.ExceptTSpec

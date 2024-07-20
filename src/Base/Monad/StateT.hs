@@ -56,6 +56,5 @@ put state = StateT $ \_ -> pure ((), state)
 get :: Monad m => StateT s m s
 get = StateT $ \state -> pure (state, state)
 
--- Same implementation that `lift` for `MonadTrans` type class
 liftStateT :: Monad m => m a -> StateT s m a
 liftStateT a = StateT $ \s -> (, s) <$> a
