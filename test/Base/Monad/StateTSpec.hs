@@ -1,11 +1,14 @@
 {-# LANGUAGE OverloadedStrings #-}
-module StateExcept where
+module Base.Monad.StateTSpec where
 
+import Test.Hspec
+
+import Control.Applicative ((<|>), many)
 import Control.Monad (when)
 import Data.Text (Text)
 import qualified Data.Text as Text
-import ExceptT
-import StateT
+import Base.Monad.ExceptT
+import Base.Monad.StateT
 
 type ParseError = Text
 type ParseState = Text
@@ -30,3 +33,14 @@ char expectedChar = do
   actualChar <- parseChar
   when (expectedChar /= actualChar) $
     liftStateT $ throwError "Invalid character"
+
+
+spec :: Spec
+spec = do
+  describe "StateT containting Except" $ do
+    it "parses alternatives" $ do
+      runParser "123" ((char '1' >> parseChar) <|> parseChar) `shouldBe` Right '2'
+      runParser "123" ((char 'a' >> parseChar) <|> parseChar) `shouldBe` Right '1'
+
+    it "parses many" $ do
+      runParser "123" (many parseChar) `shouldBe` Right "123"

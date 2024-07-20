@@ -8,34 +8,6 @@ With this extension enabled, every type we've defined is also a kind, and the
 constructors for that type are its inhabitants.
 -}
 {-# LANGUAGE DataKinds #-}
-
-{- https://en.wikipedia.org/wiki/Undecidable_problem
-   An undecidable problem is a decision problem for which it is proved to be
-   impossible to construct an algorithm that always leads to a correct
-   yes-or-no answer.
-
-   The UndecidableInstances extension lifts restrictions that ensure the type
-   checker can actually complete type checking type class instances.
-
-   These checks are helpful more often than not, and prevent you from writing
-   code that might cause the compiler to hang during type checking.
-
-   You should only enable the extension when you actually need to relax these
-   checks.
-
-   In this file, without this extension, we would get the following error:
-
-   src/GHCExt/OpenTypeFamilies.hs:40:15: error:
-       • Illegal nested type family application ‘AppendSymbol
-                                                   (AppendSymbol (NamedType a) " -> ") (NamedType b)’
-         (Use UndecidableInstances to permit this)
-       • In the type instance declaration for ‘NamedType’
-      |
-   40 | type instance NamedType (a -> b) =
-      |               ^^^^^^^^^
-   type instance NamedType (a -> b) =
-     NamedType a `AppendSymbol` " -> " `AppendSymbol` NamedType b
--}
 {-# LANGUAGE UndecidableInstances #-}
 
 -- Allow us using our own own operators to use at the type level

@@ -3,10 +3,12 @@
 
 module Base.Parser.Monadic.FilePackParser where
 
+import Prelude hiding (MonadFail, fail)
 import Base.Parser.Applicative.FilePackParser
 import Control.Applicative
 import Data.Word (Word32)
 import Base.Parser.FilePackParser.Encoding
+import Base.Monad.MonadFail
 
 instance Monad FilePackParser where
   return = pure

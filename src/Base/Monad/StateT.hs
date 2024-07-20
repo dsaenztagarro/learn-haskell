@@ -3,25 +3,10 @@ module Base.Monad.StateT where
 
 import Control.Applicative
 import Base.Monad.Identity
+import Base.Monad.MonadTrans
 
 newtype StateT s m a = StateT { runStateT :: s -> m (a, s) }
 type State s = StateT s Identity
-
-evalState :: State s a -> s -> a
-evalState stateAction initialState =
-  runIdentity $ evalStateT stateAction initialState
-
-execState :: State s a -> s -> s
-execState stateAction initialState =
-  runIdentity $ execStateT stateAction initialState
-
-evalStateT :: Monad m => StateT s m a -> s -> m a
-evalStateT stateAction initialState =
-  fst <$> runStateT stateAction initialState
-
-execStateT :: Monad m => StateT s m a -> s -> m s
-execStateT stateAction initialState =
-  snd <$> runStateT stateAction initialState
 
 instance Functor m => Functor (StateT s m) where
   fmap f s =
@@ -46,11 +31,31 @@ instance (Monad m, Alternative m) => Alternative (StateT s m) where
   a <|> b = StateT $ \s ->
     runStateT a s <|> runStateT b s
 
+instance MonadTrans (StateT s) where
+  lift m = StateT $ \state -> (,state) <$> m
+
+evalState :: State s a -> s -> a
+evalState stateAction initialState =
+  runIdentity $ evalStateT stateAction initialState
+
+execState :: State s a -> s -> s
+execState stateAction initialState =
+  runIdentity $ execStateT stateAction initialState
+
+evalStateT :: Monad m => StateT s m a -> s -> m a
+evalStateT stateAction initialState =
+  fst <$> runStateT stateAction initialState
+
+execStateT :: Monad m => StateT s m a -> s -> m s
+execStateT stateAction initialState =
+  snd <$> runStateT stateAction initialState
+
 put :: Monad m => s -> StateT s m ()
 put state = StateT $ \_ -> pure ((), state)
 
 get :: Monad m => StateT s m s
 get = StateT $ \state -> pure (state, state)
 
+-- Same implementation that `lift` for `MonadTrans` type class
 liftStateT :: Monad m => m a -> StateT s m a
 liftStateT a = StateT $ \s -> (, s) <$> a

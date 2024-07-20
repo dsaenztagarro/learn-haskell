@@ -1,16 +1,6 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE TypeOperators #-}
-{-
-src/GHCExt/ClosedTypeFamily.hs:15:3: error:
-    • Illegal nested type family application ‘ToPeano (a - 1)’
-      (Use UndecidableInstances to permit this)
-    • In the equations for closed type family ‘ToPeano’
-      In the type family declaration for ‘ToPeano’
-   |
-15 |   ToPeano a = Succ (ToPeano (a - 1))
-   |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
--}
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE ScopedTypeVariables #-}

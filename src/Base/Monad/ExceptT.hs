@@ -4,6 +4,7 @@ module Base.Monad.ExceptT where
 import Control.Applicative
 import Data.Kind (Type)
 import Base.Monad.Identity
+import Base.Monad.MonadTrans
 
 newtype ExceptT (e :: Type) (m :: Type -> Type) (a :: Type) = ExceptT
   { runExceptT :: m (Either e a) }
@@ -42,6 +43,9 @@ instance (Monoid e, Monad m) => Alternative (ExceptT e m) where
         case b' of
           Right val -> pure (Right val)
           Left err' -> pure (Left $ err <> err')
+
+instance MonadTrans (ExceptT e) where
+  lift m = ExceptT $ Right <$> m
 
 throwError :: Monad m => e -> ExceptT e m a
 throwError exception = ExceptT $ pure (Left exception)

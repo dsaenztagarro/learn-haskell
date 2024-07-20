@@ -20,17 +20,6 @@
        |                                                 ^
 -}
 {-# LANGUAGE PolyKinds #-}
-
-{-
-    • Illegal nested type family application ‘IfThenElse
-                                                (p a2) (a2 : FindElems p as) (FindElems p as)’
-      (Use UndecidableInstances to permit this)
-    • In the equations for closed type family ‘FindElems’
-      In the type family declaration for ‘FindElems’
-   |
-46 |   FindElems p (a : as) =
-   |   ^^^^^^^^^^^^^^^^^^^^^^...
--}
 {-# LANGUAGE UndecidableInstances #-}
 
 -- Type Level List Operations with Type Families
