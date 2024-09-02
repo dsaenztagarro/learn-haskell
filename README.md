@@ -51,3 +51,9 @@ import Data.Typeable
 -- method :: forall a. (Typeable a, ...) =>
 let mytrace = trace ("extractValue: " <> show (typeRep (Proxy @a)))
 ```
+
+## Parallel and Concurrent Programming (PCP)
+
+```
+git clone git@github.com:haskell/ThreadScope.git
+```

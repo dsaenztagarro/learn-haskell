@@ -1,6 +1,6 @@
-{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE UndecidableInstances #-}
+{-# LANGUAGE FlexibleInstances #-}
 module Base.Monad.MonadState where
 
 import qualified Base.Monad.StateT as StateT

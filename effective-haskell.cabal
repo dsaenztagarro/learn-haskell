@@ -75,6 +75,7 @@ library
                     , Base.Monad.MonadFail
                     , Base.Monad.MonadError
                     , Base.Monad.MonadState
+                    , Base.Monad.MonadIO
                     , Base.Monad.MonadTrans
                     , Base.Monad.StateT
                     , Base.Monad.ExceptT
