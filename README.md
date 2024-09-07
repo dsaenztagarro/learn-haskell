@@ -31,8 +31,9 @@ https://www.youtube.com/watch?v=ohp2uRM9n0o
 ## Specs
 
 ```
+cabal install hspec-discover
+cabal test
 cabal test --test-show-details=direct
-
 cabal test --test-options="--color --match=FilePackParser"
 ```
 
