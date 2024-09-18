@@ -102,6 +102,7 @@ library
                     , GHCExt.GADT.CommandRunner
                     -- YouTube tutorials
                     , YouTube.Kinds
+                    , YouTube.Kinds2
 
     -- Modules included in this library but not exported.
     -- other-modules: GHCExt.FunctionalDependencies
@@ -115,7 +116,8 @@ library
                       filepath,
                       exceptions,
                       text,
-                      bytestring
+                      bytestring,
+                      containers
 
     -- Directories containing source files.
     hs-source-dirs:   src
@@ -183,4 +185,5 @@ test-suite effective-haskell-test
         filepath,
         time,
         text,
-        bytestring
+        bytestring,
+        containers
