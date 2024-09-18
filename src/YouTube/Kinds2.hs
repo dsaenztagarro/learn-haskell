@@ -2,11 +2,12 @@
 -- https://www.youtube.com/watch?v=Qy_yxVkO8no
 
 {-# LANGUAGE StandaloneKindSignatures, ConstraintKinds, FunctionalDependencies,
-             FlexibleInstances #-}
+             FlexibleInstances, DataKinds, ScopedTypeVariables #-}
 module YouTube.Kinds2 where
 
 import Data.Kind
 import qualified Data.Set as Set
+import GHC.TypeLits
 
 -- Example: building Functor abstraction for any container (Set, List,..)
 
@@ -34,3 +35,25 @@ instance Always a
 
 instance FunctorC Always Ord Set.Set where
   fmapC = Set.map
+
+------------------------------------------------------
+
+{-
+type IntMod5 :: Type
+newtype IntMod5 = MkIM Integer
+  deriving Show
+
+instance Num IntMod5 where
+  MkIM a + MkIM b = MkIM ((a + b) `mod` 5)
+  fromInteger n = MkIM (n `mod` 5)
+-}
+
+-- Let's make the "5" out of the Type and turn it some "n"
+
+type IntMod :: Nat -> Type
+newtype IntMod n = MkIM Integer
+  deriving (Show, Eq)
+
+instance KnownNat n => Num (IntMod n) where
+  i@(MkIM a) + MkIM b = MkIM ((a + b) `mod` natVal i)
+  fromInteger n = MkIM (n `mod` natVal (undefined :: IntMod n))
