@@ -9,28 +9,28 @@ This project contains examples from [Effective Haskell][1] book.
 - `InferredTypes`
 
 #### Types and Kinds
-- `GHCExt.ExistentialTypes.UsingRecord`
-- `GHCExt.ExistentialTypes.UsingTypeClass`
-- `GHCExt.ExistentialTypes.UsingTypeClassWithExistentialConstraint`
-- `GHCExt.FunctionalDependencies` (ShellCommand)
-- `GHCExt.Kinds.AssociatedTypeFamily` (ShellCommand)
-- `GHCExt.Kinds.AssociatedDataFamily` (ShellCommand)
-- `GHCExt.Kinds.OpenTypeFamily`
-- `GHCExt.Kinds.ClosedTypeFamily`
-- `GHCExt.Kinds.TypeLevelListOperations.WithClosedTypeFamilies`
-- `GHCExt.Kinds.TypeLevelListOperations.WithOpenTypeFamilies`
-- `GHCExt.GADT.HeterogeneusList` (ExistentialTypes related)
-- `GHCExt.GADT.TypeClassRefactor` (ShellCommand)
+- `LanguageExtensions.ExistentialTypes.UsingRecord`
+- `LanguageExtensions.ExistentialTypes.UsingTypeClass`
+- `LanguageExtensions.ExistentialTypes.UsingTypeClassWithExistentialConstraint`
+- `LanguageExtensions.FunctionalDependencies` (ShellCommand)
+- `LanguageExtensions.Kinds.AssociatedTypeFamily` (ShellCommand)
+- `LanguageExtensions.Kinds.AssociatedDataFamily` (ShellCommand)
+- `LanguageExtensions.Kinds.OpenTypeFamily`
+- `LanguageExtensions.Kinds.ClosedTypeFamily`
+- `LanguageExtensions.Kinds.TypeLevelListOperations.WithClosedTypeFamilies`
+- `LanguageExtensions.Kinds.TypeLevelListOperations.WithOpenTypeFamilies`
+- `LanguageExtensions.GADT.HeterogeneusList` (ExistentialTypes related)
+- `LanguageExtensions.GADT.TypeClassRefactor` (ShellCommand)
 
 
-#### YouTube Videos to add to GHCExt
+#### YouTube Videos to add to LanguageExtensions
 
 Universal and Existential Quantification in Haskell – Stepan Prudnikov
 https://www.youtube.com/watch?v=ohp2uRM9n0o
 
 ## Specs
 
-```
+```bash
 cabal install hspec-discover
 cabal test
 cabal test --test-show-details=direct

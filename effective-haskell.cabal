@@ -80,32 +80,34 @@ library
                     , Base.Monad.StateT
                     , Base.Monad.ExceptT
                     , Base.HigherKindedType
-                    , GHCExt.AllowAmbiguousTypes
-                    , GHCExt.FlexibleContexts
-                    , GHCExt.UndecidableInstances
-                    , GHCExt.ArbitraryRankPolymorphism
-                    , GHCExt.ExistentitallyQuantifiedDataConstructors
-                    , GHCExt.ExistentialTypes.UsingRecord
-                    , GHCExt.ExistentialTypes.UsingTypeClass
-                    , GHCExt.ExistentialTypes.UsingTypeClassWithConstraint
-                    , GHCExt.InferredTypes
+                    , LanguageExtensions.Records.RecordWildCards
+                    , LanguageExtensions.Records.RecordPuns
+                    , LanguageExtensions.AllowAmbiguousTypes
+                    , LanguageExtensions.FlexibleContexts
+                    , LanguageExtensions.UndecidableInstances
+                    , LanguageExtensions.ArbitraryRankPolymorphism
+                    , LanguageExtensions.ExistentitallyQuantifiedDataConstructors
+                    , LanguageExtensions.ExistentialTypes.UsingRecord
+                    , LanguageExtensions.ExistentialTypes.UsingTypeClass
+                    , LanguageExtensions.ExistentialTypes.UsingTypeClassWithConstraint
+                    , LanguageExtensions.InferredTypes
                     -- Types and Kinds
-                    , GHCExt.FunctionalDependency.ShellCmd
-                    , GHCExt.Kinds.AssociatedTypeFamily.ShellCmd
-                    , GHCExt.Kinds.AssociatedDataFamily.ShellCmd
-                    , GHCExt.Kinds.OpenTypeFamily
-                    , GHCExt.Kinds.ClosedTypeFamily
-                    , GHCExt.Kinds.TypeLevelListOperations.WithClosedTypeFamilies
-                    , GHCExt.Kinds.TypeLevelListOperations.WithOpenTypeFamilies
-                    , GHCExt.GADT.HeterogeneusList
-                    , GHCExt.GADT.ShellCmd
-                    , GHCExt.GADT.CommandRunner
+                    , LanguageExtensions.FunctionalDependency.ShellCmd
+                    , LanguageExtensions.Kinds.AssociatedTypeFamily.ShellCmd
+                    , LanguageExtensions.Kinds.AssociatedDataFamily.ShellCmd
+                    , LanguageExtensions.Kinds.OpenTypeFamily
+                    , LanguageExtensions.Kinds.ClosedTypeFamily
+                    , LanguageExtensions.Kinds.TypeLevelListOperations.WithClosedTypeFamilies
+                    , LanguageExtensions.Kinds.TypeLevelListOperations.WithOpenTypeFamilies
+                    , LanguageExtensions.GADT.HeterogeneusList
+                    , LanguageExtensions.GADT.ShellCmd
+                    , LanguageExtensions.GADT.CommandRunner
                     -- YouTube tutorials
                     , YouTube.Kinds
                     , YouTube.Kinds2
 
     -- Modules included in this library but not exported.
-    -- other-modules: GHCExt.FunctionalDependencies
+    -- other-modules: LanguageExtensions.FunctionalDependencies
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
@@ -146,23 +148,23 @@ test-suite effective-haskell-test
                   , Base.Monad.StateTSpec
                   , Base.Monad.ExceptTSpec
                   , Base.HigherKindedTypeSpec
-                  , GHCExt.ExistentitallyQuantifiedDataConstructorsSpec
-                  , GHCExt.ExistentialTypes.UsingRecordSpec
-                  , GHCExt.ExistentialTypes.UsingTypeClassSpec
-                  , GHCExt.ExistentialTypes.UsingTypeClassWithConstraintSpec
-                  , GHCExt.InferredTypesSpec
+                  , LanguageExtensions.ExistentitallyQuantifiedDataConstructorsSpec
+                  , LanguageExtensions.ExistentialTypes.UsingRecordSpec
+                  , LanguageExtensions.ExistentialTypes.UsingTypeClassSpec
+                  , LanguageExtensions.ExistentialTypes.UsingTypeClassWithConstraintSpec
+                  , LanguageExtensions.InferredTypesSpec
                   -- Types and Kind
-                  , GHCExt.FunctionalDependency.ShellCmdSpec
-                  , GHCExt.Kinds.AssociatedTypeFamily.ShellCmdSpec
-                  , GHCExt.Kinds.AssociatedDataFamily.ShellCmdSpec
-                  , GHCExt.Kinds.OpenTypeFamilySpec
-                  , GHCExt.Kinds.ClosedTypeFamilySpec
-                  , GHCExt.Kinds.TypeLevelListOperations.WithClosedTypeFamiliesSpec
-                  , GHCExt.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec
-                  , GHCExt.GADT.HeterogeneusListSpec
-                  , GHCExt.GADT.ShellCmdSpec
-                  , GHCExt.GADT.CommandRunnerSpec
-                  , GHCExt.Helper
+                  , LanguageExtensions.FunctionalDependency.ShellCmdSpec
+                  , LanguageExtensions.Kinds.AssociatedTypeFamily.ShellCmdSpec
+                  , LanguageExtensions.Kinds.AssociatedDataFamily.ShellCmdSpec
+                  , LanguageExtensions.Kinds.OpenTypeFamilySpec
+                  , LanguageExtensions.Kinds.ClosedTypeFamilySpec
+                  , LanguageExtensions.Kinds.TypeLevelListOperations.WithClosedTypeFamiliesSpec
+                  , LanguageExtensions.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec
+                  , LanguageExtensions.GADT.HeterogeneusListSpec
+                  , LanguageExtensions.GADT.ShellCmdSpec
+                  , LanguageExtensions.GADT.CommandRunnerSpec
+                  , LanguageExtensions.Helper
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
