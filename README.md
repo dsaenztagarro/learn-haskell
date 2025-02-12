@@ -32,6 +32,7 @@ https://www.youtube.com/watch?v=ohp2uRM9n0o
 
 ```bash
 cabal install hspec-discover
+cabal build
 cabal test
 cabal test --test-show-details=direct
 cabal test --test-options="--color --match=FilePackParser"

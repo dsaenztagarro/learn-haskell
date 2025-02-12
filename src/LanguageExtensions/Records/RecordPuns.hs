@@ -1,3 +1,4 @@
+-- https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/record_puns.html
 {-# LANGUAGE NamedFieldPuns #-}
 {-# OPTIONS_GHC -Wno-missing-signatures #-}
 {-# OPTIONS_GHC -Wno-incomplete-patterns #-}
