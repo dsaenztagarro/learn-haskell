@@ -2,7 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
-module HCat where
+module Apps.Pager.HCat2 where
 
 import qualified System.Environment as Env
 import qualified Control.Exception as Exception
@@ -19,24 +19,25 @@ import Text.Printf (printf)
 import System.Process (readProcess)
 import System.IO
 
+main :: IO ()
+main = runHCat
+
 runHCat :: IO ()
-runHCat = do
-  targetFilePath <- do
-    args <- handleArgs
-    eitherToErr args
-
-  contents <- do
-    handle <- openFile targetFilePath ReadMode
-    TextIO.hGetContents handle
-
-  termSize <- getTerminalSize
-  hSetBuffering stdout NoBuffering
-  finfo <- fileInfo targetFilePath
-  let pages = paginate termSize finfo contents
-  showPages pages
-
-runHCat' = do
-  handleIOError runHCat
+runHCat =
+  handleIOError $
+    handleArgs
+    >>= eitherToErr
+    >>= \targetFilePath ->
+      openFile targetFilePath ReadMode
+    >>= TextIO.hGetContents
+    >>= \contents ->
+      getTerminalSize
+      >>= \termSize ->
+        hSetBuffering stdout NoBuffering
+        >> fileInfo targetFilePath
+        >>= \finfo ->
+          let pages = paginate termSize finfo contents
+          in showPages pages
   where
     handleIOError :: IO () -> IO ()
     handleIOError ioAction = Exception.catch ioAction $

@@ -2,7 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
-module HCat where
+module Apps.Pager.HCat1 where
 
 import qualified System.Environment as Env
 import qualified Control.Exception as Exception
@@ -18,6 +18,9 @@ import qualified System.Info as SystemInfo
 import Text.Printf (printf)
 import System.Process (readProcess)
 import System.IO
+
+main :: IO ()
+main = runHCat
 
 runHCat :: IO ()
 runHCat =

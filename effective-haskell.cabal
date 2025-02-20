@@ -82,6 +82,8 @@ library
                     , Base.HigherKindedType
                     , LanguageExtensions.Records.RecordWildCards
                     , LanguageExtensions.Records.RecordPuns
+                    , LanguageExtensions.TypeSignatures.ExplicitForAll
+                    , LanguageExtensions.TypeSignatures.ScopedTypeVariables
                     , LanguageExtensions.AllowAmbiguousTypes
                     , LanguageExtensions.FlexibleContexts
                     , LanguageExtensions.UndecidableInstances
@@ -189,3 +191,53 @@ test-suite effective-haskell-test
         text,
         bytestring,
         containers
+
+common importHCat
+  -- Base language which the package is written in.
+  default-language: Haskell2010
+
+  -- Directories containing source files.
+  hs-source-dirs: src
+
+  -- Test dependencies.
+  build-depends:
+      base ^>=4.17.2.1,
+      bytestring,
+      directory,
+      process,
+      text,
+      time,
+
+executable pager-hcat1
+  import:  warnings, importHCat
+
+  -- The entrypoint to the executable
+  main-is: Apps/Pager/HCat1.hs
+
+  ghc-options: -main-is Apps.Pager.HCat1
+
+executable pager-hcat2
+  import:  warnings, importHCat
+
+  -- The entrypoint to the executable
+  main-is: Apps/Pager/HCat2.hs
+
+  ghc-options: -main-is Apps.Pager.HCat2
+
+executable pager-hcat3
+  import:  warnings, importHCat
+
+  -- The entrypoint to the executable
+  main-is: Apps/Pager/HCat3.hs
+
+  ghc-options: -main-is Apps.Pager.HCat3
+
+executable pager-hcat4
+  import:  warnings, importHCat
+
+  -- The entrypoint to the executable
+  main-is: Apps/Pager/HCat4.hs
+
+  ghc-options: -main-is Apps.Pager.HCat4
+
+

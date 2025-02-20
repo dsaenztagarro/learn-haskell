@@ -2,7 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
-module HCat where
+module Apps.Pager.HCat3 where
 
 import qualified System.Environment as Env
 import qualified Control.Exception as Exception
@@ -19,7 +19,9 @@ import Text.Printf (printf)
 import System.Process (readProcess)
 import System.IO
 
---method version 3
+main :: IO ()
+main = runHCat
+
 runHCat :: IO ()
 runHCat = do
   targetFilePath <- eitherToErr =<< handleArgs
@@ -141,7 +143,6 @@ paginate (ScreenDimensions rows cols) finfo text =
     padTo :: Int -> [Text.Text] -> [Text.Text]
     padTo lineCount rowsToPad =
       take lineCount $ rowsToPad <> repeat ""
-
 
 groupsOf :: Int -> [a] -> [[a]]
 groupsOf n [] = []

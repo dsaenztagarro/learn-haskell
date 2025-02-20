@@ -2,7 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
-module HCat where
+module Apps.Pager.HCat4 where
 
 import qualified System.Environment as Env
 import qualified Control.Exception as Exception
@@ -12,34 +12,36 @@ import qualified Data.Text.IO as TextIO
 import qualified Data.ByteString as BS
 import qualified Data.Time.Clock as Clock
 import qualified Data.Time.Format as TimeFormat
-import qualified Data.Time.Clock.POSIX as PosixClock
 import qualified System.Directory as Directory
 import qualified System.Info as SystemInfo
 import Text.Printf (printf)
 import System.Process (readProcess)
 import System.IO
+import Prelude hiding (lines)
 
--- method version 2
-runHCat :: IO ()
-runHCat =
-  handleIOError $
-    handleArgs
-    >>= eitherToErr
-    >>= \targetFilePath ->
-      openFile targetFilePath ReadMode
-    >>= TextIO.hGetContents
-    >>= \contents ->
-      getTerminalSize
-      >>= \termSize ->
-        hSetBuffering stdout NoBuffering
-        >> fileInfo targetFilePath
-        >>= \finfo ->
-          let pages = paginate termSize finfo contents
-          in showPages pages
+main :: IO ()
+main = do
+  handleIOError runHCat
   where
     handleIOError :: IO () -> IO ()
     handleIOError ioAction = Exception.catch ioAction $
       \e -> putStrLn "I ran into an error: " >> print @IOError e
+
+runHCat :: IO ()
+runHCat = do
+  targetFilePath <- do
+    args <- handleArgs
+    eitherToErr args
+
+  contents <- do
+    handle <- openFile targetFilePath ReadMode
+    TextIO.hGetContents handle
+
+  termSize <- getTerminalSize
+  hSetBuffering stdout NoBuffering
+  finfo <- fileInfo targetFilePath
+  let pages = paginate termSize finfo contents
+  showPages pages
 
 handleArgs :: IO (Either String FilePath)
 handleArgs =
@@ -148,7 +150,7 @@ paginate (ScreenDimensions rows cols) finfo text =
 
 
 groupsOf :: Int -> [a] -> [[a]]
-groupsOf n [] = []
+groupsOf _n [] = []
 groupsOf n elems =
   let (hd, tl) = splitAt n elems
   in hd : groupsOf n tl
