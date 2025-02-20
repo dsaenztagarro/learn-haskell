@@ -1,7 +1,7 @@
 {-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE KindSignatures #-}
 
-module Base.Deriving.ViaCompatibleType where
+module LanguageExtensions.Deriving.ViaCompatibleType where
 
 import Numeric
 import Data.Kind (Type)

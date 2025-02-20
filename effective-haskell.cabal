@@ -62,11 +62,6 @@ library
 
     -- Modules exported by the library.
     exposed-modules:  Base.Roles
-                    , Base.Deriving.GeneralizedNewtypeDeriving
-                    , Base.Deriving.StandaloneDeriving
-                    , Base.Deriving.ViaCompatibleType
-                    , Base.Deriving.AnyclassDeriving
-                    , Base.Deriving.Strategies
                     , Base.Parser.FilePackParser.Encoding
                     , Base.Parser.Applicative.FilePackParser
                     , Base.Parser.Monadic.FilePackParser
@@ -80,6 +75,18 @@ library
                     , Base.Monad.StateT
                     , Base.Monad.ExceptT
                     , Base.HigherKindedType
+                    , StandardLibrary.Data.List
+                    , StandardLibrary.Data.Either
+                    , StandardLibrary.Data.Function
+                    , StandardLibrary.Data.Functor
+                    , StandardLibrary.Control.Applicative
+                    , StandardLibrary.Control.Alternative
+                    , StandardLibrary.Control.Monad
+                    , LanguageExtensions.Deriving.GeneralizedNewtypeDeriving
+                    , LanguageExtensions.Deriving.StandaloneDeriving
+                    , LanguageExtensions.Deriving.ViaCompatibleType
+                    , LanguageExtensions.Deriving.AnyclassDeriving
+                    , LanguageExtensions.Deriving.Strategies
                     , LanguageExtensions.Records.RecordWildCards
                     , LanguageExtensions.Records.RecordPuns
                     , LanguageExtensions.TypeSignatures.ExplicitForAll

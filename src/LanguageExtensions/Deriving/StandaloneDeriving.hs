@@ -2,7 +2,7 @@
 {-# LANGUAGE StandaloneDeriving #-}
 {-# LANGUAGE FlexibleInstances #-}
 
-module Base.Deriving.StandaloneDeriving where
+module LanguageExtensions.Deriving.StandaloneDeriving where
 
 data Foo a = Bar a | Baz String
 

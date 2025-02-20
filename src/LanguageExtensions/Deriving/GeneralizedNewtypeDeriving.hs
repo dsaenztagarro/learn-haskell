@@ -1,7 +1,7 @@
 -- https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/newtype_deriving.html#newtype-deriving
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
-module Base.Deriving.GeneralizedNewtypeDeriving where
+module LanguageExtensions.Deriving.GeneralizedNewtypeDeriving where
 
 {-
 Using `GeneralizedNewtypeDeriving` (Generalised derived instances for newtypes),

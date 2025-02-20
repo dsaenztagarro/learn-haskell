@@ -2,7 +2,7 @@
 {-# LANGUAGE DefaultSignatures #-}
 {-# LANGUAGE DeriveAnyClass #-}
 {-# LANGUAGE DerivingStrategies #-}
-module Base.Deriving.Strategies where
+module LanguageExtensions.Deriving.Strategies where
 
 class Redacted a where
   redacted :: a -> String

@@ -1,6 +1,6 @@
 {-# LANGUAGE DefaultSignatures #-}
 {-# LANGUAGE DeriveAnyClass #-}
-module Base.Deriving.AnyclassDeriving where
+module LanguageExtensions.Deriving.AnyclassDeriving where
 
 {-
 Haskell 98 allows you to define a default implementation when declaring a class:
