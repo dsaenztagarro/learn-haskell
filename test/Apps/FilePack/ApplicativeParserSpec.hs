@@ -1,11 +1,11 @@
 {-# LANGUAGE CPP #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeApplications #-}
-module Base.Parser.Applicative.FilePackParserSpec where
+module Apps.FilePack.ApplicativeParserSpec where
 
 import Test.Hspec
-import Base.Parser.FilePackParser.Encoding
-import Base.Parser.Applicative.FilePackParser
+import Apps.FilePack.ApplicativeParser
+import Apps.FilePack.Util
 import qualified Data.ByteString as BS
 import Data.Text (Text)
 import Data.Word (Word32)
@@ -15,7 +15,7 @@ import System.FilePath (dropFileName, (</>))
 currentTestDataDir :: IO String
 currentTestDataDir =
   makeAbsolute (dropFileName __FILE__) >>=
-    \dir -> return (dir </> ".." </> "testdata")
+    \dir -> return (dir </> "testdata")
 
 spec :: Spec
 spec = do

@@ -61,10 +61,13 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  Base.Roles
-                    , Base.Parser.FilePackParser.Encoding
-                    , Base.Parser.Applicative.FilePackParser
-                    , Base.Parser.Monadic.FilePackParser
+    exposed-modules:  Apps.FilePack.Serializer1
+                    , Apps.FilePack.Serializer2
+                    , Apps.FilePack.Serializer3
+                    , Apps.FilePack.ApplicativeParser
+                    , Apps.FilePack.MonadicParser
+                    , Apps.FilePack.Util
+                    , Base.Roles
                     , Base.Monad.State
                     , Base.Monad.Identity
                     , Base.Monad.MonadFail
@@ -129,7 +132,8 @@ library
                       exceptions,
                       text,
                       bytestring,
-                      containers
+                      containers,
+                      base64-bytestring
 
     -- Directories containing source files.
     hs-source-dirs:   src
@@ -145,11 +149,8 @@ test-suite effective-haskell-test
     default-language: Haskell2010
 
     -- Modules included in this executable, other than Main.
-    other-modules:  LanguageExtensions.Deriving.GeneralizedNewtypeDerivingSpec
-                  , LanguageExtensions.Deriving.ViaCompatibleTypeSpec
-                  , LanguageExtensions.Deriving.AnyclassDerivingSpec
-                  , Base.Parser.Applicative.FilePackParserSpec
-                  , Base.Parser.Monadic.FilePackParserSpec
+    other-modules:  Apps.FilePack.ApplicativeParserSpec
+                  , Apps.FilePack.MonadicParserSpec
                   , Base.Monad.StateSpec
                   , Base.Monad.MonadState1Spec
                   , Base.Monad.MonadState2Spec
@@ -158,6 +159,11 @@ test-suite effective-haskell-test
                   , Base.Monad.StateTSpec
                   , Base.Monad.ExceptTSpec
                   , Base.HigherKindedTypeSpec
+                  -- Deriving
+                  , LanguageExtensions.Deriving.GeneralizedNewtypeDerivingSpec
+                  , LanguageExtensions.Deriving.ViaCompatibleTypeSpec
+                  , LanguageExtensions.Deriving.AnyclassDerivingSpec
+                  -- ...
                   , LanguageExtensions.ExistentitallyQuantifiedDataConstructorsSpec
                   , LanguageExtensions.ExistentialTypes.UsingRecordSpec
                   , LanguageExtensions.ExistentialTypes.UsingTypeClassSpec

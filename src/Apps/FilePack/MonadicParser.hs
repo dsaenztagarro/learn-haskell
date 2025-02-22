@@ -1,13 +1,13 @@
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE DerivingVia #-}
 
-module Base.Parser.Monadic.FilePackParser where
+module Apps.FilePack.MonadicParser where
 
+import Apps.FilePack.ApplicativeParser (FilePack, FilePackParser(..), extractValue, execParser)
+import Apps.FilePack.Util
 import Prelude hiding (MonadFail, fail)
-import Base.Parser.Applicative.FilePackParser
 import Control.Applicative
 import Data.Word (Word32)
-import Base.Parser.FilePackParser.Encoding
 import Base.Monad.MonadFail
 
 instance Monad FilePackParser where

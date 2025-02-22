@@ -1,9 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE ExistentialQuantification #-}
-module FilePack3 where
+module Apps.FilePack.Util where
 
 import Data.Bits ((.&.), (.|.), shift)
 import Data.ByteString (ByteString)
@@ -22,6 +21,10 @@ data FileData a = FileData
   , fileData :: a
   } deriving (Eq, Read, Show)
 
+----------------
+-- Type classes
+----------------
+
 class Encode a where
   encode :: a -> ByteString
   encode = BS.drop 4 . encodeWithSize
@@ -36,30 +39,18 @@ class Encode a where
 class Decode a where
   decode :: ByteString -> Either String a
 
-instance (Encode a, Encode b) => Encode (a,b) where
-  encode (a,b) =
-    encode $ encodeWithSize a <> encodeWithSize b
-
-instance {-# OVERLAPPABLE #-} Encode a => Encode [a] where
-  encode = encode . foldMap encodeWithSize
+-------------------------------
+-- Encode type class instances
+-------------------------------
 
 instance Encode ByteString where
   encode = id
 
-instance Decode ByteString where
-  decode = Right
-
 instance Encode Text where
   encode = encodeUtf8
 
-instance Decode Text where
-  decode = Right . decodeUtf8
-
 instance Encode String where
   encode = BC.pack
-
-instance Decode String where
-  decode = Right . BC.unpack
 
 instance Encode Word32 where
   encode = word32ToByteString
@@ -68,32 +59,56 @@ instance Encode Word32 where
     in BS.pack [ 4, 0, 0, 0
                , a, b, c, d]
 
-instance Decode Word32 where
-  decode = bytestringToWord32
-
 instance Encode Word16 where
   encode = word16ToByteString
-
-instance Decode Word16 where
-  decode = bytestringToWord16
 
 instance Encode FileMode where
   encode (CMode fMode) = encode fMode
 
+instance Encode a => Encode (FileData a) where
+  encode FileData{..} = encode $
+    encodeWithSize fileName
+    <> encodeWithSize fileSize
+    <> encodeWithSize filePermissions
+    <> encodeWithSize fileData
+
+instance (Encode a, Encode b) => Encode (a,b) where
+  encode (a,b) =
+    encode $ encodeWithSize a <> encodeWithSize b
+
+{-
+The following instance overlaps with the one defined for String.
+By using the OVERLAPPABLE pragma we can tell GHC to always prefer a different
+instance if there happens to be a conflict.
+-}
+instance {-# OVERLAPPABLE #-} Encode a => Encode [a] where
+  encode = encode . foldMap encodeWithSize
+
+-------------------------------
+-- Decode type class instances
+-------------------------------
+
+instance Decode ByteString where
+  decode = Right
+
+instance Decode Text where
+  decode = Right . decodeUtf8
+
+instance Decode String where
+  decode = Right . BC.unpack
+
+instance Decode Word32 where
+  decode = bytestringToWord32
+
+instance Decode Word16 where
+  decode = bytestringToWord16
+
 instance Decode FileMode where
   decode = fmap CMode . decode
 
--- showBinary = printf "%b\n"
---
--- printBytes $ word32ToBytes 255
--- "ff 00 00 00\n"
--- Little endian x86-64 system -- least significant bytes first --
-
-printBytes :: (Word8, Word8, Word8, Word8) -> String
-printBytes (a, b, c, d) = printf "%02x %02x %02x %02x\n" a b c d
-
-
+---------------------------
 -- Word32 helper functions
+---------------------------
 
 word32ToBytes :: Word32 -> (Word8, Word8, Word8, Word8)
 word32ToBytes word =
@@ -125,7 +140,14 @@ bytestringToWord32 bytestring =
       let l = show $ BS.length bytestring
       in Left ("Expecting 4 bytes but got " <> l)
 
+consWord32 :: Word32 -> ByteString -> ByteString
+consWord32 word bytestring =
+  let packedWord = word32ToByteString word
+  in packedWord <> bytestring
+
+---------------------------
 -- Word16 helper functions
+---------------------------
 
 word16ToBytes :: Word16 -> (Word8, Word8)
 word16ToBytes word =
@@ -153,70 +175,24 @@ bytestringToWord16 bytestring =
       let l = show $ BS.length bytestring
       in Left ("Expecting 2 bytes but got " <> l)
 
-consWord32 :: Word32 -> ByteString -> ByteString
-consWord32 word bytestring =
-  let packedWord = word32ToByteString word
-  in packedWord <> bytestring
+---------------------------
+-- Bits manipulation
+---------------------------
 
-instance Encode a => Encode (FileData a) where
-  encode FileData{..} =
-    let
-      encodedFileName = encodeWithSize fileName
-      encodedFileSize = encodeWithSize fileSize
-      encodedFilePermmissions = encodeWithSize filePermissions
-      encodedFileData = encodeWithSize fileData
-      encodedData =
-        encodedFileName
-        <> encodedFileSize
-        <> encodedFilePermmissions
-        <> encodedFileData
-    in encode encodedData
+-- showBinary = printf "%b\n"
 
--- instance Encode a => (FilePack a) where
---   encode (FilePack a) = FilePack2.encode a
+printBytes :: (Word8, Word8, Word8, Word8) -> String
+printBytes (a, b, c, d) = printf "%02x %02x %02x %02x\n" a b c d
 
-
-data Packable = forall a. Encode a => Packable { getPackable :: FileData a }
-
-instance Encode Packable where
-  encode (Packable p) = encode p
-
-newtype FilePack = FilePack [Packable]
-
-instance Encode FilePack where
-  encode (FilePack p) = encode p
-
--- Test data
-
-addFileDataToPack :: Encode a => FileData a -> FilePack -> FilePack
-addFileDataToPack a (FilePack as) = FilePack $ (Packable a) : as
-
-infixr 6 .:
-(.:) :: (Encode a) => FileData a -> FilePack -> FilePack
-(.:) = addFileDataToPack
-
-emptyFilePack :: FilePack
-emptyFilePack = FilePack []
-
-testEncodeValue :: ByteString
-testEncodeValue =
-  let
-    a = FileData
-      { fileName = "a"
-      , fileSize = 3
-      , filePermissions = 0755
-      , fileData = "foo" :: String
-      }
-    b = FileData
-      { fileName = "b"
-      , fileSize = 10
-      , filePermissions = 0644
-      , fileData = ["hello", "world"] :: [Text]
-      }
-    c = FileData
-      { fileName = "c"
-      , fileSize = 8
-      , filePermissions = 0644
-      , fileData = (0,"zero") :: (Word32,String)
-      }
-  in encode $ a .: b .: c .: emptyFilePack
+-- Little Endian (least significant bytes first)
+--
+-- ghci> printBytes $ word32ToBytes 255
+-- ff 00 00 00
+-- ghci> word32ToBytes 0x000000ff
+-- (255,0,0,0)
+-- ghci> word32ToBytes $ shift 0x000000ff 8
+-- (0,255,0,0)
+-- ghci> word32ToBytes $ shift 0x000000ff 16
+-- (0,0,255,0)
+-- ghci> word32ToBytes $ shift 0x000000ff 24
+-- (0,0,0,255)

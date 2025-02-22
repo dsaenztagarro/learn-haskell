@@ -53,10 +53,7 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  FilePack1
-                    , FilePack2
-                    , FilePack3
-                    , ExistentialDemo
+    exposed-modules:  ExistentialDemo
                     , ExistentialDemo2
                     , ExistentialDemo3
 

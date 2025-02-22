@@ -1,22 +1,22 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE ExistentialQuantification #-}
 {-# LANGUAGE OverloadedStrings #-}
-module Base.Parser.Applicative.FilePackParser where
+module Apps.FilePack.ApplicativeParser where
 
+import Apps.FilePack.Util
 import Control.Applicative
 import Control.Monad (when)
 import Data.ByteString (ByteString)
 import qualified Data.ByteString as BS
-import Base.Parser.FilePackParser.Encoding
 import Data.Text (Text)
 import Data.Word (Word32)
 
 data Packable = forall a. Encode a => Packable { getPackable :: FileData a }
 
+newtype FilePack = FilePack [Packable]
+
 instance Encode Packable where
   encode (Packable p) = encode p
-
-newtype FilePack = FilePack [Packable]
 
 instance Encode FilePack where
   encode (FilePack p) = encode p

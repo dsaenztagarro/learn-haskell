@@ -1,11 +1,11 @@
 {-# LANGUAGE CPP #-}
 {-# LANGUAGE TypeApplications #-}
-module Base.Parser.Monadic.FilePackParserSpec where
+module Apps.FilePack.MonadicParserSpec where
 
 import Test.Hspec
-import Base.Parser.FilePackParser.Encoding
-import Base.Parser.Applicative.FilePackParser
-import Base.Parser.Monadic.FilePackParser
+import Apps.FilePack.ApplicativeParser
+import Apps.FilePack.MonadicParser
+import Apps.FilePack.Util
 import qualified Data.ByteString as BS
 import Data.Word (Word32)
 import System.Directory (makeAbsolute)
@@ -14,7 +14,7 @@ import System.FilePath (dropFileName, (</>))
 currentTestDataDir :: IO String
 currentTestDataDir =
   makeAbsolute (dropFileName __FILE__) >>=
-    \dir -> return (dir </> ".." </> "testdata")
+    \dir -> return (dir </> "testdata")
 
 addFileDataToPack :: Encode a => FileData a -> FilePack -> FilePack
 addFileDataToPack a (FilePack as) = FilePack $ Packable a : as
