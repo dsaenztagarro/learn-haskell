@@ -14,7 +14,6 @@ import qualified Data.Text as Text
 import Data.Text.Encoding (encodeUtf8, decodeUtf8)
 import Data.Word
 import System.Posix.Types (FileMode, CMode(..))
-import Text.Printf
 import Text.Read (readEither)
 
 class Encode a where
@@ -77,15 +76,6 @@ instance Encode FileMode where
 
 instance Decode FileMode where
   decode = fmap CMode . decode
-
--- showBinary = printf "%b\n"
---
--- printBytes $ word32ToBytes 255
--- "ff 00 00 00\n"
--- Little endian x86-64 system -- least significant bytes first --
-
-printBytes :: (Word8, Word8, Word8, Word8) -> String
-printBytes (a, b, c, d) = printf "%02x %02x %02x %02x\n" a b c d
 
 
 -- Word32 helper functions

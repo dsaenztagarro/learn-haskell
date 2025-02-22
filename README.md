@@ -36,6 +36,7 @@ cabal build
 cabal test
 cabal test --test-show-details=direct
 cabal test --test-options="--color --match=FilePackParser"
+cabal repl
 ```
 
 ### Debugging

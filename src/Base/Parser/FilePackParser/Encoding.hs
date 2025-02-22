@@ -12,6 +12,7 @@ import Data.Text (Text)
 import Data.Text.Encoding (encodeUtf8, decodeUtf8)
 import Data.Word
 import System.Posix.Types (FileMode, CMode(..))
+import Text.Printf
 
 data FileData a = FileData
   { fileName :: FilePath
@@ -19,6 +20,10 @@ data FileData a = FileData
   , filePermissions :: FileMode
   , fileData :: a
   } deriving (Eq, Read, Show)
+
+----------------
+-- Type classes
+----------------
 
 class Encode a where
   encode :: a -> ByteString
@@ -34,23 +39,76 @@ class Encode a where
 class Decode a where
   decode :: ByteString -> Either String a
 
+-------------------------------
+-- Encode type class instances
+-------------------------------
+
 instance Encode ByteString where
   encode = id
-
-instance Decode ByteString where
-  decode = Right
 
 instance Encode Text where
   encode = encodeUtf8
 
-instance Decode Text where
-  decode = Right . decodeUtf8
-
 instance Encode String where
   encode = BC.pack
 
+instance Encode Word32 where
+  encode = word32ToByteString
+  encodeWithSize w =
+    let (a, b, c, d) = word32ToBytes w
+    in BS.pack [ 4, 0, 0, 0
+               , a, b, c, d]
+
+instance Encode Word16 where
+  encode = word16ToByteString
+
+instance Encode FileMode where
+  encode (CMode fMode) = encode fMode
+
+instance Encode a => Encode (FileData a) where
+  encode FileData{..} = encode $
+    encodeWithSize fileName
+    <> encodeWithSize fileSize
+    <> encodeWithSize filePermissions
+    <> encodeWithSize fileData
+
+instance (Encode a, Encode b) => Encode (a,b) where
+  encode (a,b) =
+    encode $ encodeWithSize a <> encodeWithSize b
+
+{-
+The following instance overlaps with the one defined for String.
+By using the OVERLAPPABLE pragma we can tell GHC to always prefer a different
+instance if there happens to be a conflict.
+-}
+instance {-# OVERLAPPABLE #-} Encode a => Encode [a] where
+  encode = encode . foldMap encodeWithSize
+
+-------------------------------
+-- Decode type class instances
+-------------------------------
+
+instance Decode ByteString where
+  decode = Right
+
+instance Decode Text where
+  decode = Right . decodeUtf8
+
 instance Decode String where
   decode = Right . BC.unpack
+
+instance Decode Word32 where
+  decode = bytestringToWord32
+
+instance Decode Word16 where
+  decode = bytestringToWord16
+
+instance Decode FileMode where
+  decode = fmap CMode . decode
+
+---------------------------
+-- Word32 helper functions
+---------------------------
 
 word32ToBytes :: Word32 -> (Word8, Word8, Word8, Word8)
 word32ToBytes word =
@@ -82,7 +140,9 @@ bytestringToWord32 bytestring =
       let l = show $ BS.length bytestring
       in Left ("Expecting 4 bytes but got " <> l)
 
+---------------------------
 -- Word16 helper functions
+---------------------------
 
 word16ToBytes :: Word16 -> (Word8, Word8)
 word16ToBytes word =
@@ -110,43 +170,24 @@ bytestringToWord16 bytestring =
       let l = show $ BS.length bytestring
       in Left ("Expecting 2 bytes but got " <> l)
 
-instance Encode Word32 where
-  encode = word32ToByteString
-  encodeWithSize w =
-    let (a, b, c, d) = word32ToBytes w
-    in BS.pack [ 4, 0, 0, 0
-               , a, b, c, d]
+---------------------------
+-- Bits manipulation
+---------------------------
 
-instance Decode Word32 where
-  decode = bytestringToWord32
+-- showBinary = printf "%b\n"
 
-instance Encode Word16 where
-  encode = word16ToByteString
+printBytes :: (Word8, Word8, Word8, Word8) -> String
+printBytes (a, b, c, d) = printf "%02x %02x %02x %02x\n" a b c d
 
-instance Decode Word16 where
-  decode = bytestringToWord16
-
-instance Encode FileMode where
-  encode (CMode fMode) = encode fMode
-
-instance Decode FileMode where
-  decode = fmap CMode . decode
-
-instance Encode a => Encode (FileData a) where
-  encode FileData{..} = encode $
-    encodeWithSize fileName
-    <> encodeWithSize fileSize
-    <> encodeWithSize filePermissions
-    <> encodeWithSize fileData
-
-instance (Encode a, Encode b) => Encode (a,b) where
-  encode (a,b) =
-    encode $ encodeWithSize a <> encodeWithSize b
-
-{-
-The following instance overlaps with the one defined for String.
-By using the OVERLAPPABLE pragma we can tell GHC to always prefer a different
-instance if there happens to be a conflict.
--}
-instance {-# OVERLAPPABLE #-} Encode a => Encode [a] where
-  encode = encode . foldMap encodeWithSize
+-- Little Endian (least significant bytes first)
+--
+-- ghci> printBytes $ word32ToBytes 255
+-- ff 00 00 00
+-- ghci> word32ToBytes 0x000000ff
+-- (255,0,0,0)
+-- ghci> word32ToBytes $ shift 0x000000ff 8
+-- (0,255,0,0)
+-- ghci> word32ToBytes $ shift 0x000000ff 16
+-- (0,0,255,0)
+-- ghci> word32ToBytes $ shift 0x000000ff 24
+-- (0,0,0,255)

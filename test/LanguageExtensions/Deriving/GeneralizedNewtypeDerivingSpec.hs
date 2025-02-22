@@ -1,7 +1,7 @@
-module Base.Deriving.GeneralizedNewtypeDerivingSpec (spec) where
+module LanguageExtensions.Deriving.GeneralizedNewtypeDerivingSpec (spec) where
 
 import Test.Hspec
-import Base.Deriving.GeneralizedNewtypeDeriving
+import LanguageExtensions.Deriving.GeneralizedNewtypeDeriving
 
 spec :: Spec
 spec = do

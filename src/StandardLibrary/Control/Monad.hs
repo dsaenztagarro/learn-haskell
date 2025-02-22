@@ -1,5 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 module StandardLibrary.Control.Monad where
+-- See $GHC/libraries/ghc-internal/src/GHC/Internal/Base.hs
 
 import StandardLibrary.Control.Applicative
 

@@ -76,6 +76,7 @@ library
                     , Base.Monad.ExceptT
                     , Base.HigherKindedType
                     , StandardLibrary.Data.List
+                    , StandardLibrary.Data.Maybe
                     , StandardLibrary.Data.Either
                     , StandardLibrary.Data.Function
                     , StandardLibrary.Data.Functor
@@ -144,9 +145,9 @@ test-suite effective-haskell-test
     default-language: Haskell2010
 
     -- Modules included in this executable, other than Main.
-    other-modules:  Base.Deriving.GeneralizedNewtypeDerivingSpec
-                  , Base.Deriving.ViaCompatibleTypeSpec
-                  , Base.Deriving.AnyclassDerivingSpec
+    other-modules:  LanguageExtensions.Deriving.GeneralizedNewtypeDerivingSpec
+                  , LanguageExtensions.Deriving.ViaCompatibleTypeSpec
+                  , LanguageExtensions.Deriving.AnyclassDerivingSpec
                   , Base.Parser.Applicative.FilePackParserSpec
                   , Base.Parser.Monadic.FilePackParserSpec
                   , Base.Monad.StateSpec
