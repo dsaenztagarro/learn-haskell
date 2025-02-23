@@ -95,8 +95,9 @@ library
                     , LanguageExtensions.Records.RecordPuns
                     , LanguageExtensions.TypeSignatures.ExplicitForAll
                     , LanguageExtensions.TypeSignatures.ScopedTypeVariables
-                    , LanguageExtensions.AllowAmbiguousTypes
+                    , LanguageExtensions.TypeSignatures.AllowAmbiguousTypes
                     , LanguageExtensions.TypeClasses.FlexibleContexts
+                    , LanguageExtensions.TypeClasses.FlexibleInstances
                     , LanguageExtensions.UndecidableInstances
                     , LanguageExtensions.ArbitraryRankPolymorphism
                     , LanguageExtensions.Types.ExistentialQuantification
