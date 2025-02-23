@@ -1,5 +1,5 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-module StandardLibrary.Data.Functor where
+module Std.Data.Functor where
 
 import Prelude (const)
 

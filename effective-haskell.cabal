@@ -78,14 +78,14 @@ library
                     , Base.Monad.StateT
                     , Base.Monad.ExceptT
                     , Base.HigherKindedType
-                    , StandardLibrary.Data.List
-                    , StandardLibrary.Data.Maybe
-                    , StandardLibrary.Data.Either
-                    , StandardLibrary.Data.Function
-                    , StandardLibrary.Data.Functor
-                    , StandardLibrary.Control.Applicative
-                    , StandardLibrary.Control.Alternative
-                    , StandardLibrary.Control.Monad
+                    , Std.Data.List
+                    , Std.Data.Maybe
+                    , Std.Data.Either
+                    , Std.Data.Function
+                    , Std.Data.Functor
+                    , Std.Control.Applicative
+                    , Std.Control.Alternative
+                    , Std.Control.Monad
                     , LanguageExtensions.Deriving.GeneralizedNewtypeDeriving
                     , LanguageExtensions.Deriving.StandaloneDeriving
                     , LanguageExtensions.Deriving.ViaCompatibleType

@@ -1,8 +1,8 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-module StandardLibrary.Data.Either where
+module Std.Data.Either where
 
-import StandardLibrary.Data.Functor
-import StandardLibrary.Control.Applicative
+import Std.Data.Functor
+import Std.Control.Applicative
 import Prelude (Show)
 
 data Either a b = Left a | Right b deriving Show

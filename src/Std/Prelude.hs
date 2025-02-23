@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module StandardLibrary.Prelude
+module Std.Prelude
 
 import Prelude (const, Int, even, succ)
 import qualified Text.Read as Text

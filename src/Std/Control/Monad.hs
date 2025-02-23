@@ -1,8 +1,9 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-module StandardLibrary.Control.Monad where
+module Std.Control.Monad where
+
 -- See $GHC/libraries/ghc-internal/src/GHC/Internal/Base.hs
 
-import StandardLibrary.Control.Applicative
+import Std.Control.Applicative
 
 class Applicative m => Monad m where
   -- Laws:

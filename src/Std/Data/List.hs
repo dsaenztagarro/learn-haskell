@@ -1,9 +1,9 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-module StandardLibrary.Data.List where
+module Std.Data.List where
 
-import StandardLibrary.Data.Functor
-import StandardLibrary.Control.Applicative
-import StandardLibrary.Control.Monad
+import Std.Data.Functor
+import Std.Control.Applicative
+import Std.Control.Monad
 import Prelude (show, (.), Show)
 
 data List a = Empty | List a (List a)

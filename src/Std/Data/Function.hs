@@ -1,8 +1,8 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-module StandardLibrary.Data.Function where
+module Std.Data.Function where
 
-import StandardLibrary.Data.Functor
-import StandardLibrary.Control.Applicative
+import Std.Data.Functor
+import Std.Control.Applicative
 import Prelude (const, (.), ($))
 
 newtype Function a b = Function { runFunction :: a -> b }

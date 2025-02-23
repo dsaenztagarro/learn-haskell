@@ -1,8 +1,11 @@
 This project contains examples from [Effective Haskell][1] book.
 
-- Chapter13: Monad Transformers
+Modules:
+- `Apps` - Applications
+- `Std` - Standard Library
+- `Ext` - Language extensions
 
-[1]: https://www.pragprog.com/titles/rshaskell/effective-haskell/
+- Chapter13: Monad Transformers
 
 ### Learning path
 
@@ -60,3 +63,5 @@ let mytrace = trace ("extractValue: " <> show (typeRep (Proxy @a)))
 ```
 git clone git@github.com:haskell/ThreadScope.git
 ```
+
+[1]: https://www.pragprog.com/titles/rshaskell/effective-haskell/

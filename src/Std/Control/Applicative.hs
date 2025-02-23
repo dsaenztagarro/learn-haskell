@@ -1,7 +1,7 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-module StandardLibrary.Control.Applicative where
+module Std.Control.Applicative where
 
-import StandardLibrary.Data.Functor
+import Std.Data.Functor
 
 class Functor f => Applicative f where
   -- Laws:

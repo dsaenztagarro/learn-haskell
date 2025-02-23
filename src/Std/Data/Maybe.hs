@@ -1,9 +1,9 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-module StandardLibrary.Data.Maybe where
+module Std.Data.Maybe where
 
-import StandardLibrary.Data.Functor
-import StandardLibrary.Control.Applicative
-import StandardLibrary.Control.Monad
+import Std.Data.Functor
+import Std.Control.Applicative
+import Std.Control.Monad
 import Prelude (Int, (>=), (<=), (&&), even)
 
 data Maybe a = Nothing | Just a

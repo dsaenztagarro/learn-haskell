@@ -1,7 +1,7 @@
 {-# LANGUAGE NoImplicitPrelude #-}
-module StandardLibrary.Control.Alternative where
+module Std.Control.Alternative where
 
-import StandardLibrary.Control.Applicative
+import Std.Control.Applicative
 
 -- Effective Haskell (page 457)
 -- Control.Applicative in base
