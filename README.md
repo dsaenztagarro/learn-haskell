@@ -1,32 +1,26 @@
 This project contains examples from [Effective Haskell][1] book.
 
 Modules:
-- `Apps` - Applications
-- `Std` - Standard Library
-- `Ext` - Language extensions
-
-- Chapter13: Monad Transformers
-
-### Learning path
-
-- `InferredTypes`
+- `Apps`: Applications
+- `Exts`: Language extensions
+- `Std`: Standard Library
 
 #### Types and Kinds
-- `LanguageExtensions.ExistentialTypes.UsingRecord`
-- `LanguageExtensions.ExistentialTypes.UsingTypeClass`
-- `LanguageExtensions.ExistentialTypes.UsingTypeClassWithExistentialConstraint`
-- `LanguageExtensions.FunctionalDependencies` (ShellCommand)
-- `LanguageExtensions.Kinds.AssociatedTypeFamily` (ShellCommand)
-- `LanguageExtensions.Kinds.AssociatedDataFamily` (ShellCommand)
-- `LanguageExtensions.Kinds.OpenTypeFamily`
-- `LanguageExtensions.Kinds.ClosedTypeFamily`
-- `LanguageExtensions.Kinds.TypeLevelListOperations.WithClosedTypeFamilies`
-- `LanguageExtensions.Kinds.TypeLevelListOperations.WithOpenTypeFamilies`
-- `LanguageExtensions.GADT.HeterogeneusList` (ExistentialTypes related)
-- `LanguageExtensions.GADT.TypeClassRefactor` (ShellCommand)
+- `Exts.ExistentialTypes.UsingRecord`
+- `Exts.ExistentialTypes.UsingTypeClass`
+- `Exts.ExistentialTypes.UsingTypeClassWithExistentialConstraint`
+- `Exts.FunctionalDependencies` (ShellCommand)
+- `Exts.Kinds.AssociatedTypeFamily` (ShellCommand)
+- `Exts.Kinds.AssociatedDataFamily` (ShellCommand)
+- `Exts.Kinds.OpenTypeFamily`
+- `Exts.Kinds.ClosedTypeFamily`
+- `Exts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies`
+- `Exts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies`
+- `Exts.GADT.HeterogeneusList` (ExistentialTypes related)
+- `Exts.GADT.TypeClassRefactor` (ShellCommand)
 
 
-#### YouTube Videos to add to LanguageExtensions
+#### YouTube Videos to add to Exts
 
 Universal and Existential Quantification in Haskell – Stepan Prudnikov
 https://www.youtube.com/watch?v=ohp2uRM9n0o

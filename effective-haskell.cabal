@@ -86,42 +86,42 @@ library
                     , Std.Control.Applicative
                     , Std.Control.Alternative
                     , Std.Control.Monad
-                    , LanguageExtensions.Deriving.GeneralizedNewtypeDeriving
-                    , LanguageExtensions.Deriving.StandaloneDeriving
-                    , LanguageExtensions.Deriving.ViaCompatibleType
-                    , LanguageExtensions.Deriving.AnyclassDeriving
-                    , LanguageExtensions.Deriving.Strategies
-                    , LanguageExtensions.Records.RecordWildCards
-                    , LanguageExtensions.Records.RecordPuns
-                    , LanguageExtensions.TypeSignatures.ExplicitForAll
-                    , LanguageExtensions.TypeSignatures.ScopedTypeVariables
-                    , LanguageExtensions.TypeSignatures.AllowAmbiguousTypes
-                    , LanguageExtensions.TypeClasses.FlexibleContexts
-                    , LanguageExtensions.TypeClasses.FlexibleInstances
-                    , LanguageExtensions.UndecidableInstances
-                    , LanguageExtensions.ArbitraryRankPolymorphism
-                    , LanguageExtensions.Types.ExistentialQuantification
-                    , LanguageExtensions.Types.ExistentialQuantification.WithRecord
-                    , LanguageExtensions.Types.ExistentialQuantification.WithTypeClassConstraint
-                    , LanguageExtensions.Types.ExistentialQuantification.WithTypeClass
-                    , LanguageExtensions.InferredTypes
+                    , Exts.Deriving.GeneralizedNewtypeDeriving
+                    , Exts.Deriving.StandaloneDeriving
+                    , Exts.Deriving.ViaCompatibleType
+                    , Exts.Deriving.AnyclassDeriving
+                    , Exts.Deriving.Strategies
+                    , Exts.Records.RecordWildCards
+                    , Exts.Records.RecordPuns
+                    , Exts.TypeSignatures.ExplicitForAll
+                    , Exts.TypeSignatures.ScopedTypeVariables
+                    , Exts.TypeSignatures.AllowAmbiguousTypes
+                    , Exts.TypeClasses.FlexibleContexts
+                    , Exts.TypeClasses.FlexibleInstances
+                    , Exts.UndecidableInstances
+                    , Exts.ArbitraryRankPolymorphism
+                    , Exts.Types.ExistentialQuantification
+                    , Exts.Types.ExistentialQuantification.WithRecord
+                    , Exts.Types.ExistentialQuantification.WithTypeClassConstraint
+                    , Exts.Types.ExistentialQuantification.WithTypeClass
+                    , Exts.InferredTypes
                     -- Types and Kinds
-                    , LanguageExtensions.FunctionalDependency.ShellCmd
-                    , LanguageExtensions.Kinds.AssociatedTypeFamily.ShellCmd
-                    , LanguageExtensions.Kinds.AssociatedDataFamily.ShellCmd
-                    , LanguageExtensions.Kinds.OpenTypeFamily
-                    , LanguageExtensions.Kinds.ClosedTypeFamily
-                    , LanguageExtensions.Kinds.TypeLevelListOperations.WithClosedTypeFamilies
-                    , LanguageExtensions.Kinds.TypeLevelListOperations.WithOpenTypeFamilies
-                    , LanguageExtensions.GADT.HeterogeneusList
-                    , LanguageExtensions.GADT.ShellCmd
-                    , LanguageExtensions.GADT.CommandRunner
+                    , Exts.FunctionalDependency.ShellCmd
+                    , Exts.Kinds.AssociatedTypeFamily.ShellCmd
+                    , Exts.Kinds.AssociatedDataFamily.ShellCmd
+                    , Exts.Kinds.OpenTypeFamily
+                    , Exts.Kinds.ClosedTypeFamily
+                    , Exts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies
+                    , Exts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies
+                    , Exts.GADT.HeterogeneusList
+                    , Exts.GADT.ShellCmd
+                    , Exts.GADT.CommandRunner
                     -- YouTube tutorials
                     , YouTube.Kinds
                     , YouTube.Kinds2
 
     -- Modules included in this library but not exported.
-    -- other-modules: LanguageExtensions.FunctionalDependencies
+    -- other-modules: Exts.FunctionalDependencies
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
@@ -163,27 +163,27 @@ test-suite effective-haskell-test
                   , Base.Monad.ExceptTSpec
                   , Base.HigherKindedTypeSpec
                   -- Deriving
-                  , LanguageExtensions.Deriving.GeneralizedNewtypeDerivingSpec
-                  , LanguageExtensions.Deriving.ViaCompatibleTypeSpec
-                  , LanguageExtensions.Deriving.AnyclassDerivingSpec
+                  , Exts.Deriving.GeneralizedNewtypeDerivingSpec
+                  , Exts.Deriving.ViaCompatibleTypeSpec
+                  , Exts.Deriving.AnyclassDerivingSpec
                   -- ...
-                  , LanguageExtensions.Types.ExistentialQuantificationSpec
-                  , LanguageExtensions.Types.ExistentialQuantification.WithRecordSpec
-                  , LanguageExtensions.Types.ExistentialQuantification.WithTypeClassConstraintSpec
-                  , LanguageExtensions.Types.ExistentialQuantification.WithTypeClassSpec
-                  , LanguageExtensions.InferredTypesSpec
+                  , Exts.Types.ExistentialQuantificationSpec
+                  , Exts.Types.ExistentialQuantification.WithRecordSpec
+                  , Exts.Types.ExistentialQuantification.WithTypeClassConstraintSpec
+                  , Exts.Types.ExistentialQuantification.WithTypeClassSpec
+                  , Exts.InferredTypesSpec
                   -- Types and Kind
-                  , LanguageExtensions.FunctionalDependency.ShellCmdSpec
-                  , LanguageExtensions.Kinds.AssociatedTypeFamily.ShellCmdSpec
-                  , LanguageExtensions.Kinds.AssociatedDataFamily.ShellCmdSpec
-                  , LanguageExtensions.Kinds.OpenTypeFamilySpec
-                  , LanguageExtensions.Kinds.ClosedTypeFamilySpec
-                  , LanguageExtensions.Kinds.TypeLevelListOperations.WithClosedTypeFamiliesSpec
-                  , LanguageExtensions.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec
-                  , LanguageExtensions.GADT.HeterogeneusListSpec
-                  , LanguageExtensions.GADT.ShellCmdSpec
-                  , LanguageExtensions.GADT.CommandRunnerSpec
-                  , LanguageExtensions.Helper
+                  , Exts.FunctionalDependency.ShellCmdSpec
+                  , Exts.Kinds.AssociatedTypeFamily.ShellCmdSpec
+                  , Exts.Kinds.AssociatedDataFamily.ShellCmdSpec
+                  , Exts.Kinds.OpenTypeFamilySpec
+                  , Exts.Kinds.ClosedTypeFamilySpec
+                  , Exts.Kinds.TypeLevelListOperations.WithClosedTypeFamiliesSpec
+                  , Exts.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec
+                  , Exts.GADT.HeterogeneusListSpec
+                  , Exts.GADT.ShellCmdSpec
+                  , Exts.GADT.CommandRunnerSpec
+                  , Exts.Helper
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
