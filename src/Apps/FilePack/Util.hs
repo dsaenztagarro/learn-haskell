@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE ExistentialQuantification #-}
 module Apps.FilePack.Util where
 
 import Data.Bits ((.&.), (.|.), shift)
@@ -49,6 +48,16 @@ instance Encode ByteString where
 instance Encode Text where
   encode = encodeUtf8
 
+-- Without language extension FlexibleInstances we are not allowed to create an
+-- instance of a type class that specifies a particular value for a type parameter.
+-- Since String is an alias for [Char], it is not allowed to create an instance
+-- for it. Therefore it would be needed to create a more general instance for [a].
+--
+-- To avoid the conflict with the instance for Encode [a], we could have used
+-- the OVERLAPS pragma, to stay which instance should be authorative when conflict.
+--
+-- instance {-# OVERLAPS #-} Encode String where
+--
 instance Encode String where
   encode = BC.pack
 
@@ -62,6 +71,7 @@ instance Encode Word32 where
 instance Encode Word16 where
   encode = word16ToByteString
 
+-- FileMode is an alias for CMode, which is a newtype wrapper around Word32
 instance Encode FileMode where
   encode (CMode fMode) = encode fMode
 
@@ -80,6 +90,8 @@ instance (Encode a, Encode b) => Encode (a,b) where
 The following instance overlaps with the one defined for String.
 By using the OVERLAPPABLE pragma we can tell GHC to always prefer a different
 instance if there happens to be a conflict.
+In other words, use OVERLAPPABLE instance to specify an instance that should NOT
+be chosen if there is a conflict.
 -}
 instance {-# OVERLAPPABLE #-} Encode a => Encode [a] where
   encode = encode . foldMap encodeWithSize

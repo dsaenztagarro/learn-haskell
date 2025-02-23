@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Apps.FilePack.Serializer1 where
+module Apps.FilePack.Encoder1 where
 
 import Data.ByteString (ByteString)
 import qualified Data.ByteString as BS

@@ -2,7 +2,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE RecordWildCards #-}
-module Apps.FilePack.Serializer2 where
+module Apps.FilePack.Encoder2 where
 
 import Apps.FilePack.Util
 import Data.ByteString (ByteString)
@@ -14,7 +14,4 @@ import Text.Read (readEither)
 
 newtype FilePack a =
   FilePack { getPackedFiles :: [FileData a] } deriving (Eq, Read, Show)
-
--- instance Encode a => (FilePack a) where
---   encode (FilePack a) = FilePack2.encode a
 
