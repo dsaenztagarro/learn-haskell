@@ -96,7 +96,7 @@ library
                     , LanguageExtensions.TypeSignatures.ExplicitForAll
                     , LanguageExtensions.TypeSignatures.ScopedTypeVariables
                     , LanguageExtensions.AllowAmbiguousTypes
-                    , LanguageExtensions.FlexibleContexts
+                    , LanguageExtensions.TypeClasses.FlexibleContexts
                     , LanguageExtensions.UndecidableInstances
                     , LanguageExtensions.ArbitraryRankPolymorphism
                     , LanguageExtensions.Types.ExistentialQuantification

@@ -1,3 +1,7 @@
+{-# LANGUAGE FlexibleContexts #-}
+
+module LanguageExtensions.TypeSignatures.ExplicitForAll where
+
 {-
 The `FlexibleContexts` extension lifts the Haskell 98 restriction that the
 type-class constraints (anywhere they appear) must have the form
@@ -14,8 +18,6 @@ Note that `FlexibleContexts` affects usages of class constraints, in type
 signatures and other contexts. In contrast, `FlexibleInstances` loosens a
 similar restriction in place when declaring a new instance.
 -}
-{-# LANGUAGE FlexibleContexts #-}
-module LanguageExtensions.FlexibleContexts  where
 
 g :: Eq [a] => a -> a
 g = undefined
