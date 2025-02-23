@@ -2,10 +2,18 @@
 {-# LANGUAGE ExistentialQuantification #-}
 {-# LANGUAGE RecordWildCards #-}
 
-{- Existential types give a way to "weaken" a type into a representation that
-   is more general, but about which you have less information.
+{-
+Existential types give a way to "weaken" a type into a representation that
+is more general, but about which you have less information.
 -}
-module LanguageExtensions.ExistentialTypes.UsingRecord where
+module LanguageExtensions.Types.ExistentialQuantification.WithRecord where
+
+{-
+What this allows us to do is to package heterogeneous values together with a
+bunch of functions that manipulate them, and then treat that collection of
+packages in a uniform manner. You can express quite a bit of
+object-oriented-like programming this way.
+-}
 
 data SomeExistential b = forall a. SomeExistential
   { someValue :: a
@@ -34,3 +42,12 @@ reverseAndUnwordsString s = SomeExistential
   , combineValues = \a b -> unwords [a,b]
   , consumeValue = id
   }
+
+constExistential :: Int -> SomeExistential Int
+constExistential n = SomeExistential
+  { someValue = n
+  , modifyValue = const n
+  , combineValues = const $ const n
+  , consumeValue = const n
+  }
+

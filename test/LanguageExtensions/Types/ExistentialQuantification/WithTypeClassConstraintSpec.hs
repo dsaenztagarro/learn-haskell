@@ -1,7 +1,7 @@
-module LanguageExtensions.ExistentialTypes.UsingTypeClassWithConstraintSpec where
+module LanguageExtensions.Types.ExistentialQuantification.WithTypeClassConstraintSpec where
 
 import Test.Hspec
-import LanguageExtensions.ExistentialTypes.UsingTypeClassWithConstraint
+import LanguageExtensions.Types.ExistentialQuantification.WithTypeClassConstraint
 
 spec :: Spec
 spec = do

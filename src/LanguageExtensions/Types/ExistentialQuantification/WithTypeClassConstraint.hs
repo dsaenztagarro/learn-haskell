@@ -1,6 +1,6 @@
 {-# LANGUAGE ExistentialQuantification #-}
 
-module LanguageExtensions.ExistentialTypes.UsingTypeClassWithConstraint where
+module LanguageExtensions.Types.ExistentialQuantification.WithTypeClassConstraint where
 
 data CanBeShown = forall a. Show a => CanBeShown a
 

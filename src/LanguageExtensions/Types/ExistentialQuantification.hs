@@ -1,7 +1,8 @@
 -- https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/existential_quantification.html
 {-# LANGUAGE ExistentialQuantification #-}
 
-module LanguageExtensions.ExistentitallyQuantifiedDataConstructors where
+-- AKA Existentially Quantified Data Constructors
+module LanguageExtensions.Types.ExistentialQuantification where
 
 data Foo = forall a. MkFoo a (a -> Bool)
          | Nil
@@ -37,8 +38,9 @@ packages in a uniform manner. You can express quite a bit of
 object-oriented-like programming this way.
 -}
 
--- Existentials and type classes
--- -----------------------------
+------------------------------
+-- With type class constraint
+------------------------------
 
 data Baz = forall a. Eq a => Baz1 a a
          | forall b. Show b => Baz2 b (b -> b)
@@ -59,8 +61,9 @@ g (Baz1 p q) | p == q    = "Yes"
              | otherwise = "No"
 g (Baz2 v fn)            = show (fn v)
 
--- Record Constructors
--- -------------------
+----------------------------
+-- With Record constructors
+----------------------------
 
 -- GHC allows existentials to be used with records syntax as well.
 

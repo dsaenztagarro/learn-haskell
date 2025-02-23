@@ -1,11 +1,13 @@
-{-# LANGUAGE ExistentialQuantification #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 {-# LANGUAGE FlexibleInstances #-}
 
-module LanguageExtensions.ExistentialTypes.UsingTypeClass where
+-- WARNING: This is NOT ExistentialQuantification
+-- Just simulating existential quantification by only using Type classes
+
+module LanguageExtensions.Types.ExistentialQuantification.WithTypeClass where
 
 class SomeClass a b where
   modifyClassValue :: a -> a

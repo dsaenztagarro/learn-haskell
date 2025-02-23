@@ -1,7 +1,7 @@
-module LanguageExtensions.ExistentitallyQuantifiedDataConstructorsSpec (spec) where
+module LanguageExtensions.Types.ExistentialQuantificationSpec (spec) where
 
 import Test.Hspec
-import LanguageExtensions.ExistentitallyQuantifiedDataConstructors
+import LanguageExtensions.Types.ExistentialQuantification
 
 spec :: Spec
 spec = do
