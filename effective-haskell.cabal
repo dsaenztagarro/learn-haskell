@@ -68,15 +68,15 @@ library
                     , Apps.FilePack.MonadicParser
                     , Apps.FilePack.Util
                     , Base.Roles
-                    , Base.Monad.State
-                    , Base.Monad.Identity
-                    , Base.Monad.MonadFail
-                    , Base.Monad.MonadError
-                    , Base.Monad.MonadState
-                    , Base.Monad.MonadIO
-                    , Base.Monad.MonadTrans
-                    , Base.Monad.StateT
-                    , Base.Monad.ExceptT
+                    , Std.Control.Monad.State
+                    , Std.Control.Monad.Identity
+                    , Std.Control.Monad.MonadFail
+                    , Std.Control.Monad.MonadError
+                    , Std.Control.Monad.MonadState
+                    , Std.Control.Monad.MonadIO
+                    , Std.Control.Monad.MonadTrans
+                    , Std.Control.Monad.StateT
+                    , Std.Control.Monad.ExceptT
                     , Base.HigherKindedType
                     , Std.Data.List
                     , Std.Data.Maybe
@@ -104,6 +104,7 @@ library
                     , Exts.Types.ExistentialQuantification.WithRecord
                     , Exts.Types.ExistentialQuantification.WithTypeClassConstraint
                     , Exts.Types.ExistentialQuantification.WithTypeClass
+                    , Exts.Types.RankNTypes
                     , Exts.InferredTypes
                     -- Types and Kinds
                     , Exts.FunctionalDependency.ShellCmd
@@ -154,13 +155,13 @@ test-suite effective-haskell-test
                   , Apps.FilePack.Encoder3Spec
                   , Apps.FilePack.ApplicativeParserSpec
                   , Apps.FilePack.MonadicParserSpec
-                  , Base.Monad.StateSpec
-                  , Base.Monad.MonadState1Spec
-                  , Base.Monad.MonadState2Spec
-                  , Base.Monad.MonadState3Spec
-                  , Base.Monad.MonadTransSpec
-                  , Base.Monad.StateTSpec
-                  , Base.Monad.ExceptTSpec
+                  , Std.Control.Monad.StateSpec
+                  , Std.Control.Monad.MonadState1Spec
+                  , Std.Control.Monad.MonadState2Spec
+                  , Std.Control.Monad.MonadState3Spec
+                  , Std.Control.Monad.MonadTransSpec
+                  , Std.Control.Monad.StateTSpec
+                  , Std.Control.Monad.ExceptTSpec
                   , Base.HigherKindedTypeSpec
                   -- Deriving
                   , Exts.Deriving.GeneralizedNewtypeDerivingSpec

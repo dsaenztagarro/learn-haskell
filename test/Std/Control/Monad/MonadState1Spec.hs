@@ -1,10 +1,10 @@
-module Base.Monad.MonadState2Spec where
+module Std.Control.Monad.MonadState1Spec where
 
 import Test.Hspec
-import Base.Monad.StateT (StateT)
-import qualified Base.Monad.StateT as StateT
-import Base.Monad.ExceptT
-import Base.Monad.MonadState
+import Std.Control.Monad.StateT (StateT)
+import qualified Std.Control.Monad.StateT as StateT
+import Std.Control.Monad.ExceptT
+import Std.Control.Monad.MonadTrans
 
 type GuessingGame a = ExceptT String (StateT String IO) a
 
@@ -14,14 +14,14 @@ evalGame input =
 
 guessTheState :: String -> GuessingGame Bool
 guessTheState guess = do
-  answer <- get
-  put guess
+  answer <- lift StateT.get
+  lift $ StateT.put guess
   pure $ guess == answer
 
 
 spec :: Spec
 spec = do
-  it "works using MonadState" $ do
+  it "works using lift" $ do
     result <- evalGame "Foo" (guessTheState "Bar")
     result `shouldBe` Right False
     result' <- evalGame "Foo" (guessTheState "Foo")

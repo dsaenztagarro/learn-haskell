@@ -1,11 +1,11 @@
 {-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE FlexibleInstances #-}
-module Base.Monad.MonadState where
+module Std.Control.Monad.MonadState where
 
-import qualified Base.Monad.StateT as StateT
-import Base.Monad.ExceptT
-import Base.Monad.MonadTrans
+import qualified Std.Control.Monad.StateT as StateT
+import Std.Control.Monad.ExceptT
+import Std.Control.Monad.MonadTrans
 
 class Monad m => MonadState s m | m -> s where
   get :: m s

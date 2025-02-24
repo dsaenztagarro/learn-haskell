@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Base.Monad.StateTSpec where
+module Std.Control.Monad.StateTSpec where
 
 import Test.Hspec
 
@@ -7,8 +7,8 @@ import Control.Applicative ((<|>), many)
 import Control.Monad (when)
 import Data.Text (Text)
 import qualified Data.Text as Text
-import Base.Monad.ExceptT
-import Base.Monad.StateT
+import Std.Control.Monad.ExceptT
+import Std.Control.Monad.StateT
 
 type ParseError = Text
 type ParseState = Text

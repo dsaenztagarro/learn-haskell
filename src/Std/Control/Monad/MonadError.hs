@@ -1,11 +1,11 @@
 {-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE UndecidableInstances #-}
-module Base.Monad.MonadError where
+module Std.Control.Monad.MonadError where
 
-import qualified Base.Monad.ExceptT as ExceptT
-import Base.Monad.MonadTrans
-import Base.Monad.StateT
+import qualified Std.Control.Monad.ExceptT as ExceptT
+import Std.Control.Monad.MonadTrans
+import Std.Control.Monad.StateT
 
 class Monad m => MonadError e m | m -> e where
   throwError :: e -> m a

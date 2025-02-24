@@ -1,4 +1,4 @@
-module Base.Monad.MonadFail where
+module Std.Control.Monad.MonadFail where
 
 class Monad m => MonadFail m where
   fail :: String -> m a

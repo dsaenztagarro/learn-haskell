@@ -1,10 +1,10 @@
 {-# LANGUAGE NoImplicitPrelude #-}
+
 module Std.Control.Alternative where
 
 import Std.Control.Applicative
 
 -- Effective Haskell (page 457)
--- Control.Applicative in base
 class Applicative f => Alternative f where
   empty :: f a
   (<|>) :: f a -> f a -> f a

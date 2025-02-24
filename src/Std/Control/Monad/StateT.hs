@@ -1,9 +1,9 @@
 {-# LANGUAGE TupleSections #-}
-module Base.Monad.StateT where
+module Std.Control.Monad.StateT where
 
 import Control.Applicative
-import Base.Monad.Identity
-import Base.Monad.MonadTrans
+import Std.Control.Monad.Identity
+import Std.Control.Monad.MonadTrans
 
 newtype StateT s m a = StateT { runStateT :: s -> m (a, s) }
 type State s = StateT s Identity
