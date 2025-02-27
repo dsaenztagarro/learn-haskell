@@ -1,4 +1,3 @@
-{-# LANGUAGE NoImplicitPrelude #-}
 module Std.Data.Either where
 
 import Std.Data.Functor

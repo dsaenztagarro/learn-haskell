@@ -67,7 +67,9 @@ library
                     , Apps.FilePack.ApplicativeParser
                     , Apps.FilePack.MonadicParser
                     , Apps.FilePack.Util
+                    , Apps.Mtl.StateDemo1
                     , Base.Roles
+                    , Base.HigherKindedType
                     , Std.Control.Monad.State
                     , Std.Control.Monad.Identity
                     , Std.Control.Monad.MonadFail
@@ -77,15 +79,6 @@ library
                     , Std.Control.Monad.MonadTrans
                     , Std.Control.Monad.StateT
                     , Std.Control.Monad.ExceptT
-                    , Base.HigherKindedType
-                    , Std.Data.List
-                    , Std.Data.Maybe
-                    , Std.Data.Either
-                    , Std.Data.Function
-                    , Std.Data.Functor
-                    , Std.Control.Applicative
-                    , Std.Control.Alternative
-                    , Std.Control.Monad
                     , Exts.Deriving.GeneralizedNewtypeDeriving
                     , Exts.Deriving.StandaloneDeriving
                     , Exts.Deriving.ViaCompatibleType
@@ -210,6 +203,26 @@ test-suite effective-haskell-test
         bytestring,
         containers
 
+library no-prelude-lib
+  exposed-modules:  Std.Data.List
+                  , Std.Data.Maybe
+                  , Std.Data.Either
+                  , Std.Data.Function
+                  , Std.Data.Monoid
+                  , Std.Data.Functor
+                  , Std.Control.Applicative
+                  , Std.Control.Alternative
+                  , Std.Control.Monad
+  build-depends:
+        base ^>=4.17.2.1,
+
+  -- Directories containing source files.
+  hs-source-dirs:   src
+
+  default-language:     Haskell2010
+
+  default-extensions:   NoImplicitPrelude
+
 common importHCat
   -- Base language which the package is written in.
   default-language: Haskell2010
@@ -226,7 +239,8 @@ common importHCat
       text,
       time,
 
-executable pager-hcat1
+
+executable apps-hcat1
   import:  warnings, importHCat
 
   -- The entrypoint to the executable
@@ -234,7 +248,7 @@ executable pager-hcat1
 
   ghc-options: -main-is Apps.Pager.HCat1
 
-executable pager-hcat2
+executable apps-hcat2
   import:  warnings, importHCat
 
   -- The entrypoint to the executable
@@ -242,7 +256,7 @@ executable pager-hcat2
 
   ghc-options: -main-is Apps.Pager.HCat2
 
-executable pager-hcat3
+executable apps-hcat3
   import:  warnings, importHCat
 
   -- The entrypoint to the executable
@@ -250,7 +264,7 @@ executable pager-hcat3
 
   ghc-options: -main-is Apps.Pager.HCat3
 
-executable pager-hcat4
+executable apps-hcat4
   import:  warnings, importHCat
 
   -- The entrypoint to the executable

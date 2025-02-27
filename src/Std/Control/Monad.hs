@@ -1,9 +1,11 @@
 {-# LANGUAGE NoImplicitPrelude #-}
+
 module Std.Control.Monad where
 
 -- See $GHC/libraries/ghc-internal/src/GHC/Internal/Base.hs
 
 import Std.Control.Applicative
+import Prelude (id)
 
 class Applicative m => Monad m where
   -- Laws:
@@ -19,3 +21,6 @@ class Applicative m => Monad m where
   (>>) :: m a -> m b -> m b
   a >> b = a >>= \_ -> b
   return :: a -> m a
+
+join :: Monad m => m (m a) -> m a
+join m = m >>= id

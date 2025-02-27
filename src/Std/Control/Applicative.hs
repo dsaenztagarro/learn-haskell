@@ -1,4 +1,5 @@
 {-# LANGUAGE NoImplicitPrelude #-}
+
 module Std.Control.Applicative where
 
 import Std.Data.Functor

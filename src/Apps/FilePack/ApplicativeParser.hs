@@ -1,6 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE ExistentialQuantification #-}
 {-# LANGUAGE OverloadedStrings #-}
+
 module Apps.FilePack.ApplicativeParser where
 
 import Apps.FilePack.Util

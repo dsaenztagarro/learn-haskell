@@ -1,7 +1,7 @@
 {-# LANGUAGE TupleSections #-}
 module Std.Control.Monad.StateT where
 
-import Control.Applicative
+import Control.Applicative -- required by Alternative
 import Std.Control.Monad.Identity
 import Std.Control.Monad.MonadTrans
 

@@ -1,8 +1,8 @@
 {-# LANGUAGE KindSignatures #-}
 module Std.Control.Monad.ExceptT where
 
-import Control.Applicative
 import Data.Kind (Type)
+import Control.Applicative -- required by Alternative
 import Std.Control.Monad.Identity
 import Std.Control.Monad.MonadTrans
 

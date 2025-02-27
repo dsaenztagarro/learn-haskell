@@ -27,6 +27,10 @@ data FilePackImage
 
 instance Encode FilePackImage where
   encode (FilePackPBM width height values) = encode $
+    -- Prefixing encoded data with a String tag, to differentiate between
+    -- different constructors in a sum type is a common PATTERN
+    -- Original example uses OverloadedStrings, and in that case is needed
+    -- TypeApplications to avoid Ambiguous type variable
     encodeWithSize @String "pbm"
     <> encodeWithSize width
     <> encodeWithSize height
