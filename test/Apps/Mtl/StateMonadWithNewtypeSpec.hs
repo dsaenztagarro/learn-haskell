@@ -1,8 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Apps.Mtl.StateMonad1Spec where
+module Apps.Mtl.StateMonadWithNewtypeSpec where
 
 import Test.Hspec
-import Apps.Mtl.StateMonad1
+import Apps.Mtl.StateMonadWithNewtype
 import Libs.Mtl.Control.Monad.State
 import Data.Text as Text
 

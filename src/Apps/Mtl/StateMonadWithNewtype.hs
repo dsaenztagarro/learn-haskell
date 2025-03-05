@@ -1,5 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Apps.Mtl.StateMonad1 where
+
+module Apps.Mtl.StateMonadWithNewtype where
 
 import Control.Monad (when)
 import Libs.Mtl.Control.Monad.State
@@ -7,6 +8,7 @@ import Data.Char (isSpace)
 import Data.Text (Text)
 import qualified Data.Text as Text
 
+-- `State` monad used in combination with type alias
 type Parser a = State Text (Either Text a)
 
 data FullName = FullName

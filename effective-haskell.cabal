@@ -67,7 +67,8 @@ library
                     , Apps.FilePack.ApplicativeParser
                     , Apps.FilePack.MonadicParser
                     , Apps.FilePack.Util
-                    , Apps.Mtl.StateMonad1
+                    , Apps.Mtl.StateMonadWithTypeAlias
+                    , Apps.Mtl.StateMonadWithNewtype
                     , Base.Roles
                     , Base.HigherKindedType
                     , Std.Data.Functor.Identity
@@ -148,7 +149,8 @@ test-suite effective-haskell-test
                   , Apps.FilePack.Encoder3Spec
                   , Apps.FilePack.ApplicativeParserSpec
                   , Apps.FilePack.MonadicParserSpec
-                  , Apps.Mtl.StateMonad1Spec
+                  , Apps.Mtl.StateMonadWithTypeAliasSpec
+                  , Apps.Mtl.StateMonadWithNewtypeSpec
                   , Libs.Mtl.Control.Monad.StateSpec
                   , Libs.Mtl.Control.Monad.MonadState1Spec
                   , Libs.Mtl.Control.Monad.MonadState2Spec
