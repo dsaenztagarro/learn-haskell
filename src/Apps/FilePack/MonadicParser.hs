@@ -8,7 +8,7 @@ import Apps.FilePack.Util
 import Prelude hiding (MonadFail, fail)
 import Control.Applicative
 import Data.Word (Word32)
-import Std.Control.Monad.MonadFail
+import Libs.Mtl.Control.Monad.MonadFail
 
 instance Monad FilePackParser where
   return = pure

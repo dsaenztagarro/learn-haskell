@@ -1,8 +1,8 @@
-module Std.Control.Monad.MonadIO where
+module Libs.Mtl.Control.Monad.MonadIO where
 
-import Std.Control.Monad.ExceptT
-import Std.Control.Monad.StateT
-import Std.Control.Monad.MonadTrans
+import Libs.Mtl.Control.Monad.ExceptT
+import Libs.Mtl.Control.Monad.StateT
+import Libs.Mtl.Control.Monad.MonadTrans
 
 class Monad m => MonadIO m where
   liftIO :: IO a -> m a

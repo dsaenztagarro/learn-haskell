@@ -4,6 +4,7 @@ Modules:
 - `Apps`: Applications
 - `Exts`: Language extensions
 - `Std`: Standard Library
+- `Libs`: Simple implementation of libraries
 
 #### Types and Kinds
 - `Exts.ExistentialTypes.UsingRecord`

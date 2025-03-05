@@ -1,9 +1,9 @@
 {-# LANGUAGE TupleSections #-}
-module Std.Control.Monad.StateT where
+module Libs.Mtl.Control.Monad.StateT where
 
 import Control.Applicative -- required by Alternative
-import Std.Control.Monad.Identity
-import Std.Control.Monad.MonadTrans
+import Std.Data.Functor.Identity
+import Libs.Mtl.Control.Monad.MonadTrans
 
 newtype StateT s m a = StateT { runStateT :: s -> m (a, s) }
 type State s = StateT s Identity

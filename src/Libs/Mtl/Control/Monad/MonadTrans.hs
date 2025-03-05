@@ -1,5 +1,5 @@
 {-# LANGUAGE QuantifiedConstraints #-}
-module Std.Control.Monad.MonadTrans where
+module Libs.Mtl.Control.Monad.MonadTrans where
 
 import Prelude
 

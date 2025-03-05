@@ -1,10 +1,10 @@
 {-# LANGUAGE KindSignatures #-}
-module Std.Control.Monad.ExceptT where
+module Libs.Mtl.Control.Monad.ExceptT where
 
 import Data.Kind (Type)
 import Control.Applicative -- required by Alternative
-import Std.Control.Monad.Identity
-import Std.Control.Monad.MonadTrans
+import Std.Data.Functor.Identity
+import Libs.Mtl.Control.Monad.MonadTrans
 
 newtype ExceptT (e :: Type) (m :: Type -> Type) (a :: Type) = ExceptT
   { runExceptT :: m (Either e a) }

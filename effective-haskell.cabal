@@ -67,18 +67,18 @@ library
                     , Apps.FilePack.ApplicativeParser
                     , Apps.FilePack.MonadicParser
                     , Apps.FilePack.Util
-                    , Apps.Mtl.StateDemo1
+                    , Apps.Mtl.StateMonad1
                     , Base.Roles
                     , Base.HigherKindedType
-                    , Std.Control.Monad.State
-                    , Std.Control.Monad.Identity
-                    , Std.Control.Monad.MonadFail
-                    , Std.Control.Monad.MonadError
-                    , Std.Control.Monad.MonadState
-                    , Std.Control.Monad.MonadIO
-                    , Std.Control.Monad.MonadTrans
-                    , Std.Control.Monad.StateT
-                    , Std.Control.Monad.ExceptT
+                    , Std.Data.Functor.Identity
+                    , Libs.Mtl.Control.Monad.State
+                    , Libs.Mtl.Control.Monad.MonadFail
+                    , Libs.Mtl.Control.Monad.MonadError
+                    , Libs.Mtl.Control.Monad.MonadState
+                    , Libs.Mtl.Control.Monad.MonadIO
+                    , Libs.Mtl.Control.Monad.MonadTrans
+                    , Libs.Mtl.Control.Monad.StateT
+                    , Libs.Mtl.Control.Monad.ExceptT
                     , Exts.Deriving.GeneralizedNewtypeDeriving
                     , Exts.Deriving.StandaloneDeriving
                     , Exts.Deriving.ViaCompatibleType
@@ -148,13 +148,14 @@ test-suite effective-haskell-test
                   , Apps.FilePack.Encoder3Spec
                   , Apps.FilePack.ApplicativeParserSpec
                   , Apps.FilePack.MonadicParserSpec
-                  , Std.Control.Monad.StateSpec
-                  , Std.Control.Monad.MonadState1Spec
-                  , Std.Control.Monad.MonadState2Spec
-                  , Std.Control.Monad.MonadState3Spec
-                  , Std.Control.Monad.MonadTransSpec
-                  , Std.Control.Monad.StateTSpec
-                  , Std.Control.Monad.ExceptTSpec
+                  , Apps.Mtl.StateMonad1Spec
+                  , Libs.Mtl.Control.Monad.StateSpec
+                  , Libs.Mtl.Control.Monad.MonadState1Spec
+                  , Libs.Mtl.Control.Monad.MonadState2Spec
+                  , Libs.Mtl.Control.Monad.MonadState3Spec
+                  , Libs.Mtl.Control.Monad.MonadTransSpec
+                  , Libs.Mtl.Control.Monad.StateTSpec
+                  , Libs.Mtl.Control.Monad.ExceptTSpec
                   , Base.HigherKindedTypeSpec
                   -- Deriving
                   , Exts.Deriving.GeneralizedNewtypeDerivingSpec

@@ -1,4 +1,4 @@
-module Std.Control.Monad.MonadFail where
+module Libs.Mtl.Control.Monad.MonadFail where
 
 -- Effective Haskell (page 464)
 class Monad m => MonadFail m where

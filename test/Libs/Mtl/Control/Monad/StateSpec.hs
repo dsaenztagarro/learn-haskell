@@ -1,9 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Std.Control.Monad.StateSpec where
+module Libs.Mtl.Control.Monad.StateSpec where
 
 import Test.Hspec
-import Std.Control.Monad.State (State)
-import qualified Std.Control.Monad.State as State
+import Libs.Mtl.Control.Monad.State (State)
+import qualified Libs.Mtl.Control.Monad.State as State
 
 import Control.Monad
 import Data.Text (Text)

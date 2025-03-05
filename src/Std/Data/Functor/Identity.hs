@@ -1,4 +1,4 @@
-module Std.Control.Monad.Identity where
+module Std.Data.Functor.Identity where
 
 newtype Identity a = Identity { runIdentity :: a }
   deriving (Eq, Show)

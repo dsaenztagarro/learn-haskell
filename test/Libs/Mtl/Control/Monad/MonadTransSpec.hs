@@ -1,7 +1,7 @@
 {-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE OverloadedStrings #-}
-module Std.Control.Monad.MonadTransSpec where
+module Libs.Mtl.Control.Monad.MonadTransSpec where
 
 import Test.Hspec
 import Control.Applicative
@@ -9,9 +9,9 @@ import Data.ByteString (ByteString)
 import qualified Data.ByteString as BS
 import Data.Text (Text)
 import qualified Data.Text as Text
-import Std.Control.Monad.MonadTrans
-import Std.Control.Monad.StateT
-import Std.Control.Monad.ExceptT
+import Libs.Mtl.Control.Monad.MonadTrans
+import Libs.Mtl.Control.Monad.StateT
+import Libs.Mtl.Control.Monad.ExceptT
 
 {-
 data Archive = Archive

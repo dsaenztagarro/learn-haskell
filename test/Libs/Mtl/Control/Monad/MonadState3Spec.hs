@@ -1,12 +1,12 @@
 {-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
-module Std.Control.Monad.MonadState3Spec where
+module Libs.Mtl.Control.Monad.MonadState3Spec where
 
 import Test.Hspec
-import Std.Control.Monad.StateT (StateT)
-import qualified Std.Control.Monad.StateT as StateT
-import Std.Control.Monad.ExceptT
-import Std.Control.Monad.MonadState
+import Libs.Mtl.Control.Monad.StateT (StateT)
+import qualified Libs.Mtl.Control.Monad.StateT as StateT
+import Libs.Mtl.Control.Monad.ExceptT
+import Libs.Mtl.Control.Monad.MonadState
 
 {-
 Since basic operations like `get` and `put` depend on the `MonadState` type

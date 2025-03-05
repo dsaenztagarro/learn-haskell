@@ -1,4 +1,4 @@
-module Std.Control.Monad.State where
+module Libs.Mtl.Control.Monad.State where
 
 newtype State s a = State { runState :: s -> (a, s) }
 
