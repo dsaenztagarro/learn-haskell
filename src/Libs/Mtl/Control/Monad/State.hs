@@ -18,7 +18,7 @@ instance Monad (State s) where
   return = pure
   f >>= g = State $ \oldState ->
     let (val, valState) = runState f oldState
-    in runState (g val) valState
+    in runState (g val) valState  -- val <- f
 
 evalState :: State s a -> s -> a
 evalState stateAction initialState =
