@@ -60,3 +60,7 @@ git clone git@github.com:haskell/ThreadScope.git
 ```
 
 [1]: https://www.pragprog.com/titles/rshaskell/effective-haskell/
+
+## Resources
+
+- [Cardano Engineering HandBook](https://input-output-hk.github.io/cardano-engineering-handbook/practices/haskell/testing.html)

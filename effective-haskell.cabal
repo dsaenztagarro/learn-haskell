@@ -108,6 +108,7 @@ library
                     , Exts.Kinds.ClosedTypeFamily
                     , Exts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies
                     , Exts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies
+                    , Exts.Kinds.TypedProtocols
                     , Exts.GADT.HeterogeneusList
                     , Exts.GADT.ShellCmd
                     , Exts.GADT.CommandRunner
