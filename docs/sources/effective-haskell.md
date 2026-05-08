@@ -17,9 +17,17 @@ grep -RHn "^-- Source.*Effective Haskell" src/ \
 
 | Chapter | Topic                                            | Modules                                                    |
 | ------: | ------------------------------------------------ | ---------------------------------------------------------- |
-|       — | _(rows are added as modules are tagged)_         | _(see commands above to regenerate)_                       |
+|     TBD | Functor                                          | `Std.Data.Functor`, `Std.Data.Functor.Identity`, `Std.Data.Function`, `Std.Data.Either`, `Std.Data.List`, `Std.Data.Maybe` |
+|     TBD | Applicative                                      | `Std.Control.Applicative` (concrete instances in the modules above) |
+|     TBD | Monad                                            | `Std.Control.Monad`, `Std.Data.Maybe`, `Std.Data.List`     |
+|     TBD | Alternative (page 457)                           | `Std.Control.Alternative`                                  |
+|     TBD | Semigroup / Monoid                               | `Std.Data.Semigroup`, `Std.Data.Monoid`                    |
 |      10 | Parallel and concurrent programming              | `Apps.PCP.*` (formerly `ch10/`) — populated in Slice 7      |
 |      12 | Type-level programming                           | `Exts.Kinds.*`, `Exts.FunctionalDependency.ShellCmd`       |
+
+> Chapter numbers marked **TBD** are populated when the user revisits the
+> book; the `Source:` lines in the modules currently say
+> "Effective Haskell — &lt;topic&gt; chapter" with no numeric chapter.
 
 > Tip: when you are reading a chapter and want the matching code, also look at
 > [`youtube.md`](youtube.md) — several chapters have companion lectures that

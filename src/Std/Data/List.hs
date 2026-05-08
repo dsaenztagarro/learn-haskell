@@ -1,4 +1,24 @@
 {-# LANGUAGE NoImplicitPrelude #-}
+
+-- |
+-- Module      : Std.Data.List
+-- Stage       : 01-Std  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Functor/Applicative/Monad chapters
+-- Prereqs     : Std.Data.Functor, Std.Control.Applicative, Std.Control.Monad
+--
+-- == Concept
+-- A hand-rolled cons-list with 'Functor', 'Applicative', and 'Monad'
+-- instances. The @Applicative@ for list is /Cartesian/ — applying a list of
+-- functions to a list of arguments yields every combination — which is also
+-- what @>>=@ does (\"non-determinism monad\").
+--
+-- == Example
+-- >>> fromList (toList [1,2] >>= \x -> toList [x, x*10])
+-- [1,10,2,20]
+--
+-- == Exercise
+-- Prove that the list 'Applicative' satisfies the homomorphism law
+-- @pure f \<*\> pure x = pure (f x)@ given the definition above.
 module Std.Data.List where
 
 import Std.Data.Functor

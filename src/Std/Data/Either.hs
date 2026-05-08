@@ -1,3 +1,23 @@
+-- |
+-- Module      : Std.Data.Either
+-- Stage       : 01-Std  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Functor/Applicative chapters
+-- Prereqs     : Std.Data.Functor, Std.Control.Applicative
+--
+-- == Concept
+-- 'Either' is the canonical \"value or error\" type. The default 'Functor'
+-- and 'Applicative' instances map over 'Right'; the @ReverseEither@ newtype
+-- shows how to expose the *opposite* mapping without orphan instances.
+--
+-- == Example
+-- >>> fmap (+1) (Right 4 :: Either String Int)
+-- Right 5
+-- >>> fmap (+1) (Left "boom" :: Either String Int)
+-- Left "boom"
+--
+-- == Exercise
+-- Add a 'Monad' instance for @Either a@ and explain why short-circuiting
+-- on 'Left' is the only law-abiding choice.
 module Std.Data.Either where
 
 import Std.Data.Functor

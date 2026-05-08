@@ -1,4 +1,27 @@
 {-# LANGUAGE NoImplicitPrelude #-}
+
+-- |
+-- Module      : Std.Data.Maybe
+-- Stage       : 01-Std  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Functor/Applicative/Monad chapters
+-- Prereqs     : Std.Data.Functor, Std.Control.Applicative, Std.Control.Monad
+--
+-- == Concept
+-- 'Maybe' is the canonical \"value or nothing\" type, and the simplest
+-- non-trivial 'Functor', 'Applicative', and 'Monad' to write from
+-- scratch. The @half@ and @bound@ helpers below are the classic Effective
+-- Haskell example of monadic chaining.
+--
+-- == Example
+-- >>> half 10
+-- Just 5
+-- >>> bound (0, 20) 11 >>= return . succ >>= half
+-- Just 6
+--
+-- == Exercise
+-- Without using @do@-notation or @>>=@, rewrite the chain
+-- @bound (0,20) 11 >>= return . succ >>= half@ using @<*>@ and @fmap@
+-- only, or argue why it cannot be done.
 module Std.Data.Maybe where
 
 import Std.Data.Functor
@@ -22,8 +45,6 @@ instance Monad Maybe where
   Nothing >>= _ = Nothing
   Just a >>= f = f a
 
--- TODO: move to tests examples
-
 half :: Int -> Maybe Int
 half num =
   if even num
@@ -35,6 +56,3 @@ bound (min, max) num =
   if (num >= min) && (num <= max)
   then Just num
   else Nothing
-
--- Text.readMaybe "11" >>= bound (0, 20) >>= return . succ >>= half
--- Just 6

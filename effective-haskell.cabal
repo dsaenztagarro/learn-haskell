@@ -182,6 +182,8 @@ test-suite learn-haskell-test
                   , Exts.GADT.ShellCmdSpec
                   , Exts.GADT.CommandRunnerSpec
                   , Exts.Helper
+                  -- Std (no-prelude library)
+                  , Std.Data.MaybeSpec
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
@@ -196,9 +198,12 @@ test-suite learn-haskell-test
     main-is:          Spec.hs
 
     -- Test dependencies.
+    build-tool-depends: hspec-discover:hspec-discover
+
     build-depends:
         base ^>=4.17.2.1,
         learn-haskell,
+        learn-haskell:no-prelude-lib,
         hspec,
         directory,
         filepath,
@@ -212,6 +217,7 @@ library no-prelude-lib
                   , Std.Data.Maybe
                   , Std.Data.Either
                   , Std.Data.Function
+                  , Std.Data.Semigroup
                   , Std.Data.Monoid
                   , Std.Data.Functor
                   , Std.Control.Applicative
