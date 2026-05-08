@@ -2,6 +2,15 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
+-- |
+-- Module      : Apps.Pager.HCat3
+-- Stage       : 08-Apps  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Building applications chapter (HCat)
+-- Prereqs     : Apps.Pager.HCat2
+--
+-- == Concept
+-- Third iteration: detect the terminal size at runtime so paging
+-- adapts to the user's window. Introduces 'tput' / 'ioctl' equivalents.
 module Apps.Pager.HCat3 where
 
 import qualified System.Environment as Env

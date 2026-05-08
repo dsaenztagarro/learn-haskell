@@ -1,6 +1,17 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE FlexibleInstances #-}
+-- |
+-- Module      : Apps.FilePack.Util
+-- Stage       : 08-Apps  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Building applications chapter (FilePack)
+--
+-- == Concept
+-- Shared encoding/decoding primitives for the FilePack iterations:
+-- the @Encode@/@Decode@ classes, fixed-width word writers, and
+-- length-prefixed byte sequences. The 'Apps.FilePack.Encoder2' and
+-- 'Apps.FilePack.Encoder3' modules import these instead of repeating
+-- the bit-twiddling.
 module Apps.FilePack.Util where
 
 import Data.Bits ((.&.), (.|.), shift)

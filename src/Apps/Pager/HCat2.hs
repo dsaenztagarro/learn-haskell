@@ -2,6 +2,16 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
+-- |
+-- Module      : Apps.Pager.HCat2
+-- Stage       : 08-Apps  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Building applications chapter (HCat)
+-- Prereqs     : Apps.Pager.HCat1
+--
+-- == Concept
+-- Second iteration of HCat: introduces paging — reads the file in
+-- one pass but prints it one screen at a time, prompting for ENTER
+-- between pages.
 module Apps.Pager.HCat2 where
 
 import qualified System.Environment as Env

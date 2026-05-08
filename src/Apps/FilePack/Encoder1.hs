@@ -1,4 +1,14 @@
 {-# LANGUAGE OverloadedStrings #-}
+-- |
+-- Module      : Apps.FilePack.Encoder1
+-- Stage       : 08-Apps  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Building applications chapter (FilePack)
+--
+-- == Concept
+-- First iteration of the FilePack serializer: pack a list of
+-- 'FileData' into a base64-encoded 'ByteString' using @Show@ +
+-- @readEither@. Naive but enough to round-trip. The next two
+-- iterations ('Encoder2', 'Encoder3') tighten this up.
 module Apps.FilePack.Encoder1 where
 
 import Data.ByteString (ByteString)

@@ -2,6 +2,16 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
+-- |
+-- Module      : Apps.Pager.HCat1
+-- Stage       : 08-Apps  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Building applications chapter (HCat)
+--
+-- == Concept
+-- First iteration of HCat — a @cat@/@less@ clone. Reads a file from
+-- @argv@ and prints it. Built as the @apps-hcat1@ executable in the
+-- cabal file. Iterations 2–4 add: paging, terminal sizing, and
+-- arrow-key navigation respectively.
 module Apps.Pager.HCat1 where
 
 import qualified System.Environment as Env

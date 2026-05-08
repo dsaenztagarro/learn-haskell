@@ -2,6 +2,19 @@
 {-# LANGUAGE ExistentialQuantification #-}
 {-# LANGUAGE OverloadedStrings #-}
 
+-- |
+-- Module      : Apps.FilePack.ApplicativeParser
+-- Stage       : 08-Apps  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Parsers chapter
+-- Prereqs     : Apps.FilePack.Util, Std.Control.Applicative,
+--               Std.Control.Alternative
+--
+-- == Concept
+-- An /applicative/ parser combinator on 'ByteString'. Combinators use
+-- only @\<*\>@ and @\<|\>@; later parses cannot inspect earlier
+-- results. Less expressive than the monadic version
+-- ('Apps.FilePack.MonadicParser') but easier to analyze and good
+-- enough for context-free formats.
 module Apps.FilePack.ApplicativeParser where
 
 import Apps.FilePack.Util

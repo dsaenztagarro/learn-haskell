@@ -1,6 +1,18 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE ExistentialQuantification #-}
+-- |
+-- Module      : Apps.FilePack.Encoder3
+-- Stage       : 08-Apps  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Building applications chapter (FilePack)
+-- Prereqs     : Apps.FilePack.Encoder2,
+--               Exts.Types.ExistentialQuantification.WithTypeClassConstraint
+--
+-- == Concept
+-- Third iteration: 'Packable' is an existential (@forall a. Encode a@)
+-- so a 'FilePack' can mix files of different value-shapes while still
+-- knowing how to serialize each one. Mirrors the design of the
+-- @binary@ package's @Get@/@Put@ pair on a smaller scale.
 module Apps.FilePack.Encoder3 where
 
 import Apps.FilePack.Util

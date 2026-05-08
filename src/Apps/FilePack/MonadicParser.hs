@@ -1,6 +1,19 @@
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE DerivingVia #-}
 
+-- |
+-- Module      : Apps.FilePack.MonadicParser
+-- Stage       : 08-Apps  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Parsers chapter
+-- Prereqs     : Apps.FilePack.ApplicativeParser
+--
+-- == Concept
+-- The same parser machinery as 'Apps.FilePack.ApplicativeParser' but
+-- with a 'Monad' instance: later parses can branch on earlier
+-- results. The cost is that you can no longer statically analyze
+-- where the parser will look. Reading both modules side-by-side is
+-- the fastest way to internalise the Applicative-vs-Monad parser
+-- trade-off.
 module Apps.FilePack.MonadicParser where
 
 import Apps.FilePack.ApplicativeParser (FilePack, FilePackParser(..), extractValue, execParser)

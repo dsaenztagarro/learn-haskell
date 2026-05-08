@@ -1,5 +1,16 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+-- |
+-- Module      : Apps.Mtl.StateMonadWithNewtype
+-- Stage       : 08-Apps  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — mtl chapter (applied)
+-- Prereqs     : Apps.Mtl.StateMonadWithTypeAlias
+--
+-- == Concept
+-- Same program as 'Apps.Mtl.StateMonadWithTypeAlias', but the state
+-- type is a @newtype@. Compare error messages, inference, and the
+-- need for 'GeneralizedNewtypeDeriving' / explicit @MonadState@
+-- instance lifting to internalise why @newtype@ usually wins.
 module Apps.Mtl.StateMonadWithNewtype where
 
 import Control.Monad (when)

@@ -2,6 +2,17 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
+-- |
+-- Module      : Apps.Pager.HCat4
+-- Stage       : 08-Apps  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Building applications chapter (HCat)
+-- Prereqs     : Apps.Pager.HCat3
+--
+-- == Concept
+-- Fourth iteration: switches to raw terminal mode and reacts to
+-- single keypresses ('q' quits, space pages forward, etc.) instead
+-- of waiting for ENTER. The end state of the chapter — usable as a
+-- minimal @less@.
 module Apps.Pager.HCat4 where
 
 import qualified System.Environment as Env

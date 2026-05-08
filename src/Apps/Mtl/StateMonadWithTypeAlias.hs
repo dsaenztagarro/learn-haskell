@@ -1,5 +1,17 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+-- |
+-- Module      : Apps.Mtl.StateMonadWithTypeAlias
+-- Stage       : 08-Apps  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — mtl chapter (applied)
+-- Prereqs     : Libs.Mtl.Control.Monad.State
+--
+-- == Concept
+-- Applied @State@: a small text-formatting program written so the
+-- state's nominal type is a /type alias/. The next module
+-- ('Apps.Mtl.StateMonadWithNewtype') is the same program but using a
+-- @newtype@ — read both, then compare GHC error messages and
+-- inference behaviour to internalise why @newtype@ wins in practice.
 module Apps.Mtl.StateMonadWithTypeAlias where
 
 import Control.Monad (when)
