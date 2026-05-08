@@ -1,3 +1,17 @@
+-- |
+-- Module      : Libs.Mtl.Control.Monad.State
+-- Stage       : 07-Mtl  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Monad transformers / mtl chapter
+-- Prereqs     : Std.Control.Monad
+--
+-- == Concept
+-- The simplest stateful computation as a newtype: @State s a@ is a
+-- function @s -> (a, s)@. Every other transformer in this folder
+-- generalises this one — start here.
+--
+-- == Example
+-- >>> runState (put 1 >>= \_ -> get) 0
+-- (1, 1)
 module Libs.Mtl.Control.Monad.State where
 
 newtype State s a = State { runState :: s -> (a, s) }

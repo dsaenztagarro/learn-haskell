@@ -1,4 +1,16 @@
 {-# LANGUAGE KindSignatures #-}
+-- |
+-- Module      : Libs.Mtl.Control.Monad.ExceptT
+-- Stage       : 07-Mtl  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Monad transformers / mtl chapter
+--               transformers package — Control.Monad.Trans.Except
+-- Prereqs     : Libs.Mtl.Control.Monad.MonadTrans
+--
+-- == Concept
+-- @ExceptT e m a ≡ m (Either e a)@: short-circuit on failure inside
+-- any inner monad. Stacking @ExceptT@ over @StateT@ vs @StateT@ over
+-- @ExceptT@ gives different effect semantics; the order is the
+-- single most important design decision in any mtl stack.
 module Libs.Mtl.Control.Monad.ExceptT where
 
 import Data.Kind (Type)

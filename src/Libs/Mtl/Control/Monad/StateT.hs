@@ -1,4 +1,16 @@
 {-# LANGUAGE TupleSections #-}
+-- |
+-- Module      : Libs.Mtl.Control.Monad.StateT
+-- Stage       : 07-Mtl  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Monad transformers / mtl chapter
+--               transformers package — Control.Monad.Trans.State
+-- Prereqs     : Libs.Mtl.Control.Monad.State, Libs.Mtl.Control.Monad.MonadTrans
+--
+-- == Concept
+-- @StateT s m a ≡ s -> m (a, s)@: the same idea as 'State' but
+-- threaded through an arbitrary inner monad @m@. Recovering plain
+-- 'State' is a one-liner: @type State s = StateT s Identity@. The
+-- 'MonadTrans' instance shows the canonical 'lift'.
 module Libs.Mtl.Control.Monad.StateT where
 
 import Control.Applicative -- required by Alternative
