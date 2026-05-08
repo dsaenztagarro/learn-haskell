@@ -160,6 +160,7 @@ test-suite learn-haskell-test
                   , Libs.Mtl.Control.Monad.StateTSpec
                   , Libs.Mtl.Control.Monad.ExceptTSpec
                   , Base.HigherKindedTypeSpec
+                  , Base.RolesSpec
                   -- Deriving
                   , Exts.Deriving.GeneralizedNewtypeDerivingSpec
                   , Exts.Deriving.ViaCompatibleTypeSpec

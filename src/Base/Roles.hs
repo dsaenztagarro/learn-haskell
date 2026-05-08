@@ -5,7 +5,37 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 {-# LANGUAGE TypeFamilies #-}
--- https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/roles.html#roles
+-- |
+-- Module      : Base.Roles
+-- Stage       : 02-Base  (see docs/ROADMAP.md)
+-- Source      : GHC users guide — Roles
+--               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/roles.html
+--               docs/generative-type-abstraction-and-type-level-computation.pdf
+-- Prereqs     : Base.HigherKindedType, Exts.Deriving.GeneralizedNewtypeDeriving
+--
+-- == Concept
+-- Every type-parameter has a /role/ that controls when @coerce@ is allowed
+-- across a newtype:
+--
+-- * @nominal@         — never coerce; the type variable affects semantics
+--                       (e.g. the 'Ord' used by @Set@).
+-- * @representational@ — coerce when the underlying types share a runtime rep.
+-- * @phantom@         — always coerce; the variable doesn't appear at runtime.
+--
+-- Wrong roles produce subtle bugs (see the 'Inspect' / 'BadIdea' example
+-- below); correct roles let GHC reject @deriving@ derivations that would
+-- be unsound.
+--
+-- == Example
+-- >>> :set -XDerivingVia
+-- >>> let x = MySet (MkSet (NotInt 3))
+-- >>> getSet x
+-- MkSet (NotInt 3)
+--
+-- == Exercise
+-- Change the role of @Set@ from @representational@ to @nominal@ and
+-- explain why the @deriving Num via Set Int@ line in 'MySet' stops
+-- compiling.
 module Base.Roles where
 
 {-
