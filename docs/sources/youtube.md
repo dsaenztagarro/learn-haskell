@@ -11,8 +11,9 @@ grep -RHn "^-- Source.*YouTube" src/
 
 | Speaker / series | Title                                                 | URL | Modules                       |
 | ---------------- | ----------------------------------------------------- | --- | ----------------------------- |
-| Stepan Prudnikov | Universal and Existential Quantification in Haskell   | https://www.youtube.com/watch?v=ohp2uRM9n0o | `Exts.Types.ExistentialQuantification.*` (to be tagged) |
-| Tweag / RAE      | Kinds (lecture series)                                | _link to be added when tagging `YouTube.Kinds`_ | `YouTube.Kinds`, `YouTube.Kinds2` |
+| Stepan Prudnikov | Universal and Existential Quantification in Haskell   | https://www.youtube.com/watch?v=ohp2uRM9n0o | `Exts.Types.ExistentialQuantification` |
+| Tweag (Eisenberg) | An introduction to Haskell's kinds                   | https://www.youtube.com/watch?v=JleVecHAad4 | `YouTube.Kinds` |
+| Tweag (Eisenberg) | Getting a little fancy with Haskell's kinds          | https://www.youtube.com/watch?v=Qy_yxVkO8no | `YouTube.Kinds2` |
 
 Rows beyond the seed entries are added as modules get tagged during the
 per-folder sweeps.

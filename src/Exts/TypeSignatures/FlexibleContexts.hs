@@ -1,5 +1,18 @@
 {-# LANGUAGE FlexibleContexts #-}
 
+-- |
+-- Module      : Exts.TypeSignatures.ExplicitForAll  (NB: see warning below)
+-- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
+-- Source      : GHC users guide — FlexibleContexts (snippet only)
+--
+-- == Concept
+-- /Snippet/ — the canonical demo lives at
+-- 'Exts.TypeClasses.FlexibleContexts'. This file is a leftover draft:
+-- the path says @TypeSignatures/FlexibleContexts.hs@ but the module
+-- declaration says @Exts.TypeSignatures.ExplicitForAll@, so it is
+-- /not/ exposed by the cabal library and should not be imported.
+-- Kept here as a reading example; if you want the real exposed module
+-- open the @TypeClasses@ counterpart instead.
 module Exts.TypeSignatures.ExplicitForAll where
 
 {-

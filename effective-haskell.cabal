@@ -181,6 +181,7 @@ test-suite learn-haskell-test
                   , Exts.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec
                   , Exts.GADT.HeterogeneousListSpec
                   , Exts.UndecidableInstancesSpec
+                  , YouTube.Kinds2Spec
                   , Exts.GADT.ShellCmdSpec
                   , Exts.GADT.CommandRunnerSpec
                   , Exts.Helper

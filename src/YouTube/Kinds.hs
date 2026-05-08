@@ -2,6 +2,17 @@
 -- https://www.youtube.com/watch?v=JleVecHAad4
 
 {-# LANGUAGE StandaloneKindSignatures, DeriveFunctor #-}
+-- |
+-- Module      : YouTube.Kinds
+-- Stage       : 06-Kinds  (companion lecture — see docs/ROADMAP.md)
+-- Source      : YouTube — Tweag: @rae, "An introduction to Haskell's kinds"
+--               https://www.youtube.com/watch?v=JleVecHAad4
+-- Prereqs     : Base.HigherKindedType, Exts.Kinds.OpenTypeFamily
+--
+-- == Concept
+-- Lecture-notes companion: hand-derives the standard 'Functor' and
+-- 'Monad' classes, illustrating @StandaloneKindSignatures@ and how
+-- the Prelude's hierarchy looks at the kind level.
 module YouTube.Kinds where
 
 import Prelude hiding ( not, Either(..), Monad(..) )
@@ -23,7 +34,7 @@ class Functor f where
 
 type Monad :: (Type -> Type) -> Constraint
 class Monad m where
-  (>>=) :: (m a) -> (a -> m b) -> m b
+  (>>=) :: m a -> (a -> m b) -> m b
 
 myId :: Monad m => m a -> m a
 myId x = x
