@@ -1,5 +1,20 @@
 {-# LANGUAGE DefaultSignatures #-}
 {-# LANGUAGE DeriveAnyClass #-}
+-- |
+-- Module      : Exts.Deriving.AnyclassDeriving
+-- Stage       : 03-Deriving  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Deriving strategies chapter
+--               GHC users guide — DeriveAnyClass
+--
+-- == Concept
+-- @DeriveAnyClass@ + @DefaultSignatures@ lets a class ship a default
+-- method using a constraint stronger than the class's own
+-- (here: @Show a => a -> String@). Any instance can then be derived
+-- *empty* and pick up that default.
+--
+-- == Example
+-- >>> redacted (UserName "alice")
+-- "\"alice\""    -- via the default Show-based implementation
 module Exts.Deriving.AnyclassDeriving where
 
 {-

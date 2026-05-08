@@ -30,6 +30,18 @@ read @Integer "1"
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
+-- |
+-- Module      : Exts.Kinds.OpenTypeFamily
+-- Stage       : 06-Kinds  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Type families chapter
+-- Prereqs     : Base.HigherKindedType
+--
+-- == Concept
+-- An /open/ type family is a function at the type level whose
+-- equations can be added by users in any module. New @type instance@
+-- declarations extend the family. Equations may overlap only if they
+-- agree where they overlap, and they cannot pattern-match in any
+-- non-trivial way (use 'Exts.Kinds.ClosedTypeFamily' for that).
 module Exts.Kinds.OpenTypeFamily where
 {- This module defines the kinds we'll be working with, and a number of utility
    functions to help us integrate our type level code with term level code.

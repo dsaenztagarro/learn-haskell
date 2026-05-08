@@ -1,7 +1,7 @@
-module Exts.GADT.HeterogeneusListSpec where
+module Exts.GADT.HeterogeneousListSpec where
 
 import Test.Hspec
-import Exts.GADT.HeterogeneusList
+import Exts.GADT.HeterogeneousList
 
 spec :: Spec
 spec = do
@@ -16,5 +16,5 @@ spec = do
 
   describe "nameUsers" $ do
     it "returns only users by name" $ do
-      let heterogeneusList = user1 :++: user4 :++: user2 :++: user3 :++: EmptyUsers
-      [user1, user2, user3] `shouldBe` nameUsers heterogeneusList
+      let heterogeneousList = user1 :++: user4 :++: user2 :++: user3 :++: EmptyUsers
+      [user1, user2, user3] `shouldBe` nameUsers heterogeneousList

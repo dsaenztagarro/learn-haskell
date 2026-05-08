@@ -6,6 +6,25 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE AllowAmbiguousTypes #-}
+-- |
+-- Module      : Exts.Kinds.ClosedTypeFamily
+-- Stage       : 06-Kinds  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell, Ch. 12 — Type-level programming
+-- Prereqs     : Exts.Kinds.OpenTypeFamily
+--
+-- == Concept
+-- A /closed/ type family is a fixed, ordered set of equations evaluated
+-- top-to-bottom — like a @case@ for types. Used here to compute Peano
+-- arithmetic at compile time (@Add@, @Multiply@, @Subtract@).
+--
+-- == Example
+-- >>> :kind! Add (S (S Z)) (S Z)   -- in REPL with the right pragmas
+-- S (S (S Z))
+--
+-- == Exercise
+-- Extend the family with @Mul@ and prove @Mul (S (S Z)) (S (S Z))
+-- ~ S (S (S (S Z)))@ using the @AssertEqual@ helper found in
+-- @test/Exts/Kinds/ClosedTypeFamilySpec.hs@.
 module Exts.Kinds.ClosedTypeFamily where
 
 import GHC.TypeLits

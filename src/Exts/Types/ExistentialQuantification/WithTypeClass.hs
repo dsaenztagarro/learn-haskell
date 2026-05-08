@@ -7,6 +7,20 @@
 -- WARNING: This is NOT ExistentialQuantification
 -- Just simulating existential quantification by only using Type classes
 
+-- |
+-- Module      : Exts.Types.ExistentialQuantification.WithTypeClass
+-- Stage       : 05-Existentials  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Existentials chapter
+-- Prereqs     : Exts.Types.ExistentialQuantification.WithRecord,
+--               Exts.TypeSignatures.AllowAmbiguousTypes
+--
+-- == Concept
+-- A /simulation/ of existentials using a multi-parameter type class
+-- where one parameter never appears on the RHS. Note: this is /not/
+-- the @ExistentialQuantification@ extension — kept here to contrast
+-- with 'WithRecord' and 'WithTypeClassConstraint'. The required
+-- @AllowAmbiguousTypes@ + @TypeApplications@ at every call site is the
+-- giveaway that this approach is awkward in practice.
 module Exts.Types.ExistentialQuantification.WithTypeClass where
 
 {-

@@ -1,6 +1,18 @@
 -- https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/rank_polymorphism.html#extension-RankNTypes
 {-# LANGUAGE RankNTypes #-}
 
+-- |
+-- Module      : Exts.ArbitraryRankPolymorphism
+-- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
+-- Source      : GHC users guide — RankNTypes
+--               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/rank_polymorphism.html
+-- Prereqs     : Exts.Types.RankNTypes
+--
+-- == Concept
+-- @RankNTypes@ allows @forall@ to nest arbitrarily deep into argument
+-- types. The /rank/ counts how many arrows the @forall@ is to the left
+-- of: rank-1 is standard polymorphism (caller picks @a@), rank-2 means
+-- the function itself receives a still-polymorphic value, etc.
 module Exts.ArbitraryRankPolymorphism where
 
 -- With `RankNTypes` You can nest foralls arbitrarily deep in function arrows.

@@ -1,6 +1,17 @@
 -- https://downloads.haskell.org/ghc/latest/docs/users_guide/exts/scoped_type_variables.html#extension-ScopedTypeVariables
 {-# LANGUAGE ScopedTypeVariables #-}
 
+-- |
+-- Module      : Exts.TypeSignatures.ScopedTypeVariables
+-- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
+-- Source      : GHC users guide — ScopedTypeVariables
+--               https://downloads.haskell.org/ghc/latest/docs/users_guide/exts/scoped_type_variables.html
+--
+-- == Concept
+-- A type variable bound by an explicit @forall@ in a function's
+-- signature is brought into scope inside the function's body. Inner
+-- @where@/@let@ signatures can then reference the same @a@ instead of
+-- introducing a fresh one.
 module Exts.TypeSignatures.ScopedTypeVariables where
 
 -- Declaration type signatures

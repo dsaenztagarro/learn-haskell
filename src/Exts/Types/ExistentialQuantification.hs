@@ -1,7 +1,25 @@
 -- https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/existential_quantification.html
 {-# LANGUAGE ExistentialQuantification #-}
 
--- AKA Existentially Quantified Data Constructors
+-- |
+-- Module      : Exts.Types.ExistentialQuantification
+-- Stage       : 05-Existentials  (see docs/ROADMAP.md)
+-- Source      : GHC users guide — ExistentialQuantification
+--               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/existential_quantification.html
+-- YouTube     : Stepan Prudnikov, Universal and Existential Quantification —
+--               https://www.youtube.com/watch?v=ohp2uRM9n0o
+--
+-- == Concept
+-- A @forall@ /inside/ a constructor packages a value of an unknown
+-- (\"existential\") type together with the operations needed to work
+-- with it. Outside the constructor the type is hidden; only what was
+-- packaged with it can be used. This is the type-system primitive for
+-- heterogeneous collections.
+--
+-- == Example
+-- See 'f', 'g', and 'render' below — three escalating cases:
+-- bare existential, existential plus typeclass constraint, and
+-- existential as the @self@ field of a record (\"OO-style counter\").
 module Exts.Types.ExistentialQuantification where
 
 data Foo = forall a. MkFoo a (a -> Bool)

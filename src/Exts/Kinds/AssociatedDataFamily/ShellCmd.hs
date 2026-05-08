@@ -2,6 +2,18 @@
 {-# LANGUAGE StrictData #-} -- avoid lazy fields in records
 {-# LANGUAGE RecordWildCards #-}
 
+-- |
+-- Module      : Exts.Kinds.AssociatedDataFamily.ShellCmd
+-- Stage       : 06-Kinds  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Type families chapter
+-- Prereqs     : Exts.Kinds.AssociatedTypeFamily.ShellCmd
+--
+-- == Concept
+-- An associated /data/ family generates a fresh datatype per instance
+-- (rather than reusing an existing type, as 'AssociatedTypeFamily'
+-- does). This prevents the cross-instance coupling that occurs when
+-- two instances happen to map to the same RHS type. Compare with the
+-- 'FunctionalDependencies' form: same idea expressed differently.
 module Exts.Kinds.AssociatedDataFamily.ShellCmd where
 import Data.Kind -- needed by associated type family to reference "Type"
 import System.Process (readProcess)

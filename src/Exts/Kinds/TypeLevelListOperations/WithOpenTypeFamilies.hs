@@ -4,6 +4,18 @@
 {-# LANGUAGE PolyKinds #-}
 {-# LANGUAGE UndecidableInstances #-}
 
+-- |
+-- Module      : Exts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies
+-- Stage       : 06-Kinds  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Type families chapter
+-- Prereqs     : Exts.Kinds.OpenTypeFamily
+--
+-- == Concept
+-- Implements typical list operations (membership, equality, filtering
+-- by predicate) at the type level using *open* type families. Each
+-- operation is one or more @type instance@ declarations that GHC
+-- resolves by structural matching only. Same exercises appear in
+-- 'WithClosedTypeFamilies' for direct contrast.
 module Exts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies where
 
 import GHC.TypeLits

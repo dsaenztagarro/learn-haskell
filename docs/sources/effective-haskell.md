@@ -22,6 +22,12 @@ grep -RHn "^-- Source.*Effective Haskell" src/ \
 |     TBD | Monad                                            | `Std.Control.Monad`, `Std.Data.Maybe`, `Std.Data.List`     |
 |     TBD | Alternative (page 457)                           | `Std.Control.Alternative`                                  |
 |     TBD | Semigroup / Monoid                               | `Std.Data.Semigroup`, `Std.Data.Monoid`                    |
+|     TBD | Records & deriving                               | `Exts.Records.*`, `Exts.Deriving.*`                        |
+|     TBD | Polymorphism (rank-N, scoped tyvars, ambiguity)  | `Exts.TypeSignatures.*`, `Exts.Types.RankNTypes`, `Exts.ArbitraryRankPolymorphism`, `Exts.InferredTypes` |
+|     TBD | Existentials & GADTs                             | `Exts.Types.ExistentialQuantification.*`, `Exts.GADT.*`    |
+|     TBD | Type families                                    | `Exts.Kinds.OpenTypeFamily`, `Exts.Kinds.ClosedTypeFamily`, `Exts.Kinds.AssociatedTypeFamily.ShellCmd`, `Exts.Kinds.AssociatedDataFamily.ShellCmd`, `Exts.Kinds.TypeLevelListOperations.*` |
+|     TBD | Functional dependencies / UndecidableInstances   | `Exts.FunctionalDependency.ShellCmd`, `Exts.UndecidableInstances` |
+|     TBD | Typed protocols (capstone)                       | `Exts.Kinds.TypedProtocols`, `Exts.GADT.CommandRunner`     |
 |      10 | Parallel and concurrent programming              | `Apps.PCP.*` (formerly `ch10/`) — populated in Slice 7      |
 |      12 | Type-level programming                           | `Exts.Kinds.*`, `Exts.FunctionalDependency.ShellCmd`       |
 

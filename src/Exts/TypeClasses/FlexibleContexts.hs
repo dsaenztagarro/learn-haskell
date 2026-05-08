@@ -1,6 +1,17 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 
+-- |
+-- Module      : Exts.TypeClasses.FlexibleContexts
+-- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
+-- Source      : GHC users guide — FlexibleContexts
+--
+-- == Concept
+-- Lifts Haskell 98's rule that a class context must be of the form
+-- @Class TypeVariable@. With this extension the predicate may apply
+-- the class to any type expression, e.g. @Functor (m k) => ...@.
+-- Affects /usage/ contexts; see 'Exts.TypeClasses.FlexibleInstances'
+-- for the corresponding rule on instance heads.
 module Exts.TypeClasses.FlexibleContexts  where
 
 {-

@@ -109,7 +109,7 @@ library
                     , Exts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies
                     , Exts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies
                     , Exts.Kinds.TypedProtocols
-                    , Exts.GADT.HeterogeneusList
+                    , Exts.GADT.HeterogeneousList
                     , Exts.GADT.ShellCmd
                     , Exts.GADT.CommandRunner
                     -- YouTube tutorials
@@ -179,7 +179,8 @@ test-suite learn-haskell-test
                   , Exts.Kinds.ClosedTypeFamilySpec
                   , Exts.Kinds.TypeLevelListOperations.WithClosedTypeFamiliesSpec
                   , Exts.Kinds.TypeLevelListOperations.WithOpenTypeFamiliesSpec
-                  , Exts.GADT.HeterogeneusListSpec
+                  , Exts.GADT.HeterogeneousListSpec
+                  , Exts.UndecidableInstancesSpec
                   , Exts.GADT.ShellCmdSpec
                   , Exts.GADT.CommandRunnerSpec
                   , Exts.Helper

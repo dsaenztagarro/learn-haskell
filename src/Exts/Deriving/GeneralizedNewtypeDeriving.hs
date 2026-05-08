@@ -1,6 +1,21 @@
 -- https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/newtype_deriving.html#newtype-deriving
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
+-- |
+-- Module      : Exts.Deriving.GeneralizedNewtypeDeriving
+-- Stage       : 03-Deriving  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Deriving strategies chapter
+--               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/newtype_deriving.html
+--
+-- == Concept
+-- A newtype shares its runtime representation with the wrapped type, so
+-- GHC can /lift/ existing instances (e.g. 'Num', 'Ord') from the inner
+-- type to the newtype with zero overhead. See 'Base.Roles' for when this
+-- is unsafe.
+--
+-- == Example
+-- >>> USD 100 + USD 50
+-- USD {getMillis = 150}
 module Exts.Deriving.GeneralizedNewtypeDeriving where
 
 {-

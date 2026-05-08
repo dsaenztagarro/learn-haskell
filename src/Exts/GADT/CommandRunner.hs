@@ -17,6 +17,25 @@
 {-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE AllowAmbiguousTypes #-}
 
+-- |
+-- Module      : Exts.GADT.CommandRunner
+-- Stage       : 06-Kinds  (see docs/ROADMAP.md — late Stage 5 / early Stage 6)
+-- Source      : Effective Haskell — GADT and type-level programming chapters
+--               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/type_applications.html
+-- Prereqs     : Exts.GADT.HeterogeneousList, Exts.GADT.ShellCmd,
+--               Exts.Kinds.ClosedTypeFamily, Exts.FunctionalDependency.ShellCmd
+--
+-- == Concept
+-- A capstone module: a type-level dictionary mapping a 'Symbol' (the
+-- command name) to a 'ShellCmd'. The closed type family @HeadMatches@
+-- + the @CommandByName' True/False@ instances implement type-level
+-- linear search; if a name isn't present, @HasMatch@ raises a custom
+-- 'TypeError' at compile time.
+--
+-- == Example
+-- @runNamedCommand \@\"ls\" commands \"/tmp\"@ — looks up the @ls@
+-- entry in the command set at compile time and runs it. Misspell the
+-- name and you get a typed error message, not a runtime failure.
 module Exts.GADT.CommandRunner where
 
 import Data.Kind

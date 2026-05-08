@@ -11,6 +11,19 @@
 
    One way to avoid this problem is to use "associated data families".
 -}
+-- |
+-- Module      : Exts.Kinds.AssociatedTypeFamily.ShellCmd
+-- Stage       : 06-Kinds  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Type families chapter
+-- Prereqs     : Exts.Kinds.OpenTypeFamily, Exts.GADT.ShellCmd
+--
+-- == Concept
+-- An /associated/ type family is declared inside a class. Each instance
+-- of the class supplies its own definition of the family. Lets a class
+-- carry a per-instance type — here, the output type of each shell
+-- command. Compare with 'Exts.Kinds.AssociatedDataFamily.ShellCmd' for
+-- the data-family form (which generates new constructors per instance
+-- and avoids accidental coupling on the family's RHS).
 module Exts.Kinds.AssociatedTypeFamily.ShellCmd where
 import Data.Kind -- <== needed by associated type family to reference "Type"
 import System.Process (readProcess)

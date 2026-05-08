@@ -2,6 +2,17 @@
 {-# LANGUAGE StandaloneDeriving #-}
 {-# LANGUAGE FlexibleInstances #-}
 
+-- |
+-- Module      : Exts.Deriving.StandaloneDeriving
+-- Stage       : 03-Deriving  (see docs/ROADMAP.md)
+-- Source      : GHC users guide — StandaloneDeriving
+--               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/standalone_deriving.html
+--
+-- == Concept
+-- A @deriving@ clause does not have to live next to its data declaration.
+-- The standalone form takes an explicit context, can be /more specific/
+-- than the data type (with 'FlexibleInstances'), and is the only way to
+-- derive instances for a foreign data type without orphans-via-newtype.
 module Exts.Deriving.StandaloneDeriving where
 
 data Foo a = Bar a | Baz String

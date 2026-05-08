@@ -23,6 +23,18 @@
 {-# LANGUAGE UndecidableInstances #-}
 
 -- Type Level List Operations with Type Families
+-- |
+-- Module      : Exts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies
+-- Stage       : 06-Kinds  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Type families chapter
+-- Prereqs     : Exts.Kinds.ClosedTypeFamily, the @WithOpenTypeFamilies@
+--               variant (read first for contrast)
+--
+-- == Concept
+-- The same type-level list operations as 'WithOpenTypeFamilies', but
+-- using closed families. Closed families let you order equations and
+-- pattern-match in a richer way (e.g. @IfThenElse@, @EvalEven@), which
+-- the open variant cannot express directly.
 module Exts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies where
 
 import GHC.TypeLits

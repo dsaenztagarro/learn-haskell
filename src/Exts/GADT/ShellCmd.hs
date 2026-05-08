@@ -1,7 +1,22 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE GADTs #-}
 
--- Composing individual parts of shell commands in a type safe way
+-- |
+-- Module      : Exts.GADT.ShellCmd
+-- Stage       : 05-Existentials  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — GADT chapter
+-- Prereqs     : Exts.GADT.HeterogeneousList
+--
+-- == Concept
+-- A small DSL for composing shell pipelines, encoded as a GADT
+-- @ShellCmd a b@ where @a@ is the input type and @b@ is the output
+-- type. Each constructor refines @a@/@b@ to the right shape; the
+-- interpreter 'runShellCmd' threads the pipeline through 'IO'.
+--
+-- == Example
+-- @runShellCmd (Pipe listDirectory (Xargs (grep \"foo\")))@ — list a
+-- directory and grep each file. The types prevent accidentally piping a
+-- list-of-paths into a single-path command.
 module Exts.GADT.ShellCmd where
 import Control.Monad.Catch (catchIOError) -- part of `exceptions` package
 import System.Process (readProcess)

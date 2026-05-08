@@ -2,6 +2,27 @@
 {-# LANGUAGE DefaultSignatures #-}
 {-# LANGUAGE DeriveAnyClass #-}
 {-# LANGUAGE DerivingStrategies #-}
+-- |
+-- Module      : Exts.Deriving.Strategies
+-- Stage       : 03-Deriving  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Deriving strategies chapter
+--               GHC users guide — DerivingStrategies
+-- Prereqs     : Exts.Deriving.GeneralizedNewtypeDeriving,
+--               Exts.Deriving.AnyclassDeriving,
+--               Exts.Deriving.ViaCompatibleType
+--
+-- == Concept
+-- The umbrella for the four strategies — @stock@, @newtype@, @anyclass@,
+-- @via@ — that decide /how/ a deriving clause synthesises an instance.
+-- Without an explicit strategy, GHC picks one and the choice can be
+-- surprising; @DerivingStrategies@ forces you (and future readers) to
+-- spell it out.
+--
+-- == Example
+-- The single newtype @AdminUser@ uses three strategies at once: @Show@
+-- via @stock@, @Redacted@ lifted via @newtype@, @Cool@ generated empty
+-- via @anyclass@. Compare each instance and notice which uses the
+-- wrapped type's behaviour vs. its own.
 module Exts.Deriving.Strategies where
 
 class Redacted a where

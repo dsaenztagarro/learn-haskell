@@ -4,9 +4,20 @@
 {-# LANGUAGE PolyKinds  #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 
+-- |
+-- Module      : Exts.Kinds.TypedProtocols
+-- Stage       : 06-Kinds  (capstone — see docs/ROADMAP.md)
+-- Source      : Tweag / typed-protocols library and lectures (Cardano network)
+-- Prereqs     : Exts.Kinds.ClosedTypeFamily, Exts.GADT.HeterogeneousList,
+--               Exts.GADT.CommandRunner
+--
+-- == Concept
+-- A typed state machine: a kind whose inhabitants are the protocol
+-- states (@StIdle@, @StBusy@, @StDone@) plus a GADT indexed by those
+-- states so that the type system rules out illegal transitions. The
+-- "ping-pong" example here is the simplest non-trivial protocol: only
+-- @Idle -> Busy -> Idle@ or @Idle -> Done@ are reachable.
 module Exts.Kinds.TypedProtocols where
-
-import Data.Kind
 
 -- Start with the protocol states, as types of a common kind
 
@@ -50,6 +61,7 @@ instance Protocol PingPong where        -- Protocol class
 
   data ClientHasAgency st where       -- more associated data families
     TokIdle :: ClientHasAgency StIdle
+  -- ^ `ClientHasAgency StIdle` is inhabited
 
   data ServerHasAgency st where
     TokBusy :: ServerHasAgency StBusy
@@ -57,6 +69,8 @@ instance Protocol PingPong where        -- Protocol class
   data NobodyHasAgency st where
     TokDone :: NobodyHasAgency StDone
 
+
+-- This definition is only used as promoted types and kinds, never as values.
 
 data PeerRole = AsClient | AsServer
 

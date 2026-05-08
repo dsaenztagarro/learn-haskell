@@ -1,6 +1,22 @@
 {-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE KindSignatures #-}
 
+-- |
+-- Module      : Exts.Deriving.ViaCompatibleType
+-- Stage       : 03-Deriving  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Deriving strategies chapter
+-- Prereqs     : Exts.Deriving.GeneralizedNewtypeDeriving, Base.Roles
+--
+-- == Concept
+-- @DerivingVia@ generalises @GeneralizedNewtypeDeriving@: derive an
+-- instance for type @T@ by routing through any other type @V@ that has
+-- the right representation and the desired instance. Two examples here:
+--   * @Unicode@ shows as hex, by deriving 'Show' via @Hex Int@.
+--   * @MyMaybe@ borrows 'Semigroup'/'Monoid' from @Sel Maybe a@.
+--
+-- == Example
+-- >>> show (U 65)
+-- "0x41"
 module Exts.Deriving.ViaCompatibleType where
 
 import Numeric

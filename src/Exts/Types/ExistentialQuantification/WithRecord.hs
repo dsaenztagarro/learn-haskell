@@ -6,6 +6,21 @@
 Existential types give a way to "weaken" a type into a representation that
 is more general, but about which you have less information.
 -}
+-- |
+-- Module      : Exts.Types.ExistentialQuantification.WithRecord
+-- Stage       : 05-Existentials  (see docs/ROADMAP.md)
+-- Source      : GHC users guide — ExistentialQuantification (record form)
+-- Prereqs     : Exts.Types.ExistentialQuantification, Exts.Records.RecordWildCards
+--
+-- == Concept
+-- Pack the existential @a@ together with /every/ operation we'll ever
+-- need on it (modify, combine, consume). 'runExistential' threads the
+-- operations through @{..}@ wildcards, so the function body stays
+-- entirely structural — it does not mention the hidden @a@.
+--
+-- == Example
+-- >>> runExistential (addAndMultiplyInt 3)
+-- 18
 module Exts.Types.ExistentialQuantification.WithRecord where
 
 {-

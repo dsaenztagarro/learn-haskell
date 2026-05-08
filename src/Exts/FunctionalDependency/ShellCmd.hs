@@ -5,6 +5,19 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE StrictData #-} -- avoid lazy fields in records
 
+-- |
+-- Module      : Exts.FunctionalDependency.ShellCmd
+-- Stage       : 06-Kinds  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Type families and functional dependencies
+-- Prereqs     : Exts.Kinds.AssociatedTypeFamily.ShellCmd
+--
+-- == Concept
+-- A /functional dependency/ in a multi-param class
+-- (@class C a b | a -> b@) tells GHC that knowing @a@ is enough to
+-- determine @b@. Solves the same problem as an associated type family
+-- but predates the type-family machinery; useful to recognise in older
+-- libraries (mtl). Compare with the AssociatedTypeFamily/AssociatedDataFamily
+-- forms of the same shell-command example.
 module Exts.FunctionalDependency.ShellCmd where
 
 import System.Process (readProcess)

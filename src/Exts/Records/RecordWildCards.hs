@@ -2,6 +2,22 @@
 {-# LANGUAGE RecordWildCards #-}
 {-# OPTIONS_GHC -Wno-missing-signatures #-}
 {-# OPTIONS_GHC -Wno-incomplete-patterns #-}
+-- |
+-- Module      : Exts.Records.RecordWildCards
+-- Stage       : 03-Records  (see docs/ROADMAP.md)
+-- Source      : GHC users guide — RecordWildCards
+--               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/record_wildcards.html
+--
+-- == Concept
+-- Extends 'NamedFieldPuns' with the @{..}@ wildcard: every field of the
+-- record is implicitly bound to a same-named variable in the surrounding
+-- scope, both in patterns and in construction.
+--
+-- == Example
+-- >>> newC
+-- C {a = 1, b = 2, c = 3}
+-- >>> sumC' (C 1 5 7)
+-- 12
 module Exts.Records.RecordWildCards where
 
 -- Allows to take all of the fields of a record and turn them into variables that

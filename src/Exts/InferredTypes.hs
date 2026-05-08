@@ -21,6 +21,20 @@
    `{w}` and `{b}` are inferred types, so it is not possible to perform type
    applications in the previous function definition.
 -}
+-- |
+-- Module      : Exts.InferredTypes
+-- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
+-- Source      : Effective Haskell — Type-level programming chapters
+--
+-- == Concept
+-- GHC distinguishes /specified/ from /inferred/ type variables. Only
+-- specified ones can be selected with visible type application
+-- (@\@T@). Wrap a variable in braces (@{a}@) in a signature to mark it
+-- inferred; this is a deliberate API choice — callers cannot fix it.
+--
+-- == Example
+-- >>> convertViaInt' (3 :: Int) :: Double
+-- 3.0
 module Exts.InferredTypes where
 
 convertViaInt :: forall {a} b. (Integral a, Num b) => a -> b

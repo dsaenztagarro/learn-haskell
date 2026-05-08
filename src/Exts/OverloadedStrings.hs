@@ -24,6 +24,24 @@ To disable the extension:
 :set -XNoOverloadedStrings
 -}
 
+-- |
+-- Module      : Exts.OverloadedStrings
+-- Stage       : 03-Records  (see docs/ROADMAP.md)
+-- Source      : GHC users guide — OverloadedStrings
+--
+-- == Concept
+-- @OverloadedStrings@ rewrites every string literal as
+-- @fromString \"...\"@ from the 'Data.String.IsString' class. Lets one
+-- literal stand in for @Text@, @ByteString@, or any user type with an
+-- 'IsString' instance.
+--
+-- == Example
+-- >>> let Person n _ = spj in n
+-- "Simon Peyton Jones"
+--
+-- Note: this module is /not/ in the public library (cabal does not
+-- expose it). Treat it as a snippet to read, not to import. To compile
+-- it you would also need @import Data.String (IsString(..))@.
 module Exts.OverloadedStrings where
 
 data Person = Person String (Maybe Int)
