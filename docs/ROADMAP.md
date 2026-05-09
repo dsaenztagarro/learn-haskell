@@ -102,12 +102,12 @@ forget the trade-offs between strategies.
 
 **Modules in order:**
 1. `Exts.Records.RecordWildCards`
-2. `Exts.Records.RecordPuns`
+2. `Exts.Records.NamedFieldPuns`
 3. `Exts.Deriving.GeneralizedNewtypeDeriving`
 4. `Exts.Deriving.StandaloneDeriving`
-5. `Exts.Deriving.AnyclassDeriving`
-6. `Exts.Deriving.ViaCompatibleType` — `DerivingVia`.
-7. `Exts.Deriving.Strategies` — the umbrella; how to disambiguate.
+5. `Exts.Deriving.DeriveAnyClass`
+6. `Exts.Deriving.DerivingVia` — `DerivingVia`.
+7. `Exts.Deriving.DerivingStrategies` — the umbrella; how to disambiguate.
 
 **Exit checkpoint:** given a newtype `Age = Age Int`, derive `Num`, `Show`,
 `Eq`, and a JSON instance using three different strategies. Justify each
@@ -115,7 +115,7 @@ choice.
 
 ---
 
-## Stage 04 — Type signatures & polymorphism (`src/Exts/TypeSignatures/*`, `Exts/Types/RankNTypes`, `Exts/InferredTypes`, `Exts/ArbitraryRankPolymorphism`)
+## Stage 04 — Type signatures & polymorphism (`src/Exts/TypeSignatures/*`, `Exts/Types/RankNTypes`, `Exts/InferredTypes`)
 
 **Why:** prepares you for existentials and rank-N — the moment polymorphism
 stops behaving like generics in other languages.
@@ -125,9 +125,8 @@ stops behaving like generics in other languages.
 2. `Exts.TypeSignatures.ScopedTypeVariables`
 3. `Exts.TypeSignatures.AllowAmbiguousTypes`
 4. `Exts.InferredTypes`
-5. `Exts.Types.RankNTypes`
-6. `Exts.ArbitraryRankPolymorphism`
-7. `Exts.TypeClasses.FlexibleContexts`, `Exts.TypeClasses.FlexibleInstances`
+5. `Exts.Types.RankNTypes` — both the applied form (logger example) and rank-1/2/3 grammar reference
+6. `Exts.TypeClasses.FlexibleContexts`, `Exts.TypeClasses.FlexibleInstances`
 
 **Exit checkpoint:** explain why `f :: (forall a. a -> a) -> (Int, Bool)`
 typechecks but `f' :: forall a. (a -> a) -> (Int, Bool)` does not. Use one of

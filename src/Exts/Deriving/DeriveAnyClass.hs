@@ -1,7 +1,7 @@
 {-# LANGUAGE DefaultSignatures #-}
 {-# LANGUAGE DeriveAnyClass #-}
 -- |
--- Module      : Exts.Deriving.AnyclassDeriving
+-- Module      : Exts.Deriving.DeriveAnyClass
 -- Stage       : 03-Deriving  (see docs/ROADMAP.md)
 -- Source      : EH:ch? deriving, GHC:deriving-any-class
 --               GHC users guide — DeriveAnyClass
@@ -15,7 +15,7 @@
 -- == Example
 -- >>> redacted (UserName "alice")
 -- "\"alice\""    -- via the default Show-based implementation
-module Exts.Deriving.AnyclassDeriving where
+module Exts.Deriving.DeriveAnyClass where
 
 {-
 Haskell 98 allows you to define a default implementation when declaring a class:

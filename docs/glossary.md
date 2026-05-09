@@ -14,7 +14,7 @@ points to the module here that demonstrates it most concretely.
 | **Type family (open/closed)** | A function at the type level. Closed = fixed set of equations; open = instances can be added.  | `Exts.Kinds.ClosedTypeFamily`, `Exts.Kinds.OpenTypeFamily` |
 | **Associated family**         | A type/data family declared inside a class, parameterised by the class's instance head.        | `Exts.Kinds.AssociatedTypeFamily.ShellCmd` |
 | **Functional dependency**     | A class-level constraint that one parameter functionally determines another (`a -> b`).        | `Exts.FunctionalDependency.ShellCmd` |
-| **`DerivingVia`**             | Derive an instance by routing through another type that already has it.                        | `Exts.Deriving.ViaCompatibleType` |
+| **`DerivingVia`**             | Derive an instance by routing through another type that already has it.                        | `Exts.Deriving.DerivingVia` |
 | **`UndecidableInstances`**    | Switch off GHC's termination check for instance resolution.                                    | `Exts.UndecidableInstances` |
 | **Monad transformer**         | A type constructor that adds an effect to an underlying monad, e.g. `StateT s m a`.            | `Libs.Mtl.Control.Monad.StateT` |
 | **mtl-style class**           | A type-class capturing an effect (`MonadState`, `MonadError`) so callers stay polymorphic.     | `Libs.Mtl.Control.Monad.MonadState` |

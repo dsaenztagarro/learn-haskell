@@ -3,13 +3,13 @@
 {-# LANGUAGE DeriveAnyClass #-}
 {-# LANGUAGE DerivingStrategies #-}
 -- |
--- Module      : Exts.Deriving.Strategies
+-- Module      : Exts.Deriving.DerivingStrategies
 -- Stage       : 03-Deriving  (see docs/ROADMAP.md)
 -- Source      : EH:ch? deriving, GHC:deriving-strategies
 --               GHC users guide — DerivingStrategies
 -- Prereqs     : Exts.Deriving.GeneralizedNewtypeDeriving,
---               Exts.Deriving.AnyclassDeriving,
---               Exts.Deriving.ViaCompatibleType
+--               Exts.Deriving.DeriveAnyClass,
+--               Exts.Deriving.DerivingVia
 --
 -- == Concept
 -- The umbrella for the four strategies — @stock@, @newtype@, @anyclass@,
@@ -23,7 +23,7 @@
 -- via @stock@, @Redacted@ lifted via @newtype@, @Cool@ generated empty
 -- via @anyclass@. Compare each instance and notice which uses the
 -- wrapped type's behaviour vs. its own.
-module Exts.Deriving.Strategies where
+module Exts.Deriving.DerivingStrategies where
 
 class Redacted a where
   redacted :: a -> String

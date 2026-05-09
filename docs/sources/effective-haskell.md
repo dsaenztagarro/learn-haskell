@@ -22,7 +22,7 @@ grep -RHn "^-- Source.*EH:" src/ --include='*.hs' | sort -t: -k3
 | `EH:p457`   | Alternative (page 457)                     | `Std.Control.Alternative`                                                                              |
 | `EH:ch?`    | Semigroup / Monoid                         | `Std.Data.Semigroup`, `Std.Data.Monoid`                                                                |
 | `EH:ch?`    | Kinds                                      | `Base.HigherKindedType`                                                                                |
-| `EH:ch?`    | Deriving strategies                        | `Exts.Deriving.GeneralizedNewtypeDeriving`, `Exts.Deriving.AnyclassDeriving`, `Exts.Deriving.ViaCompatibleType`, `Exts.Deriving.Strategies` |
+| `EH:ch?`    | Deriving strategies                        | `Exts.Deriving.GeneralizedNewtypeDeriving`, `Exts.Deriving.DeriveAnyClass`, `Exts.Deriving.DerivingVia`, `Exts.Deriving.DerivingStrategies` |
 | `EH:ch?`    | Existentials                               | `Exts.Types.ExistentialQuantification.WithTypeClass`, `Exts.Types.ExistentialQuantification.WithTypeClassConstraint` |
 | `EH:ch?`    | GADTs                                      | `Exts.GADT.HeterogeneousList`, `Exts.GADT.ShellCmd`, `Exts.GADT.CommandRunner`                         |
 | `EH:ch12`   | Type-level programming                     | `Exts.Kinds.ClosedTypeFamily`, `Exts.InferredTypes`, `Exts.GADT.CommandRunner`                         |

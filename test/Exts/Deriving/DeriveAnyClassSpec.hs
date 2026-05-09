@@ -1,7 +1,7 @@
-module Exts.Deriving.AnyclassDerivingSpec (spec) where
+module Exts.Deriving.DeriveAnyClassSpec (spec) where
 
 import Test.Hspec
-import Exts.Deriving.AnyclassDeriving
+import Exts.Deriving.DeriveAnyClass
 
 spec :: Spec
 spec = do

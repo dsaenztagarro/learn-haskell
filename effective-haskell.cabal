@@ -82,18 +82,17 @@ library
                     , Libs.Mtl.Control.Monad.ExceptT
                     , Exts.Deriving.GeneralizedNewtypeDeriving
                     , Exts.Deriving.StandaloneDeriving
-                    , Exts.Deriving.ViaCompatibleType
-                    , Exts.Deriving.AnyclassDeriving
-                    , Exts.Deriving.Strategies
+                    , Exts.Deriving.DerivingVia
+                    , Exts.Deriving.DeriveAnyClass
+                    , Exts.Deriving.DerivingStrategies
                     , Exts.Records.RecordWildCards
-                    , Exts.Records.RecordPuns
+                    , Exts.Records.NamedFieldPuns
                     , Exts.TypeSignatures.ExplicitForAll
                     , Exts.TypeSignatures.ScopedTypeVariables
                     , Exts.TypeSignatures.AllowAmbiguousTypes
                     , Exts.TypeClasses.FlexibleContexts
                     , Exts.TypeClasses.FlexibleInstances
                     , Exts.UndecidableInstances
-                    , Exts.ArbitraryRankPolymorphism
                     , Exts.Types.ExistentialQuantification
                     , Exts.Types.ExistentialQuantification.WithRecord
                     , Exts.Types.ExistentialQuantification.WithTypeClassConstraint
@@ -163,8 +162,8 @@ test-suite learn-haskell-test
                   , Base.RolesSpec
                   -- Deriving
                   , Exts.Deriving.GeneralizedNewtypeDerivingSpec
-                  , Exts.Deriving.ViaCompatibleTypeSpec
-                  , Exts.Deriving.AnyclassDerivingSpec
+                  , Exts.Deriving.DerivingViaSpec
+                  , Exts.Deriving.DeriveAnyClassSpec
                   -- ...
                   , Exts.Types.ExistentialQuantificationSpec
                   , Exts.Types.ExistentialQuantification.WithRecordSpec

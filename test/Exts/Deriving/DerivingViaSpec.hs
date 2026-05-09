@@ -1,7 +1,7 @@
-module Exts.Deriving.ViaCompatibleTypeSpec (spec) where
+module Exts.Deriving.DerivingViaSpec (spec) where
 
 import Test.Hspec
-import Exts.Deriving.ViaCompatibleType
+import Exts.Deriving.DerivingVia
 
 test_semigroup :: MyMaybe [Int] -> MyMaybe [Int] -> MyMaybe [Int]
 test_semigroup m1 m2 = m1 <> m2

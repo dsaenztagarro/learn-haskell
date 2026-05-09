@@ -2,7 +2,7 @@
 {-# LANGUAGE KindSignatures #-}
 
 -- |
--- Module      : Exts.Deriving.ViaCompatibleType
+-- Module      : Exts.Deriving.DerivingVia
 -- Stage       : 03-Deriving  (see docs/ROADMAP.md)
 -- Source      : EH:ch? deriving, GHC:deriving-via
 -- Prereqs     : Exts.Deriving.GeneralizedNewtypeDeriving, Base.Roles
@@ -17,7 +17,7 @@
 -- == Example
 -- >>> show (U 65)
 -- "0x41"
-module Exts.Deriving.ViaCompatibleType where
+module Exts.Deriving.DerivingVia where
 
 import Numeric
 import Data.Kind (Type)
