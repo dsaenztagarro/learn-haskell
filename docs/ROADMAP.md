@@ -115,7 +115,7 @@ choice.
 
 ---
 
-## Stage 04 — Type signatures & polymorphism (`src/Exts/TypeSignatures/*`, `Exts/Types/RankNTypes`, `Exts/InferredTypes`)
+## Stage 04 — Type signatures & polymorphism (`src/Exts/TypeSignatures/*`, `Exts/Types/RankNTypes`)
 
 **Why:** prepares you for existentials and rank-N — the moment polymorphism
 stops behaving like generics in other languages.
@@ -124,7 +124,7 @@ stops behaving like generics in other languages.
 1. `Exts.TypeSignatures.ExplicitForAll`
 2. `Exts.TypeSignatures.ScopedTypeVariables`
 3. `Exts.TypeSignatures.AllowAmbiguousTypes`
-4. `Exts.InferredTypes`
+4. `Exts.TypeSignatures.InferredTypes`
 5. `Exts.Types.RankNTypes` — both the applied form (logger example) and rank-1/2/3 grammar reference
 6. `Exts.TypeClasses.FlexibleContexts`, `Exts.TypeClasses.FlexibleInstances`
 

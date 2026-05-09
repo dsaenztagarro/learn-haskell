@@ -98,7 +98,7 @@ library
                     , Exts.Types.ExistentialQuantification.WithTypeClassConstraint
                     , Exts.Types.ExistentialQuantification.WithTypeClass
                     , Exts.Types.RankNTypes
-                    , Exts.InferredTypes
+                    , Exts.TypeSignatures.InferredTypes
                     -- Types and Kinds
                     , Exts.FunctionalDependency.ShellCmd
                     , Exts.Kinds.AssociatedTypeFamily.ShellCmd
@@ -169,7 +169,7 @@ test-suite learn-haskell-test
                   , Exts.Types.ExistentialQuantification.WithRecordSpec
                   , Exts.Types.ExistentialQuantification.WithTypeClassConstraintSpec
                   , Exts.Types.ExistentialQuantification.WithTypeClassSpec
-                  , Exts.InferredTypesSpec
+                  , Exts.TypeSignatures.InferredTypesSpec
                   -- Types and Kind
                   , Exts.FunctionalDependency.ShellCmdSpec
                   , Exts.Kinds.AssociatedTypeFamily.ShellCmdSpec

@@ -25,7 +25,7 @@ grep -RHn "^-- Source.*EH:" src/ --include='*.hs' | sort -t: -k3
 | `EH:ch?`    | Deriving strategies                        | `Exts.Deriving.GeneralizedNewtypeDeriving`, `Exts.Deriving.DeriveAnyClass`, `Exts.Deriving.DerivingVia`, `Exts.Deriving.DerivingStrategies` |
 | `EH:ch?`    | Existentials                               | `Exts.Types.ExistentialQuantification.WithTypeClass`, `Exts.Types.ExistentialQuantification.WithTypeClassConstraint` |
 | `EH:ch?`    | GADTs                                      | `Exts.GADT.HeterogeneousList`, `Exts.GADT.ShellCmd`, `Exts.GADT.CommandRunner`                         |
-| `EH:ch12`   | Type-level programming                     | `Exts.Kinds.ClosedTypeFamily`, `Exts.InferredTypes`, `Exts.GADT.CommandRunner`                         |
+| `EH:ch12`   | Type-level programming                     | `Exts.Kinds.ClosedTypeFamily`, `Exts.TypeSignatures.InferredTypes`, `Exts.GADT.CommandRunner`                         |
 | `EH:ch12`   | Type families                              | `Exts.Kinds.OpenTypeFamily`, `Exts.Kinds.AssociatedTypeFamily.ShellCmd`, `Exts.Kinds.AssociatedDataFamily.ShellCmd`, `Exts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies`, `Exts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies`, `Exts.FunctionalDependency.ShellCmd` |
 | `EH:ch?`    | Functional dependencies                    | `Exts.FunctionalDependency.ShellCmd` (also tagged `EH:ch12`)                                           |
 | `EH:ch?`    | mtl / monad transformers                   | `Libs.Mtl.Control.Monad.State`, `StateT`, `MonadState`, `MonadTrans`, `ExceptT`, `MonadError`, `Apps.Mtl.StateMonadWithTypeAlias`, `Apps.Mtl.StateMonadWithNewtype` |

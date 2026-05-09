@@ -22,9 +22,17 @@
    applications in the previous function definition.
 -}
 -- |
--- Module      : Exts.InferredTypes
+-- Module      : Exts.TypeSignatures.InferredTypes
 -- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
 -- Source      : EH:ch12 type-level
+-- Prereqs     : Exts.TypeSignatures.ExplicitForAll, GHC:type-applications
+--
+-- == Note
+-- /This is not a single GHC extension/ — it is a concept (specified vs.
+-- inferred type variables) that surfaces through the combination of
+-- @ExplicitForAll@, @ScopedTypeVariables@, and @TypeApplications@.
+-- Filed under @TypeSignatures/@ because it lives at the same level of
+-- abstraction as the other entries in this folder.
 --
 -- == Concept
 -- GHC distinguishes /specified/ from /inferred/ type variables. Only
@@ -35,7 +43,7 @@
 -- == Example
 -- >>> convertViaInt' (3 :: Int) :: Double
 -- 3.0
-module Exts.InferredTypes where
+module Exts.TypeSignatures.InferredTypes where
 
 convertViaInt :: forall {a} b. (Integral a, Num b) => a -> b
 convertViaInt input =

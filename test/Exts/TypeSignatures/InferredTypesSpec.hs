@@ -1,9 +1,9 @@
 {-# LANGUAGE TypeApplications #-}
 
-module Exts.InferredTypesSpec (spec) where
+module Exts.TypeSignatures.InferredTypesSpec (spec) where
 
 import Test.Hspec
-import Exts.InferredTypes
+import Exts.TypeSignatures.InferredTypes
 
 spec :: Spec
 spec = do
