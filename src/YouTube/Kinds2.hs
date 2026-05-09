@@ -6,7 +6,7 @@
 -- |
 -- Module      : YouTube.Kinds2
 -- Stage       : 06-Kinds  (companion lecture — see docs/ROADMAP.md)
--- Source      : YouTube — Tweag: @rae, "Getting a little fancy with Haskell's kinds"
+-- Source      : YT:rae-kinds-2
 --               https://www.youtube.com/watch?v=Qy_yxVkO8no
 -- Prereqs     : YouTube.Kinds, Exts.Kinds.ClosedTypeFamily,
 --               Exts.FunctionalDependency.ShellCmd

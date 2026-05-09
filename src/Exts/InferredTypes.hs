@@ -24,7 +24,7 @@
 -- |
 -- Module      : Exts.InferredTypes
 -- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Type-level programming chapters
+-- Source      : EH:ch12 type-level
 --
 -- == Concept
 -- GHC distinguishes /specified/ from /inferred/ type variables. Only

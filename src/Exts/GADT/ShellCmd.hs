@@ -4,7 +4,7 @@
 -- |
 -- Module      : Exts.GADT.ShellCmd
 -- Stage       : 05-Existentials  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — GADT chapter
+-- Source      : EH:ch? gadt
 -- Prereqs     : Exts.GADT.HeterogeneousList
 --
 -- == Concept

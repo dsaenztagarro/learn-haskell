@@ -22,20 +22,45 @@ Every module in `src/` carries a Haddock header with:
 
 Run `cabal haddock all` and browse the generated docs for a fast index.
 
-## How to find code for a specific book chapter
+## Sources covered
 
-When you are re-reading *Effective Haskell* or *Real World Haskell* and want
-the matching code in this repo, use the reverse-index:
+| Tag prefix      | Source                                              | Index                                                            |
+| --------------- | --------------------------------------------------- | ---------------------------------------------------------------- |
+| `EH:chN`/`EH:pN`| *Effective Haskell* (Pragmatic Bookshelf)           | [`docs/sources/effective-haskell.md`](docs/sources/effective-haskell.md) |
+| `RWH:chN`       | *Real World Haskell* (O'Reilly)                     | [`docs/sources/real-world-haskell.md`](docs/sources/real-world-haskell.md) |
+| `GHC:slug`      | GHC users guide (language extensions)               | (cited inline; no per-extension index file)                      |
+| `YT:slug`       | YouTube lectures (Tweag, Prudnikov, …)              | [`docs/sources/youtube.md`](docs/sources/youtube.md)             |
+| `Tweag:slug`    | Tweag library/lecture (e.g. typed-protocols)        | (in `youtube.md` for now)                                        |
+| `base:Module`   | Direct citation of a Haskell stdlib module          | _n/a_                                                            |
 
-- [`docs/sources/effective-haskell.md`](docs/sources/effective-haskell.md) —
-  chapter → modules table.
-- [`docs/sources/real-world-haskell.md`](docs/sources/real-world-haskell.md)
-- [`docs/sources/youtube.md`](docs/sources/youtube.md)
-- [`docs/glossary.md`](docs/glossary.md) — one-line definitions, each
-  pointing to its canonical module here.
+The full citation scheme — how to read tags, how to grep them, how to
+fill in `EH:ch?` placeholders — is in
+[`docs/sources/README.md`](docs/sources/README.md).
 
-These files are the inverse of the `Source:` line in each module. To rebuild
-them by hand: `grep -RH "^-- Source" src/`.
+## How to find code for a specific book chapter or lecture
+
+The `Source:` line in each module is the load-bearing pointer. Search
+the tag in your editor:
+
+```bash
+:Telescope live_grep<CR>EH:ch12          # all modules from EH chapter 12
+:Telescope live_grep<CR>GHC:roles        # all modules citing the Roles ext
+:Telescope live_grep<CR>YT:rae-kinds-1   # the Eisenberg Kinds lecture
+```
+
+Or with `rg`:
+
+```bash
+rg "EH:ch12"                          # one chapter
+rg "^-- Source.*EH:"                  # every Effective-Haskell-tagged module
+rg -l "GHC:undecidable-instances"     # files mentioning a GHC extension
+```
+
+The reverse-index tables in [`docs/sources/`](docs/sources/) (one per
+book/source) give the chapter → modules direction.
+
+[`docs/glossary.md`](docs/glossary.md) maps each concept term to its
+canonical demo module here.
 
 ## Layout
 

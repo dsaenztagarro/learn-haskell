@@ -6,7 +6,7 @@
 -- |
 -- Module      : Exts.GADT.HeterogeneousList
 -- Stage       : 05-Existentials  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — GADT chapter
+-- Source      : EH:ch? gadt
 -- Prereqs     : Exts.Types.ExistentialQuantification
 --
 -- == Concept

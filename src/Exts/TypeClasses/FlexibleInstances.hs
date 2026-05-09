@@ -3,7 +3,7 @@
 -- |
 -- Module      : Exts.TypeClasses.FlexibleInstances
 -- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
--- Source      : GHC users guide — FlexibleInstances
+-- Source      : GHC:flexible-instances
 --
 -- == Concept
 -- Lifts Haskell 98's rule that an instance head must be of the form

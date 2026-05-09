@@ -26,7 +26,7 @@
 -- |
 -- Module      : Exts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies
 -- Stage       : 06-Kinds  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Type families chapter
+-- Source      : EH:ch12 type-families
 -- Prereqs     : Exts.Kinds.ClosedTypeFamily, the @WithOpenTypeFamilies@
 --               variant (read first for contrast)
 --

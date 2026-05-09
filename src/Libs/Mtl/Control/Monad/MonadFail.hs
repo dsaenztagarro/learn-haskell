@@ -1,7 +1,7 @@
 -- |
 -- Module      : Libs.Mtl.Control.Monad.MonadFail
 -- Stage       : 07-Mtl  (see docs/ROADMAP.md)
--- Source      : Effective Haskell, page 464
+-- Source      : EH:p464 monadfail
 --               base — Control.Monad.Fail
 --
 -- == Concept

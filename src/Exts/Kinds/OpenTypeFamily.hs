@@ -33,7 +33,7 @@ read @Integer "1"
 -- |
 -- Module      : Exts.Kinds.OpenTypeFamily
 -- Stage       : 06-Kinds  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Type families chapter
+-- Source      : EH:ch12 type-families
 -- Prereqs     : Base.HigherKindedType
 --
 -- == Concept

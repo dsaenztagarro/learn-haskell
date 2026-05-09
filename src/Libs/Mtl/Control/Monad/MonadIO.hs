@@ -1,7 +1,7 @@
 -- |
 -- Module      : Libs.Mtl.Control.Monad.MonadIO
 -- Stage       : 07-Mtl  (see docs/ROADMAP.md)
--- Source      : base — Control.Monad.IO.Class
+-- Source      : base:Control.Monad.IO.Class
 -- Prereqs     : Libs.Mtl.Control.Monad.MonadTrans
 --
 -- == Concept

@@ -4,7 +4,7 @@
 -- |
 -- Module      : Libs.Mtl.Control.Monad.MonadError
 -- Stage       : 07-Mtl  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — mtl chapter
+-- Source      : EH:ch? mtl
 --               mtl package — Control.Monad.Except.Class
 -- Prereqs     : Libs.Mtl.Control.Monad.ExceptT,
 --               Libs.Mtl.Control.Monad.MonadState (for the class pattern)

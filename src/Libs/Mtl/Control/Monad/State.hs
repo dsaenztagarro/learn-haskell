@@ -1,7 +1,7 @@
 -- |
 -- Module      : Libs.Mtl.Control.Monad.State
 -- Stage       : 07-Mtl  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Monad transformers / mtl chapter
+-- Source      : EH:ch? mtl
 -- Prereqs     : Std.Control.Monad
 --
 -- == Concept

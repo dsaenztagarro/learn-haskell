@@ -2,7 +2,7 @@
 -- |
 -- Module      : Libs.Mtl.Control.Monad.StateT
 -- Stage       : 07-Mtl  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Monad transformers / mtl chapter
+-- Source      : EH:ch? mtl
 --               transformers package — Control.Monad.Trans.State
 -- Prereqs     : Libs.Mtl.Control.Monad.State, Libs.Mtl.Control.Monad.MonadTrans
 --

@@ -4,7 +4,7 @@
 -- |
 -- Module      : Exts.TypeClasses.FlexibleContexts
 -- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
--- Source      : GHC users guide — FlexibleContexts
+-- Source      : GHC:flexible-contexts
 --
 -- == Concept
 -- Lifts Haskell 98's rule that a class context must be of the form

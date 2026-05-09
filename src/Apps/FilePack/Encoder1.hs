@@ -2,7 +2,7 @@
 -- |
 -- Module      : Apps.FilePack.Encoder1
 -- Stage       : 08-Apps  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Building applications chapter (FilePack)
+-- Source      : EH:ch? filepack
 --
 -- == Concept
 -- First iteration of the FilePack serializer: pack a list of

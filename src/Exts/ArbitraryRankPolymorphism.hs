@@ -4,7 +4,7 @@
 -- |
 -- Module      : Exts.ArbitraryRankPolymorphism
 -- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
--- Source      : GHC users guide — RankNTypes
+-- Source      : GHC:rank-n-types
 --               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/rank_polymorphism.html
 -- Prereqs     : Exts.Types.RankNTypes
 --

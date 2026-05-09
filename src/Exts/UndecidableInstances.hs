@@ -4,7 +4,7 @@
 -- |
 -- Module      : Exts.UndecidableInstances
 -- Stage       : 06-Kinds  (see docs/ROADMAP.md)
--- Source      : GHC users guide — UndecidableInstances
+-- Source      : GHC:undecidable-instances
 --               https://en.wikipedia.org/wiki/Undecidable_problem
 -- Prereqs     : Exts.TypeClasses.FlexibleInstances
 --

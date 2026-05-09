@@ -4,7 +4,7 @@
 -- |
 -- Module      : Exts.TypeSignatures.ExplicitForAll
 -- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
--- Source      : GHC users guide — ExplicitForAll
+-- Source      : GHC:explicit-forall
 --               https://downloads.haskell.org/ghc/latest/docs/users_guide/exts/explicit_forall.html
 --
 -- == Concept

@@ -14,7 +14,7 @@
 -- |
 -- Module      : Exts.Kinds.AssociatedTypeFamily.ShellCmd
 -- Stage       : 06-Kinds  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Type families chapter
+-- Source      : EH:ch12 type-families
 -- Prereqs     : Exts.Kinds.OpenTypeFamily, Exts.GADT.ShellCmd
 --
 -- == Concept

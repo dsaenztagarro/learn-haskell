@@ -4,7 +4,7 @@
 -- |
 -- Module      : Exts.Deriving.GeneralizedNewtypeDeriving
 -- Stage       : 03-Deriving  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Deriving strategies chapter
+-- Source      : EH:ch? deriving, GHC:newtype-deriving
 --               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/newtype_deriving.html
 --
 -- == Concept

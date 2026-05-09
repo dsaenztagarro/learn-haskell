@@ -7,7 +7,7 @@
 -- |
 -- Module      : Exts.Kinds.TypedProtocols
 -- Stage       : 06-Kinds  (capstone — see docs/ROADMAP.md)
--- Source      : Tweag / typed-protocols library and lectures (Cardano network)
+-- Source      : Tweag:typed-protocols
 -- Prereqs     : Exts.Kinds.ClosedTypeFamily, Exts.GADT.HeterogeneousList,
 --               Exts.GADT.CommandRunner
 --

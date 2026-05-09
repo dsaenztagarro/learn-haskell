@@ -5,7 +5,7 @@
 -- |
 -- Module      : Exts.Types.RankNTypes
 -- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
--- Source      : GHC users guide — RankNTypes
+-- Source      : GHC:rank-n-types
 -- Prereqs     : Exts.TypeSignatures.ExplicitForAll
 --
 -- == Concept

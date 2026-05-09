@@ -4,7 +4,7 @@
 -- |
 -- Module      : Exts.Deriving.ViaCompatibleType
 -- Stage       : 03-Deriving  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Deriving strategies chapter
+-- Source      : EH:ch? deriving, GHC:deriving-via
 -- Prereqs     : Exts.Deriving.GeneralizedNewtypeDeriving, Base.Roles
 --
 -- == Concept

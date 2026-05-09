@@ -27,7 +27,7 @@ To disable the extension:
 -- |
 -- Module      : Exts.OverloadedStrings
 -- Stage       : 03-Records  (see docs/ROADMAP.md)
--- Source      : GHC users guide — OverloadedStrings
+-- Source      : GHC:overloaded-strings
 --
 -- == Concept
 -- @OverloadedStrings@ rewrites every string literal as

@@ -3,7 +3,7 @@
 -- |
 -- Module      : Std.Control.Applicative
 -- Stage       : 01-Std  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Applicative chapter
+-- Source      : EH:ch? applicative
 -- Prereqs     : Std.Data.Functor
 --
 -- == Concept

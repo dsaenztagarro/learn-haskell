@@ -23,10 +23,9 @@ listed in the table above.
 
 - `Exts/OverloadedStrings.hs` is **not** in the public cabal library
   (snippet only — read, don't import).
-- `Exts/TypeSignatures/FlexibleContexts.hs` is an orphan file with a
-  buggy module declaration (declares `Exts.TypeSignatures.ExplicitForAll`).
-  The canonical FlexibleContexts demo is at
-  `Exts/TypeClasses/FlexibleContexts.hs`.
+- The canonical FlexibleContexts demo is at
+  `Exts/TypeClasses/FlexibleContexts.hs`. (A previous orphan draft at
+  `Exts/TypeSignatures/FlexibleContexts.hs` has been removed.)
 - The shell-command example (`ShellCmd`) appears in four places to
   contrast extensions: under `FunctionalDependency`,
   `Kinds/AssociatedTypeFamily`, `Kinds/AssociatedDataFamily`, and

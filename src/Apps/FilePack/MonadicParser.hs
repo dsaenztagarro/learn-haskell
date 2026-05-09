@@ -4,7 +4,7 @@
 -- |
 -- Module      : Apps.FilePack.MonadicParser
 -- Stage       : 08-Apps  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Parsers chapter
+-- Source      : EH:ch? parsers
 -- Prereqs     : Apps.FilePack.ApplicativeParser
 --
 -- == Concept

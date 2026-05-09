@@ -7,7 +7,8 @@ If you are looking for code that matches a specific book chapter, do **not** use
 this file — go to [`sources/effective-haskell.md`](sources/effective-haskell.md)
 or [`sources/real-world-haskell.md`](sources/real-world-haskell.md) instead.
 That mapping is the inverse of the `Source:` line in every module's Haddock
-header.
+header. The `Source:` lines use a short tag scheme (`EH:ch12`, `GHC:roles`,
+`YT:rae-kinds-1`, …) — full reference at [`sources/README.md`](sources/README.md).
 
 ---
 

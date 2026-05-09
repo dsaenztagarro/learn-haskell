@@ -8,7 +8,7 @@
 -- |
 -- Module      : Base.Roles
 -- Stage       : 02-Base  (see docs/ROADMAP.md)
--- Source      : GHC users guide — Roles
+-- Source      : GHC:roles
 --               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/roles.html
 --               docs/generative-type-abstraction-and-type-level-computation.pdf
 -- Prereqs     : Base.HigherKindedType, Exts.Deriving.GeneralizedNewtypeDeriving

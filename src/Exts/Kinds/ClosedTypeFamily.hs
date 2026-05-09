@@ -9,7 +9,7 @@
 -- |
 -- Module      : Exts.Kinds.ClosedTypeFamily
 -- Stage       : 06-Kinds  (see docs/ROADMAP.md)
--- Source      : Effective Haskell, Ch. 12 — Type-level programming
+-- Source      : EH:ch12 type-level
 -- Prereqs     : Exts.Kinds.OpenTypeFamily
 --
 -- == Concept

@@ -5,7 +5,7 @@
 -- |
 -- Module      : Exts.Deriving.StandaloneDeriving
 -- Stage       : 03-Deriving  (see docs/ROADMAP.md)
--- Source      : GHC users guide — StandaloneDeriving
+-- Source      : GHC:standalone-deriving
 --               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/standalone_deriving.html
 --
 -- == Concept

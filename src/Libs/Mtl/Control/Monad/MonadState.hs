@@ -4,7 +4,7 @@
 -- |
 -- Module      : Libs.Mtl.Control.Monad.MonadState
 -- Stage       : 07-Mtl  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — mtl chapter
+-- Source      : EH:ch? mtl
 --               mtl package — Control.Monad.State.Class
 -- Prereqs     : Libs.Mtl.Control.Monad.StateT,
 --               Exts.FunctionalDependency.ShellCmd

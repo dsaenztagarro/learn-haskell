@@ -8,7 +8,7 @@
 -- |
 -- Module      : Exts.FunctionalDependency.ShellCmd
 -- Stage       : 06-Kinds  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Type families and functional dependencies
+-- Source      : EH:ch12 type-families, EH:ch? funcdeps
 -- Prereqs     : Exts.Kinds.AssociatedTypeFamily.ShellCmd
 --
 -- == Concept

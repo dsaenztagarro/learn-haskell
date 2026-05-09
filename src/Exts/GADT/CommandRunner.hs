@@ -20,7 +20,7 @@
 -- |
 -- Module      : Exts.GADT.CommandRunner
 -- Stage       : 06-Kinds  (see docs/ROADMAP.md — late Stage 5 / early Stage 6)
--- Source      : Effective Haskell — GADT and type-level programming chapters
+-- Source      : EH:ch? gadt, EH:ch12 type-level
 --               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/type_applications.html
 -- Prereqs     : Exts.GADT.HeterogeneousList, Exts.GADT.ShellCmd,
 --               Exts.Kinds.ClosedTypeFamily, Exts.FunctionalDependency.ShellCmd

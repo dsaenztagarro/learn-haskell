@@ -2,7 +2,7 @@
 -- |
 -- Module      : Libs.Mtl.Control.Monad.ExceptT
 -- Stage       : 07-Mtl  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Monad transformers / mtl chapter
+-- Source      : EH:ch? mtl
 --               transformers package — Control.Monad.Trans.Except
 -- Prereqs     : Libs.Mtl.Control.Monad.MonadTrans
 --

@@ -1,7 +1,7 @@
 -- |
 -- Module      : Std.Data.Functor.Identity
 -- Stage       : 01-Std  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Functor/Applicative chapters
+-- Source      : EH:ch? functor-applicative
 -- Prereqs     : Std.Data.Functor, Std.Control.Applicative
 --
 -- == Concept

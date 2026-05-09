@@ -1,7 +1,7 @@
 -- |
 -- Module      : Std.Data.Semigroup
 -- Stage       : 01-Std  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Semigroup/Monoid chapter
+-- Source      : EH:ch? semigroup-monoid
 -- Prereqs     : (none)
 --
 -- == Concept

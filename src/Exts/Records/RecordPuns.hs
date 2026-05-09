@@ -5,7 +5,7 @@
 -- |
 -- Module      : Exts.Records.RecordPuns
 -- Stage       : 03-Records  (see docs/ROADMAP.md)
--- Source      : GHC users guide — NamedFieldPuns
+-- Source      : GHC:named-field-puns
 --               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/record_puns.html
 --
 -- == Concept

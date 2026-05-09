@@ -4,7 +4,7 @@
 -- |
 -- Module      : Base.HigherKindedType
 -- Stage       : 02-Base  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Kinds chapter
+-- Source      : EH:ch? kinds
 -- Prereqs     : Std.Data.Functor (familiarity with @Functor f@ where @f :: * -> *@)
 --
 -- == Concept

@@ -4,7 +4,7 @@
 -- |
 -- Module      : Exts.TypeSignatures.AllowAmbiguousTypes
 -- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
--- Source      : GHC users guide — AllowAmbiguousTypes
+-- Source      : GHC:allow-ambiguous-types
 --               https://downloads.haskell.org/ghc/latest/docs/users_guide/exts/ambiguous_types.html
 --
 -- == Concept

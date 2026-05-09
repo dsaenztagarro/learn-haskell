@@ -3,7 +3,7 @@
 -- |
 -- Module      : Std.Data.Functor
 -- Stage       : 01-Std  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Functor chapter
+-- Source      : EH:ch? functor
 -- Prereqs     : Std.Data.Function
 --
 -- == Concept

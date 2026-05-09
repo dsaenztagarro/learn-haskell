@@ -4,7 +4,7 @@
 -- |
 -- Module      : Apps.FilePack.Util
 -- Stage       : 08-Apps  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Building applications chapter (FilePack)
+-- Source      : EH:ch? filepack
 --
 -- == Concept
 -- Shared encoding/decoding primitives for the FilePack iterations:

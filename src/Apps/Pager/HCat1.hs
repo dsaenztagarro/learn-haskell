@@ -5,7 +5,7 @@
 -- |
 -- Module      : Apps.Pager.HCat1
 -- Stage       : 08-Apps  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Building applications chapter (HCat)
+-- Source      : EH:ch? hcat
 --
 -- == Concept
 -- First iteration of HCat — a @cat@/@less@ clone. Reads a file from

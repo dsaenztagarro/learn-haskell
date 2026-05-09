@@ -4,7 +4,7 @@
 -- |
 -- Module      : Exts.TypeSignatures.ScopedTypeVariables
 -- Stage       : 04-TypeSignatures  (see docs/ROADMAP.md)
--- Source      : GHC users guide — ScopedTypeVariables
+-- Source      : GHC:scoped-type-variables
 --               https://downloads.haskell.org/ghc/latest/docs/users_guide/exts/scoped_type_variables.html
 --
 -- == Concept

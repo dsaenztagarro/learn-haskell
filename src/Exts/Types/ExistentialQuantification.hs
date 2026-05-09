@@ -4,7 +4,7 @@
 -- |
 -- Module      : Exts.Types.ExistentialQuantification
 -- Stage       : 05-Existentials  (see docs/ROADMAP.md)
--- Source      : GHC users guide — ExistentialQuantification
+-- Source      : GHC:existential-quantification, YT:prudnikov-quantification
 --               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/existential_quantification.html
 -- YouTube     : Stepan Prudnikov, Universal and Existential Quantification —
 --               https://www.youtube.com/watch?v=ohp2uRM9n0o

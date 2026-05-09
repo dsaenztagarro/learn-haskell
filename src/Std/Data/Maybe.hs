@@ -3,7 +3,7 @@
 -- |
 -- Module      : Std.Data.Maybe
 -- Stage       : 01-Std  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Functor/Applicative/Monad chapters
+-- Source      : EH:ch? functor-applicative-monad
 -- Prereqs     : Std.Data.Functor, Std.Control.Applicative, Std.Control.Monad
 --
 -- == Concept

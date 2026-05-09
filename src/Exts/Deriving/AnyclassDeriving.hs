@@ -3,7 +3,7 @@
 -- |
 -- Module      : Exts.Deriving.AnyclassDeriving
 -- Stage       : 03-Deriving  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Deriving strategies chapter
+-- Source      : EH:ch? deriving, GHC:deriving-any-class
 --               GHC users guide — DeriveAnyClass
 --
 -- == Concept

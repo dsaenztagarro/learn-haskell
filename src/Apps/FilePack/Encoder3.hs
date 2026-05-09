@@ -4,7 +4,7 @@
 -- |
 -- Module      : Apps.FilePack.Encoder3
 -- Stage       : 08-Apps  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Building applications chapter (FilePack)
+-- Source      : EH:ch? filepack
 -- Prereqs     : Apps.FilePack.Encoder2,
 --               Exts.Types.ExistentialQuantification.WithTypeClassConstraint
 --

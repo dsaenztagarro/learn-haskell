@@ -3,7 +3,7 @@
 -- |
 -- Module      : Std.Control.Alternative
 -- Stage       : 01-Std  (see docs/ROADMAP.md)
--- Source      : Effective Haskell, page 457 (Alternative section)
+-- Source      : EH:p457 alternative
 -- Prereqs     : Std.Control.Applicative
 --
 -- == Concept

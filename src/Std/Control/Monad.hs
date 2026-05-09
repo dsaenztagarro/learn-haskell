@@ -3,7 +3,7 @@
 -- |
 -- Module      : Std.Control.Monad
 -- Stage       : 01-Std  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Monad chapter
+-- Source      : EH:ch? monad
 -- Prereqs     : Std.Control.Applicative
 --
 -- == Concept

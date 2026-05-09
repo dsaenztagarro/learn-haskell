@@ -1,40 +1,51 @@
 # *Effective Haskell* → Modules in this repo
 
-Reverse index: chapter from the book → modules in this repo. Inverse of the
-`Source:` line in each module's Haddock header.
+Reverse index: book chapter → modules. Inverse of the `Source:` line in
+each module's Haddock header. Citation tag scheme is documented in
+[`README.md`](README.md).
 
-This file is **incrementally populated** as `src/` modules get tagged with a
-`Source:` line during the per-folder sweeps (Slices 3–8 in
-`/Users/dsaenz/.config/claude/plans/this-repository-contains-many-iterative-owl.md`).
-A row is added the moment a module is tagged.
-
-Quickly regenerate the body of this table from the source tree:
+To regenerate the body from source:
 
 ```bash
-grep -RHn "^-- Source.*Effective Haskell" src/ \
-  | sort -t: -k3
+grep -RHn "^-- Source.*EH:" src/ --include='*.hs' | sort -t: -k3
 ```
 
-| Chapter | Topic                                            | Modules                                                    |
-| ------: | ------------------------------------------------ | ---------------------------------------------------------- |
-|     TBD | Functor                                          | `Std.Data.Functor`, `Std.Data.Functor.Identity`, `Std.Data.Function`, `Std.Data.Either`, `Std.Data.List`, `Std.Data.Maybe` |
-|     TBD | Applicative                                      | `Std.Control.Applicative` (concrete instances in the modules above) |
-|     TBD | Monad                                            | `Std.Control.Monad`, `Std.Data.Maybe`, `Std.Data.List`     |
-|     TBD | Alternative (page 457)                           | `Std.Control.Alternative`                                  |
-|     TBD | Semigroup / Monoid                               | `Std.Data.Semigroup`, `Std.Data.Monoid`                    |
-|     TBD | Records & deriving                               | `Exts.Records.*`, `Exts.Deriving.*`                        |
-|     TBD | Polymorphism (rank-N, scoped tyvars, ambiguity)  | `Exts.TypeSignatures.*`, `Exts.Types.RankNTypes`, `Exts.ArbitraryRankPolymorphism`, `Exts.InferredTypes` |
-|     TBD | Existentials & GADTs                             | `Exts.Types.ExistentialQuantification.*`, `Exts.GADT.*`    |
-|     TBD | Type families                                    | `Exts.Kinds.OpenTypeFamily`, `Exts.Kinds.ClosedTypeFamily`, `Exts.Kinds.AssociatedTypeFamily.ShellCmd`, `Exts.Kinds.AssociatedDataFamily.ShellCmd`, `Exts.Kinds.TypeLevelListOperations.*` |
-|     TBD | Functional dependencies / UndecidableInstances   | `Exts.FunctionalDependency.ShellCmd`, `Exts.UndecidableInstances` |
-|     TBD | Typed protocols (capstone)                       | `Exts.Kinds.TypedProtocols`, `Exts.GADT.CommandRunner`     |
-|      10 | Parallel and concurrent programming              | `Apps.PCP.*` (formerly `ch10/`) — populated in Slice 7      |
-|      12 | Type-level programming                           | `Exts.Kinds.*`, `Exts.FunctionalDependency.ShellCmd`       |
+## By chapter
 
-> Chapter numbers marked **TBD** are populated when the user revisits the
-> book; the `Source:` lines in the modules currently say
-> "Effective Haskell — &lt;topic&gt; chapter" with no numeric chapter.
+| Tag         | Topic / book section                       | Modules                                                                                                |
+| ----------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `EH:ch?`    | Functor                                    | `Std.Data.Functor`                                                                                     |
+| `EH:ch?`    | Functor / Applicative                      | `Std.Data.Function`, `Std.Data.Functor.Identity`, `Std.Data.Either`                                    |
+| `EH:ch?`    | Functor / Applicative / Monad              | `Std.Data.Maybe`, `Std.Data.List`                                                                      |
+| `EH:ch?`    | Applicative                                | `Std.Control.Applicative`                                                                              |
+| `EH:ch?`    | Monad                                      | `Std.Control.Monad`                                                                                    |
+| `EH:p457`   | Alternative (page 457)                     | `Std.Control.Alternative`                                                                              |
+| `EH:ch?`    | Semigroup / Monoid                         | `Std.Data.Semigroup`, `Std.Data.Monoid`                                                                |
+| `EH:ch?`    | Kinds                                      | `Base.HigherKindedType`                                                                                |
+| `EH:ch?`    | Deriving strategies                        | `Exts.Deriving.GeneralizedNewtypeDeriving`, `Exts.Deriving.AnyclassDeriving`, `Exts.Deriving.ViaCompatibleType`, `Exts.Deriving.Strategies` |
+| `EH:ch?`    | Existentials                               | `Exts.Types.ExistentialQuantification.WithTypeClass`, `Exts.Types.ExistentialQuantification.WithTypeClassConstraint` |
+| `EH:ch?`    | GADTs                                      | `Exts.GADT.HeterogeneousList`, `Exts.GADT.ShellCmd`, `Exts.GADT.CommandRunner`                         |
+| `EH:ch12`   | Type-level programming                     | `Exts.Kinds.ClosedTypeFamily`, `Exts.InferredTypes`, `Exts.GADT.CommandRunner`                         |
+| `EH:ch12`   | Type families                              | `Exts.Kinds.OpenTypeFamily`, `Exts.Kinds.AssociatedTypeFamily.ShellCmd`, `Exts.Kinds.AssociatedDataFamily.ShellCmd`, `Exts.Kinds.TypeLevelListOperations.WithOpenTypeFamilies`, `Exts.Kinds.TypeLevelListOperations.WithClosedTypeFamilies`, `Exts.FunctionalDependency.ShellCmd` |
+| `EH:ch?`    | Functional dependencies                    | `Exts.FunctionalDependency.ShellCmd` (also tagged `EH:ch12`)                                           |
+| `EH:ch?`    | mtl / monad transformers                   | `Libs.Mtl.Control.Monad.State`, `StateT`, `MonadState`, `MonadTrans`, `ExceptT`, `MonadError`, `Apps.Mtl.StateMonadWithTypeAlias`, `Apps.Mtl.StateMonadWithNewtype` |
+| `EH:p464`   | MonadFail (page 464)                       | `Libs.Mtl.Control.Monad.MonadFail`                                                                     |
+| `EH:ch?`    | FilePack (Building applications)           | `Apps.FilePack.Encoder1`, `Encoder2`, `Encoder3`, `Apps.FilePack.Util`                                 |
+| `EH:ch?`    | Parsers (Building applications)            | `Apps.FilePack.ApplicativeParser`, `Apps.FilePack.MonadicParser`                                       |
+| `EH:ch?`    | HCat (Building applications)               | `Apps.Pager.HCat1`, `HCat2`, `HCat3`, `HCat4`                                                          |
+| `EH:ch10`*  | Parallel and concurrent programming         | `Apps.PCP.*` (sibling project at `ch10/` until integrated)                                              |
 
-> Tip: when you are reading a chapter and want the matching code, also look at
-> [`youtube.md`](youtube.md) — several chapters have companion lectures that
-> are tagged separately.
+\* `EH:ch10` is *not* yet placed inside `ch10/src/` because that project
+is a separate cabal target. Tag the modules with `EH:ch10` as part of
+the future fold-in (see `ch10/README.md`).
+
+## Filling in `EH:ch?` placeholders
+
+Run on next re-read of the book:
+
+```bash
+# Replace ? with the real chapter number, e.g. 7 for Functor:
+rg -l "EH:ch\? functor\b" src/ docs/ | xargs sed -i '' 's/EH:ch? functor/EH:ch7 functor/g'
+```
+
+Then update the corresponding row in this table.

@@ -5,7 +5,7 @@
 -- |
 -- Module      : Exts.Records.RecordWildCards
 -- Stage       : 03-Records  (see docs/ROADMAP.md)
--- Source      : GHC users guide — RecordWildCards
+-- Source      : GHC:record-wildcards
 --               https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/record_wildcards.html
 --
 -- == Concept

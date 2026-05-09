@@ -5,7 +5,7 @@
 -- |
 -- Module      : Apps.FilePack.ApplicativeParser
 -- Stage       : 08-Apps  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Parsers chapter
+-- Source      : EH:ch? parsers
 -- Prereqs     : Apps.FilePack.Util, Std.Control.Applicative,
 --               Std.Control.Alternative
 --

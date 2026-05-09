@@ -3,7 +3,7 @@
 -- |
 -- Module      : Exts.Types.ExistentialQuantification.WithTypeClassConstraint
 -- Stage       : 05-Existentials  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Existentials chapter
+-- Source      : EH:ch? existentials
 -- Prereqs     : Exts.Types.ExistentialQuantification
 --
 -- == Concept

@@ -5,7 +5,7 @@
 -- |
 -- Module      : YouTube.Kinds
 -- Stage       : 06-Kinds  (companion lecture — see docs/ROADMAP.md)
--- Source      : YouTube — Tweag: @rae, "An introduction to Haskell's kinds"
+-- Source      : YT:rae-kinds-1
 --               https://www.youtube.com/watch?v=JleVecHAad4
 -- Prereqs     : Base.HigherKindedType, Exts.Kinds.OpenTypeFamily
 --

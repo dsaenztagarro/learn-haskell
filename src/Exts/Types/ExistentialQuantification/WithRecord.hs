@@ -9,7 +9,7 @@ is more general, but about which you have less information.
 -- |
 -- Module      : Exts.Types.ExistentialQuantification.WithRecord
 -- Stage       : 05-Existentials  (see docs/ROADMAP.md)
--- Source      : GHC users guide — ExistentialQuantification (record form)
+-- Source      : GHC:existential-quantification (record form)
 -- Prereqs     : Exts.Types.ExistentialQuantification, Exts.Records.RecordWildCards
 --
 -- == Concept

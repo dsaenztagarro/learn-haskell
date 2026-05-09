@@ -5,7 +5,7 @@
 -- |
 -- Module      : Apps.Pager.HCat2
 -- Stage       : 08-Apps  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Building applications chapter (HCat)
+-- Source      : EH:ch? hcat
 -- Prereqs     : Apps.Pager.HCat1
 --
 -- == Concept

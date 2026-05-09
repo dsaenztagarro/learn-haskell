@@ -5,7 +5,7 @@
 -- |
 -- Module      : Exts.Deriving.Strategies
 -- Stage       : 03-Deriving  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Deriving strategies chapter
+-- Source      : EH:ch? deriving, GHC:deriving-strategies
 --               GHC users guide — DerivingStrategies
 -- Prereqs     : Exts.Deriving.GeneralizedNewtypeDeriving,
 --               Exts.Deriving.AnyclassDeriving,

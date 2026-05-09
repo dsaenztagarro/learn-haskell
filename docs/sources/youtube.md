@@ -1,19 +1,23 @@
 # YouTube lectures → Modules in this repo
 
-Reverse index: lecture / video → modules in this repo. Inverse of the
-`Source:` line in each module's Haddock header.
+Reverse index: lecture → modules. Inverse of the `Source:` line in
+each module's Haddock header. Citation tag scheme is documented in
+[`README.md`](README.md).
 
-Quickly regenerate the body of this table from the source tree:
+To regenerate the body from source:
 
 ```bash
-grep -RHn "^-- Source.*YouTube" src/
+grep -RHn "^-- Source.*YT:" src/ --include='*.hs'
 ```
 
-| Speaker / series | Title                                                 | URL | Modules                       |
-| ---------------- | ----------------------------------------------------- | --- | ----------------------------- |
-| Stepan Prudnikov | Universal and Existential Quantification in Haskell   | https://www.youtube.com/watch?v=ohp2uRM9n0o | `Exts.Types.ExistentialQuantification` |
-| Tweag (Eisenberg) | An introduction to Haskell's kinds                   | https://www.youtube.com/watch?v=JleVecHAad4 | `YouTube.Kinds` |
-| Tweag (Eisenberg) | Getting a little fancy with Haskell's kinds          | https://www.youtube.com/watch?v=Qy_yxVkO8no | `YouTube.Kinds2` |
+| Tag                          | Speaker / lecture                                                | URL                                          | Modules                                  |
+| ---------------------------- | ---------------------------------------------------------------- | -------------------------------------------- | ---------------------------------------- |
+| `YT:rae-kinds-1`             | Tweag (Richard Eisenberg) — *An introduction to Haskell's kinds* | https://www.youtube.com/watch?v=JleVecHAad4  | `YouTube.Kinds`                          |
+| `YT:rae-kinds-2`             | Tweag (Richard Eisenberg) — *Getting a little fancy with Haskell's kinds* | https://www.youtube.com/watch?v=Qy_yxVkO8no | `YouTube.Kinds2`                         |
+| `YT:prudnikov-quantification`| Stepan Prudnikov — *Universal and Existential Quantification*    | https://www.youtube.com/watch?v=ohp2uRM9n0o  | `Exts.Types.ExistentialQuantification`   |
 
-Rows beyond the seed entries are added as modules get tagged during the
-per-folder sweeps.
+Other vendor/library citations:
+
+| Tag                     | Source                                                | Modules                       |
+| ----------------------- | ----------------------------------------------------- | ----------------------------- |
+| `Tweag:typed-protocols` | Tweag — *typed-protocols* library and lectures (Cardano network) | `Exts.Kinds.TypedProtocols` |

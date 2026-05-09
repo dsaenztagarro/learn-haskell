@@ -3,7 +3,7 @@
 -- |
 -- Module      : Apps.Mtl.StateMonadWithNewtype
 -- Stage       : 08-Apps  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — mtl chapter (applied)
+-- Source      : EH:ch? mtl
 -- Prereqs     : Apps.Mtl.StateMonadWithTypeAlias
 --
 -- == Concept

@@ -5,7 +5,7 @@
 -- |
 -- Module      : Apps.FilePack.Encoder2
 -- Stage       : 08-Apps  (see docs/ROADMAP.md)
--- Source      : Effective Haskell — Building applications chapter (FilePack)
+-- Source      : EH:ch? filepack
 -- Prereqs     : Apps.FilePack.Encoder1
 --
 -- == Concept
